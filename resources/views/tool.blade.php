@@ -102,7 +102,7 @@
                     <tr class="small">
                     @endif
                         <td class="img_table">
-                            <form id="item{{ $item->id }}" action="changeItem" method="post" enctype="multipart/form-data">@csrf</from>
+                            <form id="item{{ $item->id }}" action="changeItem" method="post" enctype="multipart/form-data">@csrf</form>
                             <img class="img-thumbnail" src="{{ asset('storage/img/'.$item -> img) }}">
                             <input form="item{{ $item->id }}" type="hidden" name="img" value="{{ $item->img }}">
                         </td>
@@ -134,12 +134,11 @@
                             <input form="item{{ $item->id }}" type="submit" value="内容変更" class="btn btn-secondary mb-3">
                             <input form="item{{ $item->id }}" type="hidden" name="sqltype" value="detail_change">
                             <input form="item{{ $item->id }}" type="hidden" name="id" value="{{ $item->id }}">
-                            <form action="toolDelete" method="post" enctype="multipart/form-data">
-                                @csrf
-                                <input type="submit" value="削除" class="btn btn-danger delete">
-                                <input type="hidden" name="item_id" value="{{ $item->id }}">
-                                <input type="hidden" name="deletefiles" value="{{ $item->img }}">
-                            </form>
+                            
+                            <form id="delete{{ $item->id }}" action="toolDelete" method="post" enctype="multipart/form-data">@csrf</form>
+                            <input form="delete{{ $item->id }}" type="submit" value="削除" class="btn btn-danger delete">
+                            <input form="delete{{ $item->id }}" type="hidden" name="item_id" value="{{ $item->id }}">
+                            <input form="delete{{ $item->id }}" type="hidden" name="deletefiles" value="{{ $item->img }}">
                         </td>
                     </tr>
                 @endforeach

@@ -1,0 +1,140 @@
+/*!
+ * Start Bootstrap - One Page Wonder v5.0.7 (https://startbootstrap.com/template-overviews/one-page-wonder)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-one-page-wonder/blob/master/LICENSE)
+ */
+body{
+    font-family:Meiryo
+}
+
+h1,h2,h3,h4,h5,h6{
+    /* font-family:Catamaran; */
+    font-weight:800;
+}
+
+.btn-xl{
+    text-transform:uppercase;
+    padding:1.5rem 3rem;
+    font-size:1.5rem;
+    font-weight:700;
+    letter-spacing:.1rem
+}
+
+.bg-black{
+    background-color:#000!important
+}
+
+.rounded-pill{
+    border-radius:5rem
+}
+
+.navbar-custom{
+    padding-top:1rem;
+    padding-bottom:1rem;
+    background-color:rgba(0,0,0,.7);
+
+    .navbar-brand{
+        text-transform:uppercase;
+        font-size:1rem;
+        letter-spacing:.1rem;
+        font-weight:700;
+    }
+
+    .navbar-nav .nav-item .nav-link{
+        text-transform:uppercase;
+        font-size:.8rem;
+        font-weight:700;
+        letter-spacing:.1rem
+    }
+}
+
+header.masthead{
+    position:relative;
+    overflow:hidden;
+    padding-top:calc(7rem + 72px);
+    padding-bottom:7rem;
+    background-image: url("../img/9c8c1774ea85ef4bae4fbd6c4af968e1_s.jpg");
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-attachment:scroll;
+    background-size:cover;
+
+    .masthead-content{
+        z-index:1;
+        position:relative;
+
+        .masthead-heading{
+            font-size:3rem;
+            -webkit-text-stroke: 1px black;
+        }
+
+        .masthead-subheading{
+            font-size:3rem;
+            -webkit-text-stroke: 1px black;
+        }
+    }
+
+    .bg-circle-1{
+        height:90rem;
+        width:90rem;
+        bottom:-55rem;
+        left:-55rem;
+    }
+
+    .bg-circle-2{
+        height:50rem;
+        width:50rem;
+        top:-25rem;
+        right:-25rem;
+    }
+
+    .bg-circle-3{
+        height:20rem;
+        width:20rem;
+        bottom:-10rem;
+        right:5%;
+    }
+
+    .bg-circle-4{
+        height:30rem;
+        width:30rem;
+        top:-5rem;
+        right:35%;
+    }
+}
+
+
+@media (min-width:992px){
+    header.masthead{
+        padding-top:calc(6rem + 55px);
+        padding-bottom:6rem;
+
+        .masthead-content {
+            .masthead-heading{
+                font-size:5rem
+            }
+
+            .masthead-subheading{
+                font-size:3rem
+            }
+
+        }
+    }
+
+    .font-20 p{
+        font-size: 20px;
+    }
+
+    .lead {
+        font-size: 2.5rem;
+        font-weight: 300;
+    }
+}
+
+.lead {
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+// tool
+@import 'tool';

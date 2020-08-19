@@ -1,0 +1,17 @@
+img {
+  width: 400px;
+}
+
+.private {
+  background-color: lightgray;
+}
+
+img {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.category {
+  width: 200px;
+}
+

@@ -1,0 +1,520 @@
+@charset "UTF-8";
+
+.form-control-dark {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.form-control-dark:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+  background-color: #354053;
+}
+
+.form-bg {
+  background-color: #354053;
+}
+
+.nav-pills .nav-link.active {
+  background-color: #354053;
+}
+
+body {
+  font-size: 0.875rem;
+  -webkit-print-color-adjust: exact;
+}
+
+header {
+  background-color: #346cb0;
+  min-height: 50px;
+}
+
+header .header-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+header .navbar-brand {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+header .navbar-brand a {
+  color: #fff;
+}
+
+nav .nav-side {
+  background: #354053;
+}
+
+nav .nav-side a {
+  color: #8391a2;
+}
+
+nav .nav-side p {
+  font-size: 12px;
+}
+
+nav .nav-a-size {
+  height: 75px;
+  width: 80px;
+  display: block;
+}
+
+nav .item-sample p {
+  color: black;
+}
+
+nav .item-sample a {
+  text-decoration: none;
+}
+
+nav .item-sample:hover {
+  box-shadow: 0 0 4px gray;
+}
+
+nav .search {
+  width: 90%;
+}
+
+nav .search-item-height {
+  width: 100%;
+  height: 85vh;
+}
+
+nav #all_show_result {
+  list-style: none;
+  padding-left: 5px;
+}
+
+nav .nav_sample_img img {
+  width: 120px;
+  height: 90px;
+}
+
+nav .template {
+  list-style: none;
+}
+
+nav .template a {
+  color: black;
+  text-decoration: none;
+}
+
+nav .template:hover {
+  box-shadow: 0 0 4px gray;
+}
+
+main {
+  background-color: #f6f7f9;
+}
+
+main .item {
+  padding-top: 5px;
+  position: relative;
+}
+
+main .item-delete-btn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: transparent;
+  border: none;
+  color: gray;
+}
+
+main .preview-scroll-size {
+  width: 100%;
+  height: 91vh;
+}
+
+main #preview {
+  background-size: contain;
+  background-color: white;
+  height: 715px;
+  width: 525px;
+  min-width: 525px;
+  color: black;
+  box-shadow: 0 0 8px gray;
+  font-size: 20px;
+  padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+}
+
+main #preview .position-top-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 14px;
+  margin: 12px;
+  text-decoration: underline;
+}
+
+main #preview h1 {
+  font-size: 30px;
+}
+
+main #preview pre {
+  white-space: pre-wrap;
+  border: none;
+}
+
+main #preview .contents3 ol {
+  font-size: 14px;
+}
+
+main #preview .contents3 img {
+  max-width: 226px;
+  max-height: 170px;
+}
+
+main #preview .contents2 img {
+  max-width: 250px;
+  max-height: 190px;
+}
+
+main #preview .contents2 p {
+  font-size: 22px;
+}
+
+main #preview .contents2 ol {
+  font-size: 14px;
+  padding-left: 50px;
+}
+
+main #preview .contents1 {
+  margin-top: 48px;
+}
+
+main #preview .contents1 img {
+  max-width: 400px;
+  max-height: 300px;
+}
+
+main #preview .contents1 p {
+  font-size: 25px;
+}
+
+main #preview .contents1 ol {
+  font-size: 21px;
+}
+
+.print-preview {
+  display: none;
+  color: black;
+}
+
+@media (max-width: 1024px) {
+  main #preview {
+    height: 492px;
+    width: 352px;
+    min-width: 352px;
+    padding: 0.25rem;
+  }
+}
+
+/* スマホレイアウト */
+
+@media (max-width: 670px) {
+  header .navbar-brand {
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  .hamburger-nav {
+    width: 100%;
+    height: 80%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    padding-bottom: 60px;
+  }
+
+  .hamburger-menu {
+    width: 100%;
+    text-align: center;
+    height: 60px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    box-sizing: border-box;
+    background-color: rgba(42, 42, 42, 0.7);
+  }
+
+  .menu-trigger {
+    width: 100%;
+    padding-top: 14px;
+    display: inline-block;
+    position: relative;
+    height: 28px;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+
+  .menu-trigger p {
+    color: #fff;
+    font-size: 20px;
+  }
+
+  .menu-trigger span {
+    display: inline-block;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #000;
+    transition: all 0.5s 0.2s;
+  }
+
+  .menu-trigger .active span {
+    background-color: #fff;
+  }
+
+  .menu-trigger span:nth-of-type(1) {
+    top: 0;
+  }
+
+  .menu-trigger .active span:nth-of-type(1) {
+    transform: translateY(12px) rotate(-45deg);
+  }
+
+  .menu-trigger span:nth-of-type(2) {
+    top: 12px;
+  }
+
+  .menu-trigger .active span:nth-of-type(2) {
+    opacity: 0;
+  }
+
+  .menu-trigger span:nth-of-type(3) {
+    bottom: 0;
+  }
+
+  .menu-trigger .active span:nth-of-type(3) {
+    transform: translateY(-12px) rotate(45deg);
+  }
+
+  /* navの色調整 */
+
+  nav .item-sample p,
+  nav .btn,
+  nav .template a {
+    color: #fff;
+  }
+
+  nav .nav-side {
+    background: none;
+  }
+
+  .form-control-dark,
+  .form-bg {
+    background-color: #fff;
+  }
+
+  /* スクロールの調整 */
+
+  .search-item-height {
+    height: 50vh;
+  }
+
+  .view_more {
+    margin-bottom: 400px;
+    color: #fff;
+  }
+
+  main {
+    /* 　previewの調整 */
+  }
+
+  main .responsive-mb {
+    margin-bottom: 60px;
+  }
+
+  main #preview h1 {
+    font-size: 25px;
+    margin-top: 10px;
+  }
+
+  main #preview .contents3 img {
+    max-width: 140px;
+    max-height: 106px;
+  }
+
+  main #preview .contents3 p {
+    font-size: 17px;
+  }
+
+  main #preview .contents3 ol {
+    font-size: 10px;
+    padding: 0 0 0 20px;
+  }
+
+  main #preview .contents3 .position-top-right {
+    font-size: 12px;
+  }
+
+  main #preview .contents2 img {
+    max-width: 170px;
+    max-height: 128px;
+  }
+
+  main #preview .contents2 p {
+    font-size: 19px;
+  }
+
+  main #preview .contents2 ol {
+    font-size: 10px;
+    padding-left: 40px;
+  }
+
+  main #preview .contents2 .position-top-right {
+    font-size: 12px;
+  }
+
+  main #preview .contents1 {
+    margin-top: 35px;
+  }
+
+  main #preview .contents1 img {
+    max-width: 250px;
+    max-height: 300px;
+  }
+
+  main #preview .contents1 p {
+    font-size: 22px;
+  }
+
+  main #preview .contents1 ol {
+    font-size: 1.06em;
+    padding-left: 30px;
+  }
+
+  main #preview .contents1 .position-top-right {
+    font-size: 14px;
+  }
+}
+
+@media print {
+  .noprint {
+    display: none;
+  }
+
+  .print-preview {
+    display: block;
+    background-size: cover;
+    width: 290mm !important;
+    height: 430mm !important;
+    padding: 0mm 10mm !important;
+  }
+
+  .print-preview h1 {
+    font-size: 80px;
+    padding: 10px;
+  }
+
+  .print-preview pre {
+    border: none;
+  }
+
+  .print-preview _:-ms-lang(x) p,
+  .print-preview .contents3 p {
+    font-size: 42px !important;
+    padding-top: 10px !important;
+    padding-bottom: 0px;
+    position: relative;
+  }
+
+  .print-preview _:-ms-lang(x) ol,
+  .print-preview .contents3 ol {
+    font-size: 32px !important;
+    padding-left: 70px !important;
+    margin-top: 15px !important;
+  }
+
+  .print-preview _:-ms-lang(x) img,
+  .print-preview .contents3 img {
+    max-width: 520px !important;
+    max-height: 390px !important;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .print-preview _:-ms-lang(x) .position-top-right,
+  .print-preview .contents3 .position-top-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 35px !important;
+    margin: 20px 0;
+    text-decoration: underline;
+  }
+
+  .print-preview .contents2 p {
+    font-size: 50px !important;
+    padding-top: 10px !important;
+    padding-bottom: 0px;
+  }
+
+  .print-preview .contents2 img {
+    margin: 0;
+    max-width: 634px !important;
+    max-height: 475px !important;
+  }
+
+  .print-preview .contents2 p {
+    font-size: 60px;
+    padding-top: 20px;
+    padding-bottom: 0px;
+  }
+
+  .print-preview .contents2 ol {
+    font-size: 34px !important;
+    padding-left: 70px !important;
+    margin-top: 15px !important;
+  }
+
+  .print-preview .contents2 .position-top-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 35px !important;
+    margin: 35px 0;
+    text-decoration: underline;
+  }
+
+  .print-preview .contents1 img {
+    margin-top: 45px;
+    max-width: 1000px;
+    max-height: 750px;
+  }
+
+  .print-preview .contents1 p {
+    font-size: 70px;
+    padding-top: 80px;
+    padding-bottom: 0px;
+  }
+
+  .print-preview .contents1 ol {
+    font-size: 45px !important;
+  }
+
+  .print-preview .contents1 .position-top-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 46px !important;
+    margin: 85px 0;
+    text-decoration: underline;
+  }
+}
+

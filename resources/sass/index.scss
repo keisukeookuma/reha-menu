@@ -1,0 +1,540 @@
+$tab: 1024px;
+$sp: 670px;
+
+//※いじらない　テンプレートから引き継いだもの
+.form-control-dark {
+  color: #fff;
+  background-color: rgba(255, 255, 255, .1);
+  border-color: rgba(255, 255, 255, .1);
+}
+
+.form-control-dark:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+  background-color: #354053;
+}
+
+.form-bg {
+  background-color: #354053;
+}
+
+.nav-pills .nav-link.active {
+  background-color: #354053;
+}
+
+//ここから編集
+body {
+  font-size: .875rem;
+  -webkit-print-color-adjust: exact;
+}
+
+header {
+  background-color: #346cb0;
+  min-height: 50px;
+  
+  .header-container{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .navbar-brand {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    font-size: 1rem;
+
+    a{
+      color: #fff;
+    }
+  }
+}
+
+//nav
+nav {
+  .nav-side {
+    background: #354053;
+
+    a{
+      color: #8391a2;
+    }
+
+    p {
+      font-size: 12px;
+    }
+  }
+
+  .nav-a-size {
+    height: 75px;
+    width: 80px;
+    display: block;
+  }
+
+  .item-sample {
+    p {
+      color: black;
+    }
+
+    a{
+      text-decoration: none;
+    }
+
+    &:hover{
+      box-shadow: 0 0 4px gray;
+    }
+  }
+
+  .search{
+    width: 90%;
+  }
+
+  .search-item-height{
+    width:100%; 
+    height: 85vh;
+  }
+  
+
+  #all_show_result {
+    list-style: none;
+    padding-left: 5px;
+  }
+
+  .nav_sample_img img{
+    width :120px;
+    height: 90px;
+  }
+
+  .template {
+    list-style: none;
+
+    a{
+      color: black;
+      text-decoration: none;
+    }
+
+    &:hover{
+      box-shadow: 0 0 4px gray;
+    }
+
+  }
+  
+  
+}
+
+//main
+main {
+  background-color: #f6f7f9;
+
+  .item {
+    padding-top: 5px;
+    position: relative;
+   }
+
+  .item-delete-btn{
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: transparent;
+    border: none;
+    color: gray;
+  }
+
+  .preview-scroll-size {
+    width:100%; 
+    height: 91vh;
+  }
+
+  #preview {
+    background-size: contain;
+    background-color: white;
+    height: 715px;
+    width: 525px;
+    min-width: 525px;
+    color: black;
+    box-shadow: 0 0 8px gray;
+    font-size: 20px;
+    padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+
+    .position-top-right {
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-size: 14px;
+      margin: 12px;
+      text-decoration: underline
+    }
+
+    h1{
+      font-size: 30px;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      border: none;
+    }
+
+    .contents3 {
+      ol {
+        font-size: 14px;
+      }
+
+      img{
+        max-width: 226px;
+        max-height: 170px;
+      }
+    }
+    
+    .contents2 {
+      img {
+        max-width: 250px;
+        max-height: 190px;
+      }
+
+      p {
+        font-size: 22px;
+      }
+
+      ol{
+        font-size: 14px;  
+        padding-left: 50px;
+      }
+    }
+    
+    .contents1 {
+      margin-top: 48px;
+
+      img{
+        max-width: 400px;
+        max-height: 300px;
+      }
+
+      p{
+        font-size: 25px;
+      }
+
+      ol{
+        font-size: 21px;
+      }
+    }
+  }
+}
+
+.print-preview {
+  display: none;
+  color: black;
+}
+
+// タブレットレイアウト
+@media (max-width: 1024px) {
+  main #preview {
+    height: 492px;
+    width: 352px;
+    min-width: 352px;
+    padding: 0.25rem;
+  }
+}
+
+/* スマホレイアウト */
+@media (max-width: ($sp)) {
+  
+  header .navbar-brand {
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  .hamburger-nav {
+    width: 100%;
+    height: 80%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    padding-bottom: 60px;
+  }
+
+  .hamburger-menu {
+    width: 100%;
+    text-align: center;
+    height: 60px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    box-sizing: border-box;
+    background-color: rgba(42, 42, 42, 0.7);
+  }
+
+  .menu-trigger {
+    width: 100%;
+    padding-top: 14px;
+    display: inline-block;
+    position: relative;
+    height: 28px;
+    vertical-align: middle;
+    cursor: pointer;
+
+    p {
+      color: #fff;
+      font-size: 20px;
+    }
+
+    span {
+      display: inline-block;
+      box-sizing: border-box;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: #000;
+      transition: all .5s .2s;
+    }
+
+    .active span {
+      background-color: #fff;
+    }
+
+    span:nth-of-type(1) {
+      top: 0;
+    }
+
+    .active span:nth-of-type(1) {
+      transform: translateY(12px) rotate(-45deg);
+    }
+
+    span:nth-of-type(2) {
+      top: 12px;
+    }
+
+    .active span:nth-of-type(2) {
+      opacity: 0;
+    }
+
+    span:nth-of-type(3) {
+      bottom: 0;
+    }
+
+    .active span:nth-of-type(3) {
+      transform: translateY(-12px) rotate(45deg);
+    }
+  }
+
+  /* navの色調整 */
+  nav{
+    .item-sample p, .btn, .template a{
+      color: #fff;
+    }
+    .nav-side {
+      background: none;
+    }
+  }
+
+  .form-control-dark, .form-bg {
+    background-color: #fff;
+  }
+
+/* スクロールの調整 */
+  .search-item-height {
+    height: 50vh; 
+  }
+
+  .view_more {
+    margin-bottom: 400px;
+    color: #fff;
+  }
+
+  main{
+    .responsive-mb {
+      margin-bottom: 60px;
+    }
+
+/* 　previewの調整 */
+    #preview {
+      h1{
+        font-size: 25px;
+        margin-top: 10px;
+      }
+
+      .contents3 {
+        img{
+          max-width: 140px;
+          max-height: 106px;
+        }
+
+        p{
+          font-size: 17px;
+        }
+
+        ol {
+          font-size: 10px;
+          padding: 0 0 0 20px;
+        }
+
+        .position-top-right {
+          font-size: 12px;
+        }
+      }
+
+      .contents2 {
+        img{
+          max-width: 170px;
+          max-height: 128px;
+        }
+
+        p{
+          font-size: 19px;
+        }
+
+        ol{
+          font-size: 10px;
+          padding-left: 40px;
+        }
+
+        .position-top-right {
+          font-size: 12px;
+        }
+      }
+
+      .contents1 {
+        margin-top: 35px;
+
+        img{
+          max-width: 250px;
+          max-height: 300px;
+        }
+
+        p{
+          font-size: 22px;
+        }
+
+        ol{
+          font-size: 1.06em;
+          padding-left: 30px;
+        }
+
+        .position-top-right {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+//IEのプリント編集
+@media print{   
+  .noprint {
+    display: none;
+  }
+
+  .print-preview {
+    display: block;
+    background-size: cover;
+    width: 290mm!important;
+    height: 430mm!important;
+    padding: 0mm 10mm!important;
+
+    h1{
+      font-size: 80px;
+      padding: 10px;
+    }
+
+    pre {
+      border: none;
+    }
+
+    _:-ms-lang(x),.contents3 {
+      p{
+        font-size: 42px!important;
+        padding-top: 10px!important;
+        padding-bottom: 0px;
+        position:relative;
+      }
+
+      ol{
+        font-size: 32px!important; 
+        padding-left: 70px!important;
+        margin-top: 15px!important;
+      } 
+
+      img{
+        max-width: 520px!important;
+        max-height: 390px!important;
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      .position-top-right {
+        position: absolute;
+        right: 0;
+        top: 0;
+        font-size: 35px !important;
+        margin: 20px 0 ;
+        text-decoration: underline;
+      }
+    }
+
+    .contents2 {
+      p{
+        font-size: 50px!important;
+        padding-top: 10px!important;
+        padding-bottom: 0px;
+      }
+
+      img{
+        margin: 0;
+        max-width: 634px!important;
+        max-height: 475px!important;
+      }      
+
+      p{
+        font-size: 60px;
+        padding-top: 20px;
+        padding-bottom: 0px;
+      }
+
+      ol{
+        font-size: 34px!important; 
+        padding-left: 70px!important;
+        margin-top: 15px!important;
+      } 
+
+      .position-top-right {
+        position: absolute;
+        right: 0;
+        top: 0;
+        font-size: 35px !important;
+        margin: 35px 0 ;
+        text-decoration: underline;
+      }
+    }
+
+    .contents1{
+      img{
+        margin-top: 45px;
+        max-width: 1000px;
+        max-height: 750px;
+      }
+  
+      p{
+        font-size: 70px;
+        padding-top: 80px;
+        padding-bottom: 0px;
+      }
+
+      ol{
+        font-size: 45px!important; 
+      } 
+
+      .position-top-right {
+        position: absolute;
+        right: 0;
+        top: 0;
+        font-size: 46px !important;
+        margin: 85px 0 ;
+        text-decoration: underline
+      }
+    }
+  }
+} 

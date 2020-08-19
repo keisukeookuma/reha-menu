@@ -108,16 +108,16 @@ $(function(){
       datatype:'json',
       success: function(data){
         console.log(data.length);
-        for(var i=0 ;i<data.items.length;i++){
+        for(var i=0 ;i<data.length;i++){
           
           var previewCaption = $("<pre contentEditable='true' class='preview-caption mt-1 mb-0'>");
           var text = '';
-          data.items[i].caption.forEach(function( value ) {text += '<li>' + value + '</li>'});
+          data[i].caption.forEach(function( value ) {text += '<li>' + value + '</li>'});
           previewCaption.append("<ol class='mb-0'>" + text + "</ol>")
 
-          var itemName = makeItemName("<p class='preview-name mb-0'>"+data.items[i].item_name+"</p>");
+          var itemName = makeItemName("<p class='preview-name mb-0'>"+data[i].item_name+"</p>");
           var itemCaption = makeItemCaption(previewCaption);
-          var itemImg = makeItemImg("<img src=img/"+data.items[i].img+"></img>");
+          var itemImg = makeItemImg("<img src=/storage/img/"+data[i].img+"></img>");
           var item = makeItem(itemName, itemCaption, itemImg);
           var deleteButton = makeDeleteButton(item);
           item.append(deleteButton);

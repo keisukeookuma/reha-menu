@@ -16,7 +16,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="form">
-                    <form action="toolCreate" method="post" enctype="multipart/form-data">
+                    <form action="CreateItem" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="name">自主トレ名:</label>
@@ -59,15 +59,20 @@
                             </div>
                             <div class="mx-3 my-2">
                                 フリーワード欄　※複数記載する場合は「、」で区切ってください。<br>
-                                <input class="form-control w-50"type="text" name="search_word[]">
+                                <input class="form-control w-50" type="text" name="search_word[]">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="template">テンプレート設定:　※入力後の変更はできません。</label>
                             <input class="form-control w-50" type="text" name="template_name" id="template">
+                            <label for="template_status">テンプレートの公開設定</label>
+                            <select class="form-control w-100px" name="template_status" id="template_status">
+                                <option value="0">公開</option>
+                                <option value="1">非公開</option>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="status">公開設定:</label>
+                            <label for="status">自主トレ公開設定:</label>
                             <select class="form-control w-100px" name="status" id="status">
                                 <option value="0">公開</option>
                                 <option value="1">非公開</option>

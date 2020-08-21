@@ -19,7 +19,7 @@ Route::post('/ajax', 'RehaMenuController@getData');
 
 Route::group(['middleware' => 'auth'],function(){
     Route::get('/tool', 'RehaMenuController@tool');
-    Route::post('/toolCreate', 'RehaMenuController@toolCreate');
+    Route::post('/CreateItem', 'RehaMenuController@CreateItem');
     Route::post('/toolDelete', 'RehaMenuController@toolDelete');
     Route::post('/changeItem', 'RehaMenuController@changeItem');
 });

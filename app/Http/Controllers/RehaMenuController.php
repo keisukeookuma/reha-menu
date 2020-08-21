@@ -70,7 +70,7 @@ class RehaMenuController extends Controller
     public function tool()
     {
         $items = DB::table('items')
-                    ->select('items.id','item_name', 'creator', 'caption', DB::raw('GROUP_CONCAT(search_word) as search_word'), 'img', 'template_name', 'status')
+                    ->select('items.id','item_name', 'creator', 'caption', DB::raw('GROUP_CONCAT(search_word) as search_word'), 'img', 'template_name', 'items.status')
                     ->join('templates', 'items.id', '=', 'templates.item_id')
                     ->join('search_words', 'items.id', '=', 'search_words.item_id')
                     ->groupBy('items.id')
@@ -78,14 +78,15 @@ class RehaMenuController extends Controller
         return view('tool',['items' => $items]);
     }
 
-    public function toolCreate(CreateItem $request)
+    public function CreateItem(CreateItem $request)
     {
         $user_id = Auth::id();
         $now = Carbon::now();
+        $request->search_word = self::nullFilter($request->search_word);
         if($request->sqltype === 'new_product'){
             $folderFilePath = $request->file->store('img');
             $filePath = str_replace('img/', '', $folderFilePath);
-            
+            // dd($search_word);
             DB::transaction(function () use($request, $filePath, $user_id, $now) {
                 $item_id = DB::table('items')->insertGetId(
                     [
@@ -105,6 +106,7 @@ class RehaMenuController extends Controller
                         'user_id' => $user_id,
                         'item_id' => $item_id,
                         'template_name' => $request->template_name,
+                        'status' => $request->template_status,
                         'created_at' => $now,
                         'updated_at' => $now,
                     ]
@@ -123,6 +125,15 @@ class RehaMenuController extends Controller
         }
 
         return redirect('/tool');
+    }
+
+    private function nullFilter($value){
+        $array = array_filter($value, 'self::nullDelete');
+        return $array;
+    }
+
+    private function nullDelete($val){
+        return !is_null($val);
     }
 
     public function toolDelete(Request $request)
@@ -158,7 +169,6 @@ class RehaMenuController extends Controller
                 'status' => $request->status,
                 'updated_at' => $now
         ]);
-
         return redirect('/tool');
     }
 

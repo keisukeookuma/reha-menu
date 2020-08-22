@@ -70,6 +70,12 @@
                                 <option value="0">公開</option>
                                 <option value="1">非公開</option>
                             </select>
+                            <label for="template_kind">テンプレート種類</label>
+                            <div class="form-group">
+                                <input type="radio" name="template_kind" value="care_prevention">介護予防
+                                <input type="radio" name="template_kind" value="disease_name">病名
+                                <input type="radio" name="template_kind" value="body_parts">部位別
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="status">自主トレ公開設定:</label>
@@ -101,9 +107,9 @@
                     </tr>
                 </thead>
                 @foreach($items as $item)
-                    @if($item->status===1)
+                    @if($item->items_status===1)
                     <tr class="private small">
-                    @elseif($item->status===0)
+                    @elseif($item->items_status===0)
                     <tr class="small">
                     @endif
                         <td class="img_table">
@@ -123,10 +129,10 @@
                             </p>
                             <p>ステータス<br>
                                 <select form="item{{ $item->id }}" name="status">
-                                    @if($item->status===0)
+                                    @if($item->items_status===0)
                                         <option value='0'>現在：公開</option>
                                         <option value='1'>非公開に変更</option>
-                                    @elseif($item->status===1)
+                                    @elseif($item->items_status===1)
                                         <option value="1">現在：非公開</option>
                                         <option value="0">公開に変更</option>
                                     @endif
@@ -134,7 +140,24 @@
                             </p>
                         </td>
                         <td class="search_word">{{ $item->search_word }}</td>
-                        <td class="template_name">{{ $item->template_name }}</td>
+                        <td class="template_name">
+                            <p>テンプレート名<br>
+                            {{ $item->template_name }}
+                            </p>
+                            <p>テンプレート種類<br>
+                            {{ $item->kind }}
+                            </p>
+                            <p>ステータス<br>
+                                <select form="item{{ $item->id }}" name="status">
+                                    @if($item->templates_status===0)
+                                        <option value='0'>現在：公開</option>
+                                        <option value='1'>非公開に変更</option>
+                                    @elseif($item->templates_status===1)
+                                        <option value="1">現在：非公開</option>
+                                        <option value="0">公開に変更</option>
+                                    @endif
+                                </select>
+                            </p>
                         <td>
                             <input form="item{{ $item->id }}" type="submit" value="内容変更" class="btn btn-secondary mb-3">
                             <input form="item{{ $item->id }}" type="hidden" name="sqltype" value="detail_change">

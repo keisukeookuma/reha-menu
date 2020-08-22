@@ -27,12 +27,18 @@ class RehaMenuController extends Controller
     public function getData(Request $request)
     {   
         if(isset($request->template_word)===true){
-            $template_word = $request->template_word;
             $items = DB::table('items')
                         ->join('templates', 'items.id', '=', 'templates.item_id')
-                        ->where('template_name', 'LIKE', '%'.$template_word.'%')
                         ->orderBy('items.id', 'DESC')
                         ->get();
+        // }else
+        // if(isset($request->template_word)===true){
+        //     $template_word = $request->template_word;
+        //     $items = DB::table('items')
+        //                 ->join('templates', 'items.id', '=', 'templates.item_id')
+        //                 ->where('template_name', 'LIKE', '%'.$template_word.'%')
+        //                 ->orderBy('items.id', 'DESC')
+        //                 ->get();
         }else{
             $search_word = $request->search_word;
             $offset = $request->offset;
@@ -70,7 +76,7 @@ class RehaMenuController extends Controller
     public function tool()
     {
         $items = DB::table('items')
-                    ->select('items.id','item_name', 'creator', 'caption', DB::raw('GROUP_CONCAT(search_word) as search_word'), 'img', 'template_name', 'items.status')
+                    ->select('items.id','item_name', 'creator', 'caption', DB::raw('GROUP_CONCAT(search_word) as search_word'), 'img', 'template_name', 'items.status as items_status', 'templates.status as templates_status', 'templates.kind')
                     ->join('templates', 'items.id', '=', 'templates.item_id')
                     ->join('search_words', 'items.id', '=', 'search_words.item_id')
                     ->groupBy('items.id')
@@ -107,6 +113,7 @@ class RehaMenuController extends Controller
                         'item_id' => $item_id,
                         'template_name' => $request->template_name,
                         'status' => $request->template_status,
+                        'kind' => $request->template_kind,
                         'created_at' => $now,
                         'updated_at' => $now,
                     ]

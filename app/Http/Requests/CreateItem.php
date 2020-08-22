@@ -32,6 +32,7 @@ class CreateItem extends FormRequest
             'template_name' => 'required|max:20',
             'template_status' => 'required|integer|between:0,1',
             'status' => 'required|integer|between:0,1',
+            'template_kind' => 'required',
             'file' => 'required|file|image|mimes:jpeg,png,jpg,gif|max:2048',
             'sqltype' => 'required|spaceCheck'
         ];

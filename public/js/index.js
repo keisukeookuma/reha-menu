@@ -34,6 +34,9 @@ $(function(){
     getTemplateData(templateSearch);
   });
 
+  $('.template_all').on('click', function(){
+    getAlltemplates('all');
+  });
   
   
   //ajax
@@ -96,6 +99,30 @@ $(function(){
       }
     });
   }
+
+  function getAlltemplates(template_word){
+    $.ajax({
+      url:"/ajax/",
+      data:{template_word : template_word},
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      type:'POST',
+      datatype:'json',
+      success: function(data){
+        console.log(data);
+        for(var i=0 ;i<data.length;i++){
+          var templateName = "<li class='nav-item template'><a class='nav-link' href='#'>"+data[i].template_name+"</a></li>";
+          $("#template_list").append(templateName);
+          
+        }
+      },
+      error: function(){
+        console.log("通信失敗");
+        console.log(data);
+      }
+    })
+  };
 
   function getTemplateData(template_word){
     $.ajax({

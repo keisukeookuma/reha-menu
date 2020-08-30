@@ -95,7 +95,6 @@ class RehaMenuController extends Controller
     {
         $items = DB::table('items')
                     ->select('items.id','item_name', 'creator', 'caption', DB::raw('GROUP_CONCAT(search_word) as search_word'), 'img', 'template_name', 'items.status as items_status', 'templates.status as templates_status', 'templates.kind')
-                    ->join('templates', 'items.id', '=', 'templates.item_id')
                     ->join('search_words', 'items.id', '=', 'search_words.item_id')
                     ->groupBy('items.id')
                     ->get();

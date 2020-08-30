@@ -7,7 +7,6 @@ $('.menu-trigger').on('click',function(){
       $(this).addClass('active');
       $('.hamburger-nav').slideDown();
       $(this).html('<p>閉じる</p>')
-    //   $('.hamburger-item-choice').slideDown();
     }
 });
 
@@ -16,7 +15,6 @@ $(function(){
     var y = 640;
     if (x > y) {
         $('.hamburger-nav').addClass('row');
-        $('.search-form').addClass('form-control-dark').addClass('text-light');
     }
 });
 
@@ -27,10 +25,8 @@ $(window).resize(function(){
     var y = 640;
     if (x > y) {
         $('.hamburger-nav').addClass('row');
-        $('.search-form').addClass('form-control-dark').addClass('text-light');
     }else{
         $('.hamburger-nav').removeClass('row');
-        $('.search-form').addClass('form-control-dark').addClass('text-light');
     }
 });
 

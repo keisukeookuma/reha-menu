@@ -9,9 +9,8 @@ function navSampleList(data_item_name, data_img, data_caption){
     var navSampleCaption = $("<div class='item_caption d-none'>");
     var previewCaption = $("<pre contentEditable='true' class='preview-caption mt-1 mb-0'>");
     var text = '';
-    data_caption.forEach(function( value ) {text += '<li>' + value + '</li>'});
+    $.each(data_caption,function( index, value ) {text += '<li>' + value + '</li>'});
     previewCaption.append("<ol class='mb-0'>" + text + "</ol>")
-    // previewCaption.append("<p>" + data_caption + "</p>")
     navSampleCaption.append(previewCaption);
     return li.append(navSampleName).append(navSampleImg).append(navSampleCaption);
 }
@@ -59,4 +58,38 @@ function makeItem(itemName, itemCaption, itemImg){
     itemContents.addClass("contents3-d-flex");
     itemContents.append(itemImg).append(itemCaption);
     return sampleItem.append(itemName).append(itemContents);
+}
+
+//ajax contentsをメニュー数ごとに分ける
+function addContentsClass(item, contentsCount){
+    if(contentsCount === 3){
+      item.find("div.contents3-d-flex").addClass("d-flex");
+      item.addClass("contents3");
+      item.find(".item-img").addClass("col-6");
+      item.find(".item-caption").addClass("col-6");
+    }else if(contentsCount === 2){
+      item.addClass("contents2");
+    }else if(contentsCount === 1){
+      item.addClass("contents1");
+      item.find(".position-top-right").css({"top": "30px","font-size":"17px"});
+      item.find(".item-img").addClass("mt-3");
+    }
+    return item;
+  }
+
+// template用
+function navSampleTemplateList(data_item_name, data_img, data_caption, templateName){
+    var navSampleName = $("<div class='item_name text-center d-none'>");
+    var previewName = $("<p class='preview-name mb-0'>");
+    previewName.append(data_item_name);
+    navSampleName.append(previewName);
+    var navSampleImg = $("<div class='nav_template_img col-4 p-1'>");
+    navSampleImg.append("<img src=/storage/img/" + data_img +">");
+    var navSampleCaption = $("<div class='item_caption d-none'>");
+    var previewCaption = $("<pre contentEditable='true' class='preview-caption mt-1 mb-0'>");
+    var text = '';
+    $.each(data_caption,function( index, value ) {text += '<li>' + value + '</li>'});
+    previewCaption.append("<ol class='mb-0'>" + text + "</ol>")
+    navSampleCaption.append(previewCaption);
+    return templateName.append(navSampleName).append(navSampleImg).append(navSampleCaption);
 }

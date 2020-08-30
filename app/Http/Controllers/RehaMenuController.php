@@ -11,6 +11,8 @@ use App\Http\Requests\ChangeItem;
 use App\Http\Requests\GiveOpinion;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 
 class RehaMenuController extends Controller
 {
@@ -26,19 +28,16 @@ class RehaMenuController extends Controller
 
     public function getData(Request $request)
     {   
-        if(isset($request->template_word)===true){
+        if($request->type === 'template'){
+            
+            $template_word = $request->template_word;
             $items = DB::table('items')
                         ->join('templates', 'items.id', '=', 'templates.item_id')
-                        ->orderBy('items.id', 'DESC')
+                        ->where('kind', 'LIKE','%'.$template_word.'%')
+                        ->orderBy('template_name')
                         ->get();
-        // }else
-        // if(isset($request->template_word)===true){
-        //     $template_word = $request->template_word;
-        //     $items = DB::table('items')
-        //                 ->join('templates', 'items.id', '=', 'templates.item_id')
-        //                 ->where('template_name', 'LIKE', '%'.$template_word.'%')
-        //                 ->orderBy('items.id', 'DESC')
-        //                 ->get();
+            $items = $items -> groupBy('template_name');
+            $items = self::templates_caption_add_number($items);
         }else{
             $search_word = $request->search_word;
             $offset = $request->offset;
@@ -49,11 +48,11 @@ class RehaMenuController extends Controller
                         ->orWhere('search_word', 'LIKE', '%'.$search_word.'%')
                         ->groupBy('items.id')
                         ->orderBy('items.id', 'DESC')
-                        ->limit(2)
+                        ->limit(10)
                         ->offset($offset)
                         ->get();
+            $items = self::caption_add_number($items);
         }
-        $items = self::caption_add_number($items);
         $json = $items;
         return response()->json($json);
     }
@@ -69,6 +68,24 @@ class RehaMenuController extends Controller
             }
             $array->caption = $result;
             $productList[] = $array;
+        }
+        return $productList;
+    }
+
+    private function templates_caption_add_number($samples)
+    {
+        foreach($samples as $val => $sample){
+            foreach($sample as $key => $array){
+                $data = [];
+                $result = [];
+                $data = explode("\n", $array->caption);
+                foreach($data as $value){
+                    $result[] = $value;
+                }
+                $array->caption = $result;
+            }
+            $sample[$key] = $array;
+            $productList[$val] = $sample;
         }
         return $productList;
     }
@@ -92,7 +109,6 @@ class RehaMenuController extends Controller
         if($request->sqltype === 'new_product'){
             $folderFilePath = $request->file->store('img');
             $filePath = str_replace('img/', '', $folderFilePath);
-            // dd($search_word);
             DB::transaction(function () use($request, $filePath, $user_id, $now) {
                 $item_id = DB::table('items')->insertGetId(
                     [

@@ -66,9 +66,9 @@
     </header>
     <div class="container-fluid noprint">
         <div class="row pt-5">
-            <nav class="hamburger-nav col-md-5">
+            <nav class="hamburger-nav col-md-5 px-0">
                 <div class="nav-side col-md-3 d-md-block pt-2 px-0">
-                    <div class="nav nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <div class="nav nav-pills px-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <a class="nav-link active nav-a-size px-0 text-center m-auto" data-toggle="pill" href="#v-pills-original" role="tab" aria-controls="v-pills-original" aria-selected="true">
                             <svg class="bi bi-plus-square" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H4a.5.5 0 010-1h3.5V4a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
@@ -85,11 +85,13 @@
                             </svg>
                             <p>テンプレート</p>
                         </a>
-                        <a class="nav-link nav-a-size px-0 pt-3 text-center m-auto" data-toggle="pill" href="#v-pills-sample2" role="tab" aria-controls="v-pills-sample3" aria-selected="false">
-                            <svg class="bi bi-people" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.995-.944v-.002.002zM7.022 13h7.956a.274.274 0 00.014-.002l.008-.002c-.002-.264-.167-1.03-.76-1.72C13.688 10.629 12.718 10 11 10c-1.717 0-2.687.63-3.24 1.276-.593.69-.759 1.457-.76 1.72a1.05 1.05 0 00.022.004zm7.973.056v-.002.002zM11 7a2 2 0 100-4 2 2 0 000 4zm3-2a3 3 0 11-6 0 3 3 0 016 0zM6.936 9.28a5.88 5.88 0 00-1.23-.247A7.35 7.35 0 005 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 015 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10c-1.668.02-2.615.64-3.16 1.276C1.163 11.97 1 12.739 1 13h3c0-1.045.323-2.086.92-3zM1.5 5.5a3 3 0 116 0 3 3 0 01-6 0zm3-2a2 2 0 100 4 2 2 0 000-4z" clip-rule="evenodd"/>
+                        <a class="nav-link nav-a-size px-0 text-center pt-3 m-auto" href="{{ url('/manual') }}">
+                            <svg class="bi bi-info-square" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
+                            <circle cx="8" cy="4.5" r="1"/>
                             </svg>
-                            <p>介護部門</p>
+                            <p>使い方ガイド</p>
                         </a>
                         <a class="nav-link nav-a-size px-0 pt-3 text-center m-auto"  href="{{ url('/opinion') }}">
                             <svg class="bi bi-inbox-fill" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -97,14 +99,6 @@
                                 <path fill-rule="evenodd" d="M.125 8.67A.5.5 0 01.5 8.5h5A.5.5 0 016 9c0 .828.625 2 2 2s2-1.172 2-2a.5.5 0 01.5-.5h5a.5.5 0 01.496.562l-.39 3.124a1.5 1.5 0 01-1.489 1.314H1.883a1.5 1.5 0 01-1.489-1.314l-.39-3.124a.5.5 0 01.121-.393z" clip-rule="evenodd"/>
                             </svg>
                             <p>ご意見箱</p>
-                        </a>
-                        <a class="nav-link nav-a-size px-0 text-center pt-4 m-auto" href="{{ url('/manual') }}">
-                            <svg class="bi bi-info-square" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-                                <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
-                            <circle cx="8" cy="4.5" r="1"/>
-                            </svg>
-                            <p>使い方ガイド</p>
                         </a>
                         @auth
                             <a class="nav-link nav-a-size px-0 text-center pt-4 m-auto" href="{{ url('/tool') }}">
@@ -118,38 +112,29 @@
                         @endauth
                     </div>
                 </div>
-                <div class="hamburger-item-choice col-md-9 d-md-block pt-2 px-4 overflow-auto">
+                <div class="hamburger-item-choice col-md-9 d-md-block pt-2 px-1 overflow-auto">
                     <div class="tab-content" id="v-pills-tabContent">
                         <div class="tab-pane fade show active" id="v-pills-original" role="tabpanel" aria-labelledby="v-pills-original-tab">
                             <div class="search mx-auto">
-                                <input class="search-form form-control form-bg" type="text" placeholder="部位や病名で検索可能！" aria-label="検索">
+                                <input class="search-form form-control" type="text" placeholder="部位や病名で検索可能！" aria-label="検索">
                             </div>
                             <div class="overflow-auto search-item-height">
-                                <ul id="all_show_result" class="d-flex flex-wrap justify-content-around"></ul>
+                                <ul id="all_show_result" class="d-flex flex-wrap justify-content-around pt-1"></ul>
                                 <div class="view_more text-center"><button class='btn'>もっと見る</button></div>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="v-pills-sample1" role="tabpanel" aria-labelledby="v-pills-sample1-tab">
-                            <div class="search mx-auto">
-                                <input class="search-form form-control form-bg" type="text" placeholder="部位や病名で検索可能！" aria-label="検索">
+                            <div class="template_search mx-auto mb-1">
+                                <select class="custom-select" id="validationTooltip04" required>
+                                    <option selected value="">すべて表示</option>
+                                    <option value="disease_name">病名</option>
+                                    <option value="body_parts">部位</option>
+                                    <option value="care_prevention">介護予防</option>
+                                </select>
                             </div>
-                            <ul id="template_list" class="px-0 pt-3"></ul>
-                        </div>
-                        <div class="tab-pane fade" id="v-pills-sample2" role="tabpanel" aria-labelledby="v-pills-sample3-tab">
-                            <ul id="sample3" class="px-0 pt-3">
-                                <li class="nav-item template">
-                                    <a class="nav-link" href="#">セラバンド体操</a>
-                                </li>
-                                <li class="nav-item template">
-                                    <a class="nav-link" href="#">座ってできる体操</a>
-                                </li>
-                                <li class="nav-item template">
-                                    <a class="nav-link" href="#">立ってできる体操</a>
-                                </li>
-                                <li class="nav-item template">
-                                    <a class="nav-link" href="#">ベッドでできる体操</a>
-                                </li>
-                            </ul>
+                            <div class="overflow-auto search-item-height mb-1">
+                                <ul id="template_list" class="px-1 pt-3"></ul>
+                            </div>
                         </div>
                     </div>
                 </div>

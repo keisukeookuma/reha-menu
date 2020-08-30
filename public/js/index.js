@@ -13,6 +13,8 @@ $(function(){
     $('.item').remove();
     contentsCount = 3; 
   });
+
+  //item表示
   var offset = 0;
   $('.search-form').change(function(){
     offset = 0;
@@ -29,13 +31,15 @@ $(function(){
 
   getAllData('',offset);
 
-  $('.template').on('click',function(){
-    var templateSearch = $(this).children().html();
-    getTemplateData(templateSearch);
+  // template表示
+  $('.template_all').one('click', function(){
+    getTemplateData('');
   });
 
-  $('.template_all').on('click', function(){
-    getAlltemplates('all');
+  $('.template_search').change(function(){
+    $('#template_list').children().remove();
+    var templateWord = $('option:selected').val();
+    getTemplateData(templateWord)
   });
   
   
@@ -45,7 +49,8 @@ $(function(){
       url:"/ajax/",
       data:{
         search_word : search_word,
-        offset : offset
+        offset : offset,
+        type : 'item'
       },
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -55,6 +60,7 @@ $(function(){
       success: function(data){
         console.log(data.length);
         for(var i=0 ;i<data.length;i++){
+          console.log(data);
           var sampleList = navSampleList(data[i].item_name, data[i].img, data[i].caption);
           $('#all_show_result').append(sampleList);
         }
@@ -72,21 +78,7 @@ $(function(){
             itemCaption.addClass("order-1");
           }
 //*
-          if(contentsCount === 3){
-            item.find("div.contents3-d-flex").addClass("d-flex");
-            item.addClass("contents3");
-            item.find(".item-img").addClass("col-6");
-            // $("#preview").find("img").css({"width":"226px","height":"170px"})
-            item.find(".item-caption").addClass("col-6");
-          }else if(contentsCount === 2){
-            item.addClass("contents2");
-            //item.find(".position-top-right").css({"top": "20px","font-size":"17px"});
-            // item.find(".item-img").addClass("mt-3");
-          }else if(contentsCount === 1){
-            item.addClass("contents1");
-            item.find(".position-top-right").css({"top": "30px","font-size":"17px"});
-            item.find(".item-img").addClass("mt-3");
-          }
+          item = addContentsClass(item, contentsCount);
 
           if($("#preview").find("div.item").length < contentsCount){
             $("#preview").append(item);
@@ -100,10 +92,12 @@ $(function(){
     });
   }
 
-  function getAlltemplates(template_word){
+  function getTemplateData(template_word){
     $.ajax({
       url:"/ajax/",
-      data:{template_word : template_word},
+      data:{template_word : template_word,
+            type : 'template'
+      },
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       },
@@ -111,11 +105,41 @@ $(function(){
       datatype:'json',
       success: function(data){
         console.log(data);
-        for(var i=0 ;i<data.length;i++){
-          var templateName = "<li class='nav-item template'><a class='nav-link' href='#'>"+data[i].template_name+"</a></li>";
-          $("#template_list").append(templateName);
+        $.each(data,function(index,value){
+          var sampleTemplateList = $('<li class="nav-item template">');
+          var templateLink = $("<a class='nav-link template-sample d-flex flex-wrap "+index+"' href='#'></a>")
+          templateLink.append("<p class='col-12 mb-1 '>"+index+"</p>");
+          $.each(value, function(index,val){ 
+            var sampleList = navSampleTemplateList(val.item_name, val.img, val.caption, templateLink);
+            templateLink.append(sampleList);
+          });
           
-        }
+          sampleTemplateList.append(templateLink);
+          $('#template_list').append(sampleTemplateList);
+        });
+
+        $('.template-sample').off().click(function(){
+          var len = $(this).find('.item_name').length;
+          for (var i=0; i<len; i++) {
+            var itemName = makeItemName($(this).find('.item_name').eq(i).html());
+            var itemCaption = makeItemCaption($(this).find('.item_caption').eq(i).html());
+            var itemImg = makeItemImg($(this).find('.nav_template_img').eq(i).html());
+            var item = makeItem(itemName, itemCaption, itemImg);
+            var deleteButton = makeDeleteButton(item);
+            item.append(deleteButton);
+
+            if(contentsCount === 3 && $("#preview").find("div.item").length === 1){
+              itemImg.addClass("order-2");
+              itemCaption.addClass("order-1");
+            }
+
+            item = addContentsClass(item, contentsCount);
+
+            if($("#preview").find("div.item").length < contentsCount){
+              $("#preview").append(item);
+            }
+          }
+        });
       },
       error: function(){
         console.log("通信失敗");
@@ -123,62 +147,4 @@ $(function(){
       }
     })
   };
-
-  function getTemplateData(template_word){
-    $.ajax({
-      url:"/ajax/",
-      data:{template_word : template_word},
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      },
-      type:'POST',
-      datatype:'json',
-      success: function(data){
-        console.log(data.length);
-        for(var i=0 ;i<data.length;i++){
-          
-          var previewCaption = $("<pre contentEditable='true' class='preview-caption mt-1 mb-0'>");
-          var text = '';
-          data[i].caption.forEach(function( value ) {text += '<li>' + value + '</li>'});
-          previewCaption.append("<ol class='mb-0'>" + text + "</ol>")
-
-          var itemName = makeItemName("<p class='preview-name mb-0'>"+data[i].item_name+"</p>");
-          var itemCaption = makeItemCaption(previewCaption);
-          var itemImg = makeItemImg("<img src=/storage/img/"+data[i].img+"></img>");
-          var item = makeItem(itemName, itemCaption, itemImg);
-          var deleteButton = makeDeleteButton(item);
-          item.append(deleteButton);
-          
-          if(contentsCount === 3 && $("#preview").find("div.item").length === 1){
-            itemImg.addClass("order-2");
-            itemCaption.addClass("order-1")
-          }
-
-          if(contentsCount === 3){
-            item.find("div.contents3-d-flex").addClass("d-flex");
-            item.addClass("contents3");
-            item.find(".item-img").addClass("col-7");
-            // $("#preview").find("img").css({"width":"226px","height":"170px"})
-            item.find(".item-caption").addClass("col-5");
-          }else if(contentsCount === 2){
-            item.addClass("contents2");
-            item.find(".position-top-right").css({"top": "20px","font-size":"17px"});
-            item.find(".item-img").addClass("mt-3");
-          }else if(contentsCount === 1){
-            item.addClass("contents1");
-            item.find(".position-top-right").css({"top": "30px","font-size":"17px"});
-            item.find(".item-img").addClass("mt-3");
-          }
-
-          if($("#preview").find("div.item").length < contentsCount){
-          $("#preview").append(item);
-          }
-        }
-      },
-      error: function(){
-        console.log("通信失敗");
-        console.log(data);
-      }
-    });
-  }
 });

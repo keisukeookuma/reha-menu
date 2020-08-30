@@ -22,6 +22,7 @@ Route::group(['middleware' => 'auth'],function(){
     Route::post('/CreateItem', 'RehaMenuController@CreateItem');
     Route::post('/toolDelete', 'RehaMenuController@toolDelete');
     Route::post('/changeItem', 'RehaMenuController@changeItem');
+    Route::post('/CreateTemplate', 'RehaMenuController@createTemplate');
 });
 
 Route::get('/manual', 'RehaMenuController@manual');

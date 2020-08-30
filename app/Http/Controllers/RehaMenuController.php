@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CreateItem;
 use App\Http\Requests\ChangeItem;
 use App\Http\Requests\GiveOpinion;
+use App\Http\Requests\CreateTemplate;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Collection;
@@ -122,18 +123,6 @@ class RehaMenuController extends Controller
                         'updated_at' => $now
                     ]
                 );
-
-                DB::table('templates')->INSERT(
-                    [
-                        'user_id' => $user_id,
-                        'item_id' => $item_id,
-                        'template_name' => $request->template_name,
-                        'status' => $request->template_status,
-                        'kind' => $request->template_kind,
-                        'created_at' => $now,
-                        'updated_at' => $now,
-                    ]
-                );
                 foreach($request->search_word as $value){
                     DB::table('search_words')->INSERT(
                         [
@@ -225,5 +214,28 @@ class RehaMenuController extends Controller
             ->orderBy('id', 'DESC')
             ->get();
         return view('opinion_show',['opinions' => $opinions]);
+    }
+
+    public function createTemplate(CreateTemplate $request)
+    {
+        $user_id = Auth::id();
+        $now = Carbon::now();
+        $item_id = $request->template_items;
+        DB::transaction(function () use($request, $item_id, $user_id, $now) {
+            foreach ($item_id as $item){
+                DB::table('templates')->INSERT(
+                    [
+                        'user_id' => $user_id,
+                        'item_id' => $item,
+                        'template_name' => $request->template_name,
+                        'status' => $request->template_status,
+                        'kind' => $request->template_kind,
+                        'created_at' => $now,
+                        'updated_at' => $now,
+                    ]
+                );
+            }
+        });
+        return redirect('/tool');
     }
 }

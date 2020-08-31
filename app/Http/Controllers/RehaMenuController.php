@@ -171,10 +171,12 @@ class RehaMenuController extends Controller
         $user_id = Auth::id();
         $now = Carbon::now();
         $request->search_word = self::nullFilter($request->search_word);
+        $search_word = implode( ",", $request->search_word);
+        // dd($search_word);
         if($request->sqltype === 'new_product'){
             $folderFilePath = $request->file->store('img');
             $filePath = str_replace('img/', '', $folderFilePath);
-            DB::transaction(function () use($request, $filePath, $user_id, $now) {
+            DB::transaction(function () use($request, $search_word, $filePath, $user_id, $now) {
                 $item_id = DB::table('items')->insertGetId(
                     [
                         'user_id' => $user_id,
@@ -187,16 +189,14 @@ class RehaMenuController extends Controller
                         'updated_at' => $now
                     ]
                 );
-                foreach($request->search_word as $value){
-                    DB::table('search_words')->INSERT(
-                        [
-                            'item_id' => $item_id,
-                            'search_word' => $value,
-                            'created_at' => $now,
-                            'updated_at' => $now,
-                        ]
-                    );
-                }
+                DB::table('search_words')->INSERT(
+                    [
+                        'item_id' => $item_id,
+                        'search_word' => $search_word,
+                        'created_at' => $now,
+                        'updated_at' => $now,
+                    ]
+                );
             });
         }
 

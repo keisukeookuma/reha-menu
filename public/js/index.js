@@ -58,9 +58,7 @@ $(function(){
       type:'POST',
       datatype:'json',
       success: function(data){
-        console.log(data.length);
         for(var i=0 ;i<data.length;i++){
-          console.log(data);
           var sampleList = navSampleList(data[i].item_name, data[i].img, data[i].caption);
           $('#all_show_result').append(sampleList);
         }

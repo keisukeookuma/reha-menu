@@ -27,13 +27,32 @@ class RehaMenuController extends Controller
         return view('index');
     }
 
+    private function admin_id()
+    {
+        return $admin_id = 1;
+    }
+
+    private function check_admin()
+    {
+        $admin_id = self::admin_id();
+        $check_admin = '';
+        if(Auth::id() === $admin_id){
+            $check_admin = 'admin';
+        }
+        return $check_admin;
+    }
+
     public function getData(Request $request)
     {   
+        $admin_id = self::admin_id();
+        $admin = self::check_admin();
+        $user_id = Auth::id();
         if($request->type === 'template'){
             
             $template_word = $request->template_word;
             $items = DB::table('items')
                         ->join('templates', 'items.id', '=', 'templates.item_id')
+                        ->whereIn('templates.user_id',[$admin_id, $user_id])
                         ->where('kind', 'LIKE','%'.$template_word.'%')
                         ->orderBy('template_name')
                         ->get();
@@ -44,9 +63,15 @@ class RehaMenuController extends Controller
             $offset = $request->offset;
             $items = DB::table('items')
                         ->join('search_words', 'items.id', '=', 'search_words.item_id')
-                        ->where('item_name', 'LIKE' ,'%'.$search_word.'%')
-                        ->orWhere('caption', 'LIKE', '%'.$search_word.'%')
-                        ->orWhere('search_word', 'LIKE', '%'.$search_word.'%')
+                        ->whereIn('items.user_id',[$admin_id, $user_id])
+                        ->where(function ($query) use ($search_word){
+                            $query  ->where('item_name', 'LIKE' ,'%'.$search_word.'%')
+                                    ->orWhere('caption', 'LIKE', '%'.$search_word.'%')
+                                    ->orWhere('search_word', 'LIKE', '%'.$search_word.'%');
+                        })
+                        // ->where('item_name', 'LIKE' ,'%'.$search_word.'%')
+                        // ->orWhere('caption', 'LIKE', '%'.$search_word.'%')
+                        // ->orWhere('search_word', 'LIKE', '%'.$search_word.'%')
                         ->groupBy('items.id')
                         ->orderBy('items.id', 'DESC')
                         ->limit(10)
@@ -93,15 +118,55 @@ class RehaMenuController extends Controller
 
     public function tool()
     {
-        $items = DB::table('items')
-                    ->select('items.id','item_name', 'creator', 'caption', DB::raw('GROUP_CONCAT(search_word) as search_word'), 'img', 'template_name', 'items.status as items_status', 'templates.status as templates_status', 'templates.kind')
-                    ->join('search_words', 'items.id', '=', 'search_words.item_id')
-                    ->groupBy('items.id')
-                    ->get();
-        return view('tool',['items' => $items]);
+        $admin_id = self::admin_id();
+        $admin = self::check_admin();
+        $user_id = Auth::id();
+        if($admin === 'admin'){
+            $items = DB::table('items')
+                        ->select('items.id','item_name', 'creator', 'caption', DB::raw('GROUP_CONCAT(search_word) as search_word'), 'img', 'items.status as items_status')
+                        ->join('search_words', 'items.id', '=', 'search_words.item_id')
+                        ->groupBy('items.id')
+                        ->get();
+            // テンプレート作成時にitemの項目を出す            
+            $make_template_items = DB::table('items')
+                        ->select('items.id', 'item_name', 'items.user_id','creator', 'caption', DB::raw('GROUP_CONCAT(search_word) as search_word'), 'img', 'items.status as items_status')
+                        ->join('search_words', 'items.id', '=', 'search_words.item_id')
+                        ->where('items.user_id', $admin_id)
+                        ->groupBy('items.id')
+                        ->get();
+
+            $templates = DB::table('items')
+                        ->select('items.id','item_name', 'creator', 'template_name', 'items.status as items_status', 'templates.id as templates_id','templates.status as templates_status', 'templates.kind')
+                        ->join('templates', 'items.id', '=', 'templates.item_id')
+                        ->get();
+            $templates = $templates -> groupBy('template_name');
+        }else{
+            $items = DB::table('items')
+                        ->select('items.id','item_name', 'items.user_id','creator', 'caption', DB::raw('GROUP_CONCAT(search_word) as search_word'), 'img', 'items.status as items_status')
+                        ->join('search_words', 'items.id', '=', 'search_words.item_id')
+                        ->where('items.user_id', $user_id)
+                        ->groupBy('items.id')
+                        ->get();
+
+            $make_template_items = DB::table('items')
+                        ->select('items.id', 'item_name', 'items.user_id','creator', 'caption', DB::raw('GROUP_CONCAT(search_word) as search_word'), 'img', 'items.status as items_status')
+                        ->join('search_words', 'items.id', '=', 'search_words.item_id')
+                        ->where('items.user_id', $user_id)
+                        ->orWhere('items.user_id', $admin_id)
+                        ->groupBy('items.id')
+                        ->get();
+
+            $templates = DB::table('items')
+                        ->select('items.id', 'templates.user_id', 'item_name', 'creator', 'template_name', 'items.status as items_status', 'templates.id as templates_id','templates.status as templates_status', 'templates.kind')
+                        ->join('templates', 'items.id', '=', 'templates.item_id')
+                        ->where('templates.user_id',$user_id)
+                        ->get();
+            $templates = $templates -> groupBy('template_name');
+        }
+        return view('tool',['items' => $items, 'templates' => $templates, 'make_template_items' => $make_template_items,'admin' => $admin]);
     }
 
-    public function CreateItem(CreateItem $request)
+    public function createItem(CreateItem $request)
     {
         $user_id = Auth::id();
         $now = Carbon::now();
@@ -147,7 +212,7 @@ class RehaMenuController extends Controller
         return !is_null($val);
     }
 
-    public function toolDelete(Request $request)
+    public function deleteItem(Request $request)
     {
         $item_id = $request->item_id;
         $deleteFile = $request->deletefiles;
@@ -207,7 +272,7 @@ class RehaMenuController extends Controller
         return redirect('/opinion')->with('message','ご意見ありがとうございました！');
     }
 
-    public function opinion_show()
+    public function opinionShow()
     {
         $opinions = DB::table('opinions')
             ->orderBy('id', 'DESC')
@@ -236,5 +301,32 @@ class RehaMenuController extends Controller
             }
         });
         return redirect('/tool');
+    }
+
+    public function deleteTemplate(Request $request)
+    {
+        $admin = self::check_admin();
+        $user_id = Auth::id();
+        $templates_id = $request->templates_id;
+        $check_user_id = [];
+        foreach($templates_id as $val){
+            echo 'ok';
+            $check_user_id[] = DB::table('templates')
+                            ->select('user_id')
+                            ->where('id',$val)
+                            ->get();    
+        }
+        var_dump($check_user_id);
+        foreach($check_user_id as $value){
+            foreach($value as $val2){
+                if($user_id !== $val2->user_id){
+                    echo 'あなたのテンプレートではないため削除できません';
+                    // $errors->origin = 'あなたのテンプレートではないため削除できません';
+                    // return view('tool', ['errors' => $errors]);
+                }else{
+                    echo '削除できました';
+                }
+            }
+        }
     }
 }

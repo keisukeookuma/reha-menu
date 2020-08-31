@@ -14,11 +14,11 @@
         @endif
         <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <a class="nav-item nav-link active" id="nav-item-catalog-tab" data-toggle="tab" href="#nav-item-catalog" role="tab" aria-controls="nav-item-catalog" aria-selected="true">自主トレ一覧</a>
-        <a class="nav-item nav-link" id="nav-make-item-tab" data-toggle="tab" href="#nav-make-item" role="tab" aria-controls="nav-make-item" aria-selected="false">自主トレ作成</a>
-        <a class="nav-item nav-link" id="nav-template-catalog-tab" data-toggle="tab" href="#nav-template-catalog" role="tab" aria-controls="nav-template-catalog" aria-selected="false">テンプレート一覧</a>
-        <a class="nav-item nav-link" id="nav-make-template-tab" data-toggle="tab" href="#nav-make-template" role="tab" aria-controls="nav-make-template" aria-selected="false">テンプレート作成</a>
-        <a class="nav-item nav-link" href="{{ url('index') }}">管理ページ退出</a>
+        <a class="nav-item nav-link text-dark active" id="nav-item-catalog-tab" data-toggle="tab" href="#nav-item-catalog" role="tab" aria-controls="nav-item-catalog" aria-selected="true">自主トレ一覧</a>
+        <a class="nav-item nav-link text-dark" id="nav-make-item-tab" data-toggle="tab" href="#nav-make-item" role="tab" aria-controls="nav-make-item" aria-selected="false">自主トレ作成</a>
+        <a class="nav-item nav-link text-dark" id="nav-template-catalog-tab" data-toggle="tab" href="#nav-template-catalog" role="tab" aria-controls="nav-template-catalog" aria-selected="false">テンプレート一覧</a>
+        <a class="nav-item nav-link text-dark" id="nav-make-template-tab" data-toggle="tab" href="#nav-make-template" role="tab" aria-controls="nav-make-template" aria-selected="false">テンプレート作成</a>
+        <a class="nav-item nav-link text-dark" href="{{ url('index') }}">管理ページ退出</a>
     </div>
 </nav>
 <div class="tab-content" id="nav-tabContent">
@@ -30,7 +30,6 @@
                         <th>自主トレ画像</th>
                         <th>基本情報</th>
                         <th>検索ワード</th>
-                        <th>テンプレート</th>
                         <th>操作</th>
                     </tr>
                 </thead>
@@ -68,30 +67,12 @@
                             </p>
                         </td>
                         <td class="search_word">{{ $item->search_word }}</td>
-                        <td class="template_name">
-                            <p>テンプレート名<br>
-                            {{ $item->template_name }}
-                            </p>
-                            <p>テンプレート種類<br>
-                            {{ $item->kind }}
-                            </p>
-                            <p>ステータス<br>
-                                <select form="item{{ $item->id }}" name="status">
-                                    @if($item->templates_status===0)
-                                        <option value='0'>現在：公開</option>
-                                        <option value='1'>非公開に変更</option>
-                                    @elseif($item->templates_status===1)
-                                        <option value="1">現在：非公開</option>
-                                        <option value="0">公開に変更</option>
-                                    @endif
-                                </select>
-                            </p>
                         <td>
                             <input form="item{{ $item->id }}" type="submit" value="内容変更" class="btn btn-secondary mb-3">
                             <input form="item{{ $item->id }}" type="hidden" name="sqltype" value="detail_change">
                             <input form="item{{ $item->id }}" type="hidden" name="id" value="{{ $item->id }}">
                             
-                            <form id="delete{{ $item->id }}" action="toolDelete" method="post" enctype="multipart/form-data">@csrf</form>
+                            <form id="delete{{ $item->id }}" action="deleteItem" method="post" enctype="multipart/form-data">@csrf</form>
                             <input form="delete{{ $item->id }}" type="submit" value="削除" class="btn btn-danger delete">
                             <input form="delete{{ $item->id }}" type="hidden" name="item_id" value="{{ $item->id }}">
                             <input form="delete{{ $item->id }}" type="hidden" name="deletefiles" value="{{ $item->img }}">
@@ -105,7 +86,7 @@
         <div class="card rounded-0 border-top-0">
             <div class="card-body">
                 <div class="form">
-                    <form action="CreateItem" method="post" enctype="multipart/form-data">
+                    <form action="createItem" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="name">自主トレ名:</label>
@@ -174,13 +155,56 @@
             <table class="table table-bordered text-center">
                 <thead class="thead-light">
                     <tr>
-                        <th>自主トレ画像</th>
-                        <th>基本情報</th>
-                        <th>検索ワード</th>
-                        <th>テンプレート</th>
+                        <th>テンプレート名</th>
+                        <th>自主トレ内容</th>
+                        <th>種類</th>
+                        @if($admin === 'admin')
+                        <th>ステータス</th>
+                        @endif
                         <th>操作</th>
                     </tr>
                 </thead>
+                @foreach($templates as $key => $template)
+                <tr>
+                    <td>
+                        {{$key}}
+                    </td>
+                    <td>
+                        @foreach($template as $val)
+                        {{ $val -> item_name }}<br>
+                        @endforeach
+                    </td>
+                    <td>
+                        @if($template[0]->kind === 'body_parts')
+                        <p>部位</p>
+                        @elseif($template[0]->kind === 'disease_name')
+                        <p>病名</p>
+                        @elseif($template[0]->kind === 'care_prevention')
+                        <p>介護予防</p>
+                        @endif
+                    </td>
+                    @if($admin === 'admin')
+                    <td>
+                        @if($template[0]->templates_status===0)
+                        <p>公開</p>
+                        @elseif($template[0]->templates_status===1)
+                        <p>非公開</p>
+                        @endif
+                    </td>
+                    @endif
+                    <td>
+                        <a href="#" class="btn btn-secondary mb-3">内容変更</a>
+                        
+                        <form action="deleteTemplate" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <input type="submit" value="削除" class="btn btn-danger delete">
+                            @foreach($template as $val)
+                            <input type="hidden" name="templates_id[]" value="{{ $val->templates_id }}">
+                            @endforeach
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
             </table>
         </div>
     </div>
@@ -188,16 +212,20 @@
         <div class="card rounded-0 border-top-0">
             <div class="card-body">
                 <div class="form">
-                    <form action="CreateTemplate" method="post" enctype="multipart/form-data">
+                    <form action="createTemplate" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="template">テンプレート名</label>
                             <input class="form-control w-50" type="text" name="template_name" id="template">
+                            @if($admin === 'admin')
                             <label for="template_status">テンプレートの公開設定</label>
                             <select class="form-control w-100px" name="template_status" id="template_status">
                                 <option value="0">公開</option>
                                 <option value="1">非公開</option>
                             </select>
+                            @else
+                            <input type="hidden" name="template_status" value="1">
+                            @endif
                             <label for="template_kind">テンプレート種類</label>
                             <div class="form-group">
                                 <input type="radio" name="template_kind" value="care_prevention">介護予防
@@ -206,7 +234,7 @@
                             </div>
                             <label for="item-choice">自主トレ選択　※3つまで選択可能</label>
                             <div class="form-group" id="item-choice">
-                                @foreach($items as $item)
+                                @foreach($make_template_items as $item)
                                 <input type="checkbox" name="template_items[]" value="{{ $item->id }}">{{ $item->item_name }}
                                 @endforeach
                             </div>

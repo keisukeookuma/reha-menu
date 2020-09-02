@@ -152,8 +152,6 @@ return [
         'name' => 'お名前',
         'password' => 'パスワード',
         'email' => 'メールアドレス',
+        'templates_id' => 'テンプレート',
     ],
-    'space_check' => ':attribute にスペースのみの入力はできません。',
-
-
 ];

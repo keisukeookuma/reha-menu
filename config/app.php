@@ -161,8 +161,6 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        //追加スペースチェック
-        App\Providers\SpaceServiceProvider::class,
 
         /*
          * Package Service Providers...

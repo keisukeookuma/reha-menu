@@ -10,6 +10,7 @@ use App\Http\Requests\CreateItem;
 use App\Http\Requests\ChangeItem;
 use App\Http\Requests\GiveOpinion;
 use App\Http\Requests\CreateTemplate;
+use App\Http\Requests\DeleteTemplate;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Collection;
@@ -27,6 +28,7 @@ class RehaMenuController extends Controller
         return view('index');
     }
 
+    //Rules/TemplateCheckUserId.phpにも同様の記述あり
     private function admin_id()
     {
         return $admin_id = 1;
@@ -303,26 +305,27 @@ class RehaMenuController extends Controller
         return redirect('/tool');
     }
 
-    public function deleteTemplate(Request $request)
+    public function deleteTemplate(DeleteTemplate $request)
     {
+        dd($request);
         $admin = self::check_admin();
         $user_id = Auth::id();
         $templates_id = $request->templates_id;
         $check_user_id = [];
         foreach($templates_id as $val){
-            echo 'ok';
+            // echo 'ok';
             $check_user_id[] = DB::table('templates')
                             ->select('user_id')
                             ->where('id',$val)
                             ->get();    
         }
-        var_dump($check_user_id);
+        // var_dump($check_user_id);
         foreach($check_user_id as $value){
             foreach($value as $val2){
                 if($user_id !== $val2->user_id){
-                    echo 'あなたのテンプレートではないため削除できません';
-                    // $errors->origin = 'あなたのテンプレートではないため削除できません';
-                    // return view('tool', ['errors' => $errors]);
+                    // echo 'あなたのテンプレートではないため削除できません';
+                    $errors = 'あなたのテンプレートではないため削除できません';
+                    return view('tool', ['errors' => $errors]);
                 }else{
                     echo '削除できました';
                 }

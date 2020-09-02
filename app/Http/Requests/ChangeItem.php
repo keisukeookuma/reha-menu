@@ -25,9 +25,9 @@ class ChangeItem extends FormRequest
     public function rules()
     {
         return [
-            'item_name' => 'required|spaceCheck|max:20',
-            'creator' => 'required|spaceCheck|max:20',
-            'caption' => 'required|spaceCheck|max:60',
+            'item_name' => ['required','max:20', new SpaceCheck],
+            'creator' => ['required','max:20', new SpaceCheck],
+            'caption' => ['required','max:80', new SpaceCheck],
             'status' => 'required|integer|between:0,1',
         ];
     }

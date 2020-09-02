@@ -25,16 +25,12 @@ class CreateItem extends FormRequest
     public function rules()
     {
         return [
-            'item_name' => 'required|spaceCheck|max:20',
-            'creator' => 'required|spaceCheck|max:20',
-            'caption' => 'required|spaceCheck|max:60',
+            'item_name' => ['required','max:20', new SpaceCheck],
+            'creator' => ['required','max:20', new SpaceCheck],
+            'caption' => ['required','max:80', new SpaceCheck],
             'search_word' => 'required|max:25',
-            // 'template_name' => 'required|max:20',
-            // 'template_status' => 'required|integer|between:0,1',
-            // 'status' => 'required|integer|between:0,1',
-            // 'template_kind' => 'required',
             'file' => 'required|file|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'sqltype' => 'required|spaceCheck'
+            'item_name' => ['required', new SpaceCheck]
         ];
     }
 

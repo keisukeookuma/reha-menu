@@ -116,7 +116,7 @@
                     <div class="tab-content" id="v-pills-tabContent">
                         <div class="tab-pane fade show active" id="v-pills-original" role="tabpanel" aria-labelledby="v-pills-original-tab">
                             <div class="search mx-auto">
-                                <input class="search-form form-control" type="text" placeholder="部位や病名で検索可能！" aria-label="検索">
+                                <input class="search-form form-control" type="text" placeholder="自主トレ名や部位、病名で検索可能！" aria-label="検索">
                             </div>
                             <div class="overflow-auto search-item-height">
                                 <ul id="all_show_result" class="d-flex flex-wrap justify-content-around pt-1"></ul>

@@ -193,8 +193,6 @@
                     </td>
                     @endif
                     <td>
-                        <a href="#" class="btn btn-secondary mb-3">内容変更</a>
-                        
                         <form action="deleteTemplate" method="post" enctype="multipart/form-data">
                             @csrf
                             <input type="submit" value="削除" class="btn btn-danger delete">

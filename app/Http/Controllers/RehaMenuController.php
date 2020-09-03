@@ -71,9 +71,6 @@ class RehaMenuController extends Controller
                                     ->orWhere('caption', 'LIKE', '%'.$search_word.'%')
                                     ->orWhere('search_word', 'LIKE', '%'.$search_word.'%');
                         })
-                        // ->where('item_name', 'LIKE' ,'%'.$search_word.'%')
-                        // ->orWhere('caption', 'LIKE', '%'.$search_word.'%')
-                        // ->orWhere('search_word', 'LIKE', '%'.$search_word.'%')
                         ->groupBy('items.id')
                         ->orderBy('items.id', 'DESC')
                         ->limit(10)
@@ -307,29 +304,14 @@ class RehaMenuController extends Controller
 
     public function deleteTemplate(DeleteTemplate $request)
     {
-        dd($request);
-        $admin = self::check_admin();
-        $user_id = Auth::id();
         $templates_id = $request->templates_id;
-        $check_user_id = [];
-        foreach($templates_id as $val){
-            // echo 'ok';
-            $check_user_id[] = DB::table('templates')
-                            ->select('user_id')
-                            ->where('id',$val)
-                            ->get();    
-        }
-        // var_dump($check_user_id);
-        foreach($check_user_id as $value){
-            foreach($value as $val2){
-                if($user_id !== $val2->user_id){
-                    // echo 'あなたのテンプレートではないため削除できません';
-                    $errors = 'あなたのテンプレートではないため削除できません';
-                    return view('tool', ['errors' => $errors]);
-                }else{
-                    echo '削除できました';
-                }
+        DB::transaction(function () use($templates_id) {
+            foreach($templates_id as $val){
+                DB::table('templates')
+                ->WHERE('id', $val)
+                ->DELETE();
             }
-        }
+        });
+        return redirect('/tool');
     }
 }

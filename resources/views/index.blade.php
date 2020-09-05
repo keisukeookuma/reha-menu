@@ -66,8 +66,8 @@
     </header>
     <div class="container-fluid noprint">
         <div class="row pt-5">
-            <nav class="hamburger-nav col-md-5 px-0">
-                <div class="nav-side col-md-3 d-md-block pt-2 px-0">
+            <nav class="hamburger-nav col-md-6 col-lg-5 px-0">
+                <div class="nav-side col-md-4 col-lg-3 d-md-block pt-2 px-0">
                     <div class="nav nav-pills px-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <a class="nav-link active nav-a-size px-0 text-center m-auto" data-toggle="pill" href="#v-pills-original" role="tab" aria-controls="v-pills-original" aria-selected="true">
                             <svg class="bi bi-plus-square" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -112,7 +112,7 @@
                         @endauth
                     </div>
                 </div>
-                <div class="hamburger-item-choice col-md-9 d-md-block pt-2 px-1 overflow-auto">
+                <div class="hamburger-item-choice col-md-8 col-lg-9 d-md-block pt-2 px-1 overflow-auto">
                     <div class="tab-content" id="v-pills-tabContent">
                         <div class="tab-pane fade show active" id="v-pills-original" role="tabpanel" aria-labelledby="v-pills-original-tab">
                             <div class="search mx-auto">
@@ -139,7 +139,7 @@
                     </div>
                 </div>
             </nav>
-            <main role="main" class="col-md-7 ml-sm-auto pt-2 px-0 ">
+            <main role="main" class="col-md-6 col-lg-7 ml-sm-auto pt-2 px-0 ">
                 <div class="preview-scroll ">
                     <div class="container responsive-mb">
                         <div class="tab-content p-3 d-flex justify-content-center">

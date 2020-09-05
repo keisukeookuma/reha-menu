@@ -1,4 +1,24 @@
 $(function(){
+  // var hide_elm = $('.header,.footer,.sidebar');
+  // $('#print').click(function(){
+
+  //   hide_elm.addClass('print');
+  //   $('.print-preview').append($('#preview').html());
+  //   window.print();
+
+  //   if(contentsCount === 3){
+  //     $('div.item').addClass('contents3');
+  //     hide_elm.removeClass('print');
+  //   }else if(contentsCount === 2){
+  //     $('div.item').addClass('contents2');
+  //     hide_elm.removeClass('print');
+  //   }else if(contentsCount === 1){
+  //     $('div.item').addClass('contents1');
+  //     hide_elm.removeClass('print');
+  //   }
+  //   // $('.print-preview').children().remove();
+  // });
+
 
   var contentsCount = 3;
   $('#choice-contents-1').click(function(){

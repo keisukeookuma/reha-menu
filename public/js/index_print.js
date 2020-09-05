@@ -30,10 +30,10 @@ $(".downloadBtn").click(function(){
         alert('Internet Explorerではダウンロードは行なえません')
     }else{
         scrollToTop();
+        $('.preview-scroll').scrollTop();
         $('.item-delete-btn').addClass('d-none');
         html2canvas(document.querySelector("#preview"),{scale:4}).then(function(canvas){
             $('.preview-print').append(canvas);
-            
                 let downloadEle = document.createElement("a");
                 downloadEle.href = canvas.toDataURL("image/png");
                 downloadEle.download = "reha-menu.png";
@@ -48,18 +48,27 @@ $("#print").click(function(print){
     if(userAgent.match(/(msie|MSIE)/) || userAgent.match(/(T|t)rident/)){
         IePrint()
     }else{
-        $('.item-delete-btn').addClass('d-none');
-        var hide_elm = $('.header,.footer');
-        hide_elm.addClass('print');
-        html2canvas(document.querySelector("#preview"),{scale:4}).then(function(canvas){
-            var imageData = canvas.toDataURL();
-            $('.print-preview')
-                .html("<img id='Image' src=" + imageData + " style='width:100%;'></img>")
+        $(function() {
+            $.when(
+                // 先に実行したい処理
+                scrollToTop(),
+                $('.preview-scroll').scrollTop()
+            ).done(function() {
+                $('.item-delete-btn').addClass('d-none');
+                var hide_elm = $('.header,.footer');
+                hide_elm.addClass('print');
+                html2canvas(document.querySelector("#preview"),{scale:4}).then(function(canvas){
+                    var imageData = canvas.toDataURL();
+                    $('.print-preview')
+                        .html("<img id='Image' src=" + imageData + " style='width:100%;'></img>")
+                    
+                    setTimeout(function() {
+                        window.print();
+                    }, 150);
+                });
+                $('.print-preview').children().remove();
+                $('.item-delete-btn').removeClass('d-none');
+            })
         });
-        setTimeout(function() {
-            window.print();
-        }, 150);
-        $('.print-preview').children().remove();
-        $('.item-delete-btn').removeClass('d-none');
     }
 });

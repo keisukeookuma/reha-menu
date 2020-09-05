@@ -1,5 +1,5 @@
-$tab: 1024px;
-$sp: 670px;
+$tab: 992px;
+$sp: 768px;
 
 //※いじらない　テンプレートから引き継いだもの
 .form-control-dark {
@@ -150,9 +150,9 @@ main {
   #preview {
     background-size: contain;
     background-color: white;
-    height: 715px;
-    width: 525px;
-    min-width: 525px;
+    height: 830px;
+    width: 550px;
+    min-width: 550px;
     color: black;
     box-shadow: 0 0 8px gray;
     font-size: 20px;
@@ -228,12 +228,86 @@ main {
 }
 
 // タブレットレイアウト
-@media (max-width: 1024px) {
-  main #preview {
-    height: 492px;
-    width: 352px;
-    min-width: 352px;
-    padding: 0.25rem;
+@media (max-width: ($tab)) {
+  main{
+    .responsive-mb {
+      margin-bottom: 60px;
+    }
+
+/* 　previewの調整 */
+    #preview {
+      height: 492px;
+      width: 352px;
+      min-width: 352px;
+      padding: 0.25rem;
+
+      h1{
+        font-size: 25px;
+        margin-top: 10px;
+      }
+
+      .contents3 {
+        img{
+          max-width: 140px;
+          max-height: 106px;
+        }
+
+        p{
+          font-size: 17px;
+        }
+
+        ol {
+          font-size: 10px;
+          padding: 0 0 0 20px;
+        }
+
+        .position-top-right {
+          font-size: 12px;
+        }
+      }
+
+      .contents2 {
+        img{
+          max-width: 170px;
+          max-height: 128px;
+        }
+
+        p{
+          font-size: 19px;
+        }
+
+        ol{
+          font-size: 10px;
+          padding-left: 40px;
+        }
+
+        .position-top-right {
+          font-size: 12px;
+        }
+      }
+
+      .contents1 {
+        margin-top: 35px;
+
+        img{
+          max-width: 250px;
+          max-height: 300px;
+        }
+
+        p{
+          font-size: 22px;
+        }
+
+        ol{
+          font-size: 1.06em;
+          padding-left: 30px;
+        }
+
+        .position-top-right {
+          font-size: 14px;
+        }
+      }
+    }
   }
 }
 
@@ -349,81 +423,6 @@ main {
     color: #fff;
   }
 
-  main{
-    .responsive-mb {
-      margin-bottom: 60px;
-    }
-
-/* 　previewの調整 */
-    #preview {
-      h1{
-        font-size: 25px;
-        margin-top: 10px;
-      }
-
-      .contents3 {
-        img{
-          max-width: 140px;
-          max-height: 106px;
-        }
-
-        p{
-          font-size: 17px;
-        }
-
-        ol {
-          font-size: 10px;
-          padding: 0 0 0 20px;
-        }
-
-        .position-top-right {
-          font-size: 12px;
-        }
-      }
-
-      .contents2 {
-        img{
-          max-width: 170px;
-          max-height: 128px;
-        }
-
-        p{
-          font-size: 19px;
-        }
-
-        ol{
-          font-size: 10px;
-          padding-left: 40px;
-        }
-
-        .position-top-right {
-          font-size: 12px;
-        }
-      }
-
-      .contents1 {
-        margin-top: 35px;
-
-        img{
-          max-width: 250px;
-          max-height: 300px;
-        }
-
-        p{
-          font-size: 22px;
-        }
-
-        ol{
-          font-size: 1.06em;
-          padding-left: 30px;
-        }
-
-        .position-top-right {
-          font-size: 14px;
-        }
-      }
-    }
-  }
 }
 //IEのプリント編集
 @media print{   
@@ -435,7 +434,7 @@ main {
     display: block;
     background-size: cover;
     width: 290mm!important;
-    height: 430mm!important;
+    height: 415mm!important;
     padding: 0mm 10mm!important;
 
     h1{

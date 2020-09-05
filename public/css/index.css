@@ -139,8 +139,8 @@ main .preview-scroll-size {
 main #preview {
   background-size: contain;
   background-color: white;
-  height: 715px;
-  width: 525px;
+  height: 830px;
+  width: 550px;
   min-width: 525px;
   color: black;
   box-shadow: 0 0 8px gray;
@@ -211,18 +211,89 @@ main #preview .contents1 ol {
   color: black;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 992px) {
+  main {
+    /* 　previewの調整 */
+  }
+
+  main .responsive-mb {
+    margin-bottom: 60px;
+  }
+
   main #preview {
     height: 492px;
     width: 352px;
     min-width: 352px;
     padding: 0.25rem;
   }
+
+  main #preview h1 {
+    font-size: 25px;
+    margin-top: 10px;
+  }
+
+  main #preview .contents3 img {
+    max-width: 140px;
+    max-height: 106px;
+  }
+
+  main #preview .contents3 p {
+    font-size: 17px;
+  }
+
+  main #preview .contents3 ol {
+    font-size: 10px;
+    padding: 0 0 0 20px;
+  }
+
+  main #preview .contents3 .position-top-right {
+    font-size: 12px;
+  }
+
+  main #preview .contents2 img {
+    max-width: 170px;
+    max-height: 128px;
+  }
+
+  main #preview .contents2 p {
+    font-size: 19px;
+  }
+
+  main #preview .contents2 ol {
+    font-size: 10px;
+    padding-left: 40px;
+  }
+
+  main #preview .contents2 .position-top-right {
+    font-size: 12px;
+  }
+
+  main #preview .contents1 {
+    margin-top: 35px;
+  }
+
+  main #preview .contents1 img {
+    max-width: 250px;
+    max-height: 300px;
+  }
+
+  main #preview .contents1 p {
+    font-size: 22px;
+  }
+
+  main #preview .contents1 ol {
+    font-size: 1.06em;
+    padding-left: 30px;
+  }
+
+  main #preview .contents1 .position-top-right {
+    font-size: 14px;
+  }
 }
 
 /* スマホレイアウト */
 
-@media (max-width: 670px) {
+@media (max-width: 768px) {
   header .navbar-brand {
     background-color: transparent;
     box-shadow: none;
@@ -335,77 +406,6 @@ main #preview .contents1 ol {
     margin-bottom: 400px;
     color: #fff;
   }
-
-  main {
-    /* 　previewの調整 */
-  }
-
-  main .responsive-mb {
-    margin-bottom: 60px;
-  }
-
-  main #preview h1 {
-    font-size: 25px;
-    margin-top: 10px;
-  }
-
-  main #preview .contents3 img {
-    max-width: 140px;
-    max-height: 106px;
-  }
-
-  main #preview .contents3 p {
-    font-size: 17px;
-  }
-
-  main #preview .contents3 ol {
-    font-size: 10px;
-    padding: 0 0 0 20px;
-  }
-
-  main #preview .contents3 .position-top-right {
-    font-size: 12px;
-  }
-
-  main #preview .contents2 img {
-    max-width: 170px;
-    max-height: 128px;
-  }
-
-  main #preview .contents2 p {
-    font-size: 19px;
-  }
-
-  main #preview .contents2 ol {
-    font-size: 10px;
-    padding-left: 40px;
-  }
-
-  main #preview .contents2 .position-top-right {
-    font-size: 12px;
-  }
-
-  main #preview .contents1 {
-    margin-top: 35px;
-  }
-
-  main #preview .contents1 img {
-    max-width: 250px;
-    max-height: 300px;
-  }
-
-  main #preview .contents1 p {
-    font-size: 22px;
-  }
-
-  main #preview .contents1 ol {
-    font-size: 1.06em;
-    padding-left: 30px;
-  }
-
-  main #preview .contents1 .position-top-right {
-    font-size: 14px;
-  }
 }
 
 @media print {
@@ -417,7 +417,7 @@ main #preview .contents1 ol {
     display: block;
     background-size: cover;
     width: 290mm !important;
-    height: 430mm !important;
+    height: 415mm !important;
     padding: 0mm 10mm !important;
   }
 

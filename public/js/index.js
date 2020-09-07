@@ -1,35 +1,18 @@
 $(function(){
-  // var hide_elm = $('.header,.footer,.sidebar');
-  // $('#print').click(function(){
-
-  //   hide_elm.addClass('print');
-  //   $('.print-preview').append($('#preview').html());
-  //   window.print();
-
-  //   if(contentsCount === 3){
-  //     $('div.item').addClass('contents3');
-  //     hide_elm.removeClass('print');
-  //   }else if(contentsCount === 2){
-  //     $('div.item').addClass('contents2');
-  //     hide_elm.removeClass('print');
-  //   }else if(contentsCount === 1){
-  //     $('div.item').addClass('contents1');
-  //     hide_elm.removeClass('print');
-  //   }
-  //   // $('.print-preview').children().remove();
-  // });
-
 
   var contentsCount = 3;
   $('#choice-contents-1').click(function(){
+    $("#preview").find("h1").addClass('contents1-h1');
     $('.item').remove();
     contentsCount = 1; 
   });
   $('#choice-contents-2').click(function(){
+    $("#preview").find("h1").removeClass('contents1-h1');
     $('.item').remove();
     contentsCount = 2; 
   });
   $('#choice-contents-3').click(function(){
+    $("#preview").find("h1").removeClass('contents1-h1');
     $('.item').remove();
     contentsCount = 3; 
   });

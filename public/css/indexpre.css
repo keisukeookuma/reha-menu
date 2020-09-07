@@ -167,10 +167,6 @@ main #preview pre {
   border: none;
 }
 
-main #preview .contents1-h1 {
-  font-size: 45px;
-}
-
 main #preview .contents3 .preview-name {
   margin-left: 71px;
   margin-right: 71px;
@@ -195,14 +191,18 @@ main #preview .contents2 p {
   font-size: 22px;
 }
 
+main #preview .contents2 .position-top-right {
+  top: 22px;
+  font-size: 16px;
+}
+
 main #preview .contents2 ol {
   font-size: 17px;
   padding-left: 50px;
 }
 
-main #preview .contents2 .position-top-right {
-  top: 22px;
-  font-size: 16px;
+main #preview .contents1-h1 {
+  font-size: 45px;
 }
 
 main #preview .contents1 {
@@ -241,15 +241,15 @@ main #preview .contents1 .position-top-right {
     margin-bottom: 60px;
   }
 
-  main .item {
-    padding-top: 5px;
-  }
-
   main #preview {
     height: 545px;
     width: 352px;
     min-width: 352px;
     padding: 0.25rem;
+  }
+
+  main .item {
+    padding-top: 5px;
   }
 
   main #preview h1 {
@@ -259,11 +259,6 @@ main #preview .contents1 .position-top-right {
 
   main #preview .contents3-d-flex {
     padding: 12px 0px 0px;
-  }
-
-  main #preview .contents1-h1 {
-    font-size: 30px;
-    margin-top: 10px;
   }
 
   main #preview .contents3 img {
@@ -291,6 +286,10 @@ main #preview .contents1 .position-top-right {
     top: -18px;
   }
 
+  main #preview .contents2 .contents3-d-flex {
+    padding: 0px;
+  }
+
   main #preview .contents2 img {
     max-width: 195px;
     max-height: 150px;
@@ -309,10 +308,6 @@ main #preview .contents1 .position-top-right {
     font-size: 12px;
   }
 
-  main #preview .contents2 .contents3-d-flex {
-    padding: 0px;
-  }
-
   main #preview .contents2 .item-delete-btn {
     top: -15px;
   }
@@ -321,8 +316,25 @@ main #preview .contents1 .position-top-right {
     margin-top: 0px;
   }
 
+  main #preview .contents1 .contents3-d-flex {
+    padding: 0px;
+  }
+
+  main #preview .contents1-h1 {
+    font-size: 30px;
+    margin-top: 10px;
+  }
+
   main #preview .contents1 {
     padding-top: 20px;
+  }
+
+  main #preview .contents1 .position-top-right {
+    top: 45px;
+  } 
+
+  main #preview .contents1 .item-img {
+    margin-top: 8px!important;
   }
 
   main #preview .contents1 img {
@@ -341,15 +353,6 @@ main #preview .contents1 .position-top-right {
 
   main #preview .contents1 .position-top-right {
     font-size: 14px;
-    top: 45px;
-  }
-
-  main #preview .contents1 .contents3-d-flex {
-    padding: 0px;
-  }
-
-  main #preview .contents1 .item-img {
-    margin-top: 8px !important;
   }
 }
 

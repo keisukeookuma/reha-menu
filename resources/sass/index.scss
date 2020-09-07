@@ -129,6 +129,7 @@ main {
   background-color: #f6f7f9;
 
   .item {
+    margin-top: 10px;
     padding-top: 5px;
     position: relative;
    }
@@ -156,19 +157,19 @@ main {
     color: black;
     box-shadow: 0 0 8px gray;
     font-size: 20px;
-    padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+    padding: 1.5rem 1.2rem 1.5rem 0.7rem;
 
     .position-top-right {
       position: absolute;
       right: 0;
       top: 0;
-      font-size: 14px;
-      margin: 12px;
+      font-size: 12px;
+      margin-top: 12px;
       text-decoration: underline
     }
 
     h1{
-      font-size: 30px;
+      font-size: 35px;
     }
 
     pre {
@@ -176,21 +177,31 @@ main {
       border: none;
     }
 
+    .contents1-h1 {
+      font-size: 45px;
+    }
+
     .contents3 {
+      .preview-name {
+        margin-left: 71px;
+        margin-right: 71px;
+        font-size: 18px;
+      }
+
       ol {
         font-size: 14px;
       }
 
       img{
-        max-width: 226px;
-        max-height: 170px;
+        max-width: 256px;
+        max-height: 200px;
       }
     }
     
     .contents2 {
       img {
-        max-width: 250px;
-        max-height: 190px;
+        max-width: 310px;
+        max-height: 240px;
       }
 
       p {
@@ -198,17 +209,22 @@ main {
       }
 
       ol{
-        font-size: 14px;  
+        font-size: 17px;  
         padding-left: 50px;
+      }
+
+      .position-top-right {
+        top: 22px;
+        font-size: 16px;
       }
     }
     
     .contents1 {
-      margin-top: 48px;
+      padding-top: 48px;
 
       img{
-        max-width: 400px;
-        max-height: 300px;
+        max-width: 450px;
+        max-height: 340px;
       }
 
       p{
@@ -216,7 +232,12 @@ main {
       }
 
       ol{
-        font-size: 21px;
+        font-size: 22px;
+      }
+
+      .position-top-right {
+        top: 75px;
+        font-size: 17px;
       }
     }
   }
@@ -234,9 +255,13 @@ main {
       margin-bottom: 60px;
     }
 
+    .item {
+      padding-top: 5px;
+    }
+
 /* 　previewの調整 */
     #preview {
-      height: 492px;
+      height: 545px;
       width: 352px;
       min-width: 352px;
       padding: 0.25rem;
@@ -246,14 +271,24 @@ main {
         margin-top: 10px;
       }
 
+      .contents3-d-flex {
+        padding: 12px 0px 0px;
+      }
+
+      .contents1-h1 {
+        font-size: 30px;
+        margin-top: 10px;
+      }
+
       .contents3 {
         img{
           max-width: 140px;
           max-height: 106px;
         }
 
-        p{
-          font-size: 17px;
+        .preview-name {
+          font-size: 15px;
+          margin: 0px;
         }
 
         ol {
@@ -262,36 +297,54 @@ main {
         }
 
         .position-top-right {
+          top: 10px;
+          right: 5px;
           font-size: 12px;
+        }
+
+        .item-delete-btn {
+          top: -18px;
         }
       }
 
       .contents2 {
         img{
-          max-width: 170px;
-          max-height: 128px;
+          max-width: 195px;
+          max-height: 150px;
         }
 
         p{
-          font-size: 19px;
+          font-size: 16px;
         }
 
         ol{
-          font-size: 10px;
+          font-size: 12px;
           padding-left: 40px;
         }
 
         .position-top-right {
           font-size: 12px;
         }
+
+        .contents3-d-flex {
+          padding: 0px;
+        }
+
+        .item-delete-btn {
+          top: -15px;
+        }
+
+        .item {
+          margin-top: 0px;
+        }
       }
 
       .contents1 {
-        margin-top: 35px;
+        padding-top: 20px;
 
         img{
-          max-width: 250px;
-          max-height: 300px;
+          max-width: 270px;
+          max-height: 210px;
         }
 
         p{
@@ -299,12 +352,21 @@ main {
         }
 
         ol{
-          font-size: 1.06em;
+          font-size: 16px;
           padding-left: 30px;
         }
 
         .position-top-right {
           font-size: 14px;
+          top: 45px;
+        }
+
+        .contents3-d-flex {
+          padding: 0px;
+        }
+
+        .item-img {
+          margin-top: 8px!important;
         }
       }
     }

@@ -1,7 +1,7 @@
 function navSampleList(data_item_name, data_img, data_caption){
     var li=$("<li class= 'item-sample col-sm-3 col-md-12 col-xl-5 p-2'>");
     var navSampleName = $("<div class='item_name text-center'>");
-    var previewName = $("<p class='preview-name mb-0'>");
+    var previewName = $("<p class='preview-name mb-0' contentEditable='true'>");
     previewName.append(data_item_name);
     navSampleName.append(previewName);
     var navSampleImg = $("<div class='nav_sample_img text-center'>");
@@ -28,7 +28,7 @@ function makeItemName(itemSample){
 
 function makeItemImg(itemSample){
     var sampleItemImg = $("<div>");
-    sampleItemImg.addClass("item-img text-center p-0");
+    sampleItemImg.addClass("item-img text-center");
     sampleItemImg.append(itemSample);
     return sampleItemImg;
 }
@@ -65,14 +65,15 @@ function addContentsClass(item, contentsCount){
     if(contentsCount === 3){
       item.find("div.contents3-d-flex").addClass("d-flex");
       item.addClass("contents3");
-      item.find(".item-img").addClass("col-6");
-      item.find(".item-caption").addClass("col-6");
+      item.find(".item-img").addClass("col-7 p-0");
+      item.find(".item-caption").addClass("col-5");
     }else if(contentsCount === 2){
       item.addClass("contents2");
+      item.find(".item-img").addClass("p-0");
     }else if(contentsCount === 1){
       item.addClass("contents1");
-      item.find(".position-top-right").css({"top": "30px","font-size":"17px"});
-      item.find(".item-img").addClass("mt-3");
+      item.find(".position-top-right");
+      item.find(".item-img").addClass("mt-4 p-1");
     }
     return item;
   }

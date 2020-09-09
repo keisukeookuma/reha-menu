@@ -18,6 +18,9 @@
         <a class="nav-item nav-link text-dark" id="nav-make-item-tab" data-toggle="tab" href="#nav-make-item" role="tab" aria-controls="nav-make-item" aria-selected="false">自主トレ作成</a>
         <a class="nav-item nav-link text-dark" id="nav-template-catalog-tab" data-toggle="tab" href="#nav-template-catalog" role="tab" aria-controls="nav-template-catalog" aria-selected="false">テンプレート一覧</a>
         <a class="nav-item nav-link text-dark" id="nav-make-template-tab" data-toggle="tab" href="#nav-make-template" role="tab" aria-controls="nav-make-template" aria-selected="false">テンプレート作成</a>
+        @if($admin === 'admin')
+        <a class="nav-item nav-link text-dark" href="{{ url('opinionShow') }}">ご意見一覧へ</a>
+        @endif
         <a class="nav-item nav-link text-dark" href="{{ url('index') }}">管理ページ退出</a>
     </div>
 </nav>
@@ -54,6 +57,7 @@
                             <p>説明文<br>
                                 <textarea type="text" form="item{{ $item->id }}" name="caption">{{ $item->caption }}</textarea>
                             </p>
+                            @if($admin === 'admin')
                             <p>ステータス<br>
                                 <select form="item{{ $item->id }}" name="status">
                                     @if($item->items_status===0)
@@ -65,6 +69,9 @@
                                     @endif
                                 </select>
                             </p>
+                            @else
+                            <input form="item{{ $item->id }}"　type="hidden" value="1" name="status">
+                            @endif
                         </td>
                         <td class="search_word">{{ $item->search_word }}</td>
                         <td>
@@ -132,6 +139,7 @@
                                 <input class="form-control w-50" type="text" name="search_word[]">
                             </div>
                         </div>
+                        @if($admin === 'admin')
                         <div class="form-group">
                             <label for="status">自主トレ公開設定:</label>
                             <select class="form-control w-100px" name="status" id="status">
@@ -139,6 +147,9 @@
                                 <option value="1">非公開</option>
                             </select>
                         </div>
+                        @else
+                        <input type="hidden" name="status" value="1">
+                        @endif
                         <div class="form-group">
                             <label for="file">画像:</label>
                             <input class="form-control-file" type="file" name="file" id="file">

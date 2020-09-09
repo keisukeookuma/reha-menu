@@ -24,12 +24,12 @@ Route::group(['middleware' => 'auth'],function(){
     Route::post('/changeItem', 'RehaMenuController@changeItem');
     Route::post('/createTemplate', 'RehaMenuController@createTemplate');
     Route::post('/deleteTemplate', 'RehaMenuController@deleteTemplate');
+    Route::get('/opinionShow', 'RehaMenuController@opinionShow');
 });
 
 Route::get('/manual', 'RehaMenuController@manual');
 Route::get('/opinion', 'RehaMenuController@opinion');
 Route::post('/giveOpinion', 'RehaMenuController@giveOpinion');
-Route::get('/opinionShow', 'RehaMenuController@opinionShow');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

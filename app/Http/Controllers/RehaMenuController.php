@@ -11,6 +11,7 @@ use App\Http\Requests\ChangeItem;
 use App\Http\Requests\GiveOpinion;
 use App\Http\Requests\CreateTemplate;
 use App\Http\Requests\DeleteTemplate;
+use App\library\Common;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Collection;
@@ -28,27 +29,27 @@ class RehaMenuController extends Controller
         return view('index');
     }
 
-    //Rules/TemplateCheckUserId.phpにも同様の記述あり
-    private function admin_id()
-    {
-        return $admin_id = 1;
-    }
+    // Rules/TemplateCheckUserId.phpにも同様の記述あり
+    // private function admin_id()
+    // {
+    //     return $admin_id = 1;
+    // }
 
-    private function check_admin()
-    {
-        $admin_id = self::admin_id();
-        $check_admin = '';
-        if(Auth::id() === $admin_id){
-            $check_admin = 'admin';
-        }
-        return $check_admin;
-    }
+    // private function check_admin()
+    // {
+    //     $admin_id = self::admin_id();
+    //     $check_admin = '';
+    //     if(Auth::id() === $admin_id){
+    //         $check_admin = 'admin';
+    //     }
+    //     return $check_admin;
+    // }
 
     public function getData(Request $request)
     {   
-        $admin_id = self::admin_id();
-        $admin = self::check_admin();
         $user_id = Auth::id();
+        $admin_id = Common::admin_id();
+        $admin = Common::check_admin($user_id);
         if($request->type === 'template'){
             
             $template_word = $request->template_word;
@@ -117,9 +118,9 @@ class RehaMenuController extends Controller
 
     public function tool()
     {
-        $admin_id = self::admin_id();
-        $admin = self::check_admin();
         $user_id = Auth::id();
+        $admin_id = Common::admin_id();
+        $admin = Common::check_admin($user_id);
         if($admin === 'admin'){
             $items = DB::table('items')
                         ->select('items.id','item_name', 'creator', 'caption', DB::raw('GROUP_CONCAT(search_word) as search_word'), 'img', 'items.status as items_status')

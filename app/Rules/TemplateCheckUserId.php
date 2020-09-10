@@ -13,20 +13,20 @@ class TemplateCheckUserId implements Rule
      *
      * @return void
      */
-    private function admin_id()
-    {
-        return $admin_id = 1;
-    }
+    // private function admin_id()
+    // {
+    //     return $admin_id = 1;
+    // }
 
-    private function check_admin()
-    {
-        $admin_id = self::admin_id();
-        $check_admin = '';
-        if(Auth::id() === $admin_id){
-            $check_admin = 'admin';
-        }
-        return $check_admin;
-    }
+    // private function check_admin()
+    // {
+    //     $admin_id = self::admin_id();
+    //     $check_admin = '';
+    //     if(Auth::id() === $admin_id){
+    //         $check_admin = 'admin';
+    //     }
+    //     return $check_admin;
+    // }
 
     public function __construct()
     {
@@ -42,7 +42,7 @@ class TemplateCheckUserId implements Rule
      */
     public function passes($attribute, $value)
     {
-        $admin_id = self::admin_id();
+        $admin_id = Common::admin_id();
         $user_id = Auth::id();
         // $templates_id = $request->templates_id;
         $check_user_id = [];

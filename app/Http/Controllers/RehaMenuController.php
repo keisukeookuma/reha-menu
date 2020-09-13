@@ -126,6 +126,7 @@ class RehaMenuController extends Controller
                         ->select('items.id','item_name', 'creator', 'caption', DB::raw('GROUP_CONCAT(search_word) as search_word'), 'img', 'items.status as items_status')
                         ->join('search_words', 'items.id', '=', 'search_words.item_id')
                         ->groupBy('items.id')
+                        ->orderBy('items.id', 'DESC')
                         ->get();
             // テンプレート作成時にitemの項目を出す            
             $make_template_items = DB::table('items')
@@ -146,6 +147,7 @@ class RehaMenuController extends Controller
                         ->join('search_words', 'items.id', '=', 'search_words.item_id')
                         ->where('items.user_id', $user_id)
                         ->groupBy('items.id')
+                        ->orderBy('items.id', 'DESC')
                         ->get();
 
             $make_template_items = DB::table('items')
@@ -172,7 +174,6 @@ class RehaMenuController extends Controller
         $now = Carbon::now();
         $request->search_word = self::nullFilter($request->search_word);
         $search_word = implode( ",", $request->search_word);
-        // dd($search_word);
         if($request->sqltype === 'new_product'){
             $folderFilePath = $request->file->store('img');
             $filePath = str_replace('img/', '', $folderFilePath);

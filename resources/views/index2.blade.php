@@ -1,8 +1,27 @@
-@extends('layouts.common')
-@section('pageCss')
-<link href="{{ asset('css/index.css') }}" rel="stylesheet">
-@endsection
-@section('content')
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    @if(env('APP_ENV') == 'production')
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-177873040-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-177873040-1');
+        </script>
+    @endif
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Reha Menu</title>
+    <script src="./js/app.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
     <header class="navbar navbar-dark fixed-top flex-nowrap p-0 shadow navbar-expand-lg">
         <div class="header-container px-3 w-100">
             <div class="navbar-brand ml-2">
@@ -153,9 +172,10 @@
     <div class="print-preview">
         <img src="" alt="" id="canvas-image">
     </div>
-    <script src="{{ asset('js/index_function.js') }}" defer></script>
-    <script src="{{ asset('js/index.js') }}" defer></script>
-    <script src="{{ asset('js/index_responsive.js') }}" defer></script>
-    <script src="{{ asset('js/html2canvas.min.js') }}" defer></script>
-    <script src="{{ asset('js/index_print.js') }}" defer></script>
-@endsection
+    <script src="./js/index_function.js"></script>
+    <script src="./js/index.js"></script>
+    <script src='./js/index_responsive.js'></script>
+    <script src='./js/html2canvas.min.js'></script>
+    <script src='./js/index_print.js'></script>
+</body>
+</html>

@@ -1,26 +1,26 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>リハビリメニュー作成</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <style>
-        .width-30{
-            width: 30px;
-        }
+@extends('layouts.common')
+@section('pageCss')
+<link href="{{ asset('css/top.css') }}" rel="stylesheet">
+<style>
+    .width-30{
+        width: 30px;
+    }
 
-        .width-100{
-            width: 100px;
-        }
+    .width-100{
+        width: 100px;
+    }
 
-        .width-300{
-            width: 300px;
-        }
-    </style>
-</head>
-<body>
-    <div class="container mt-5">
+    .width-300{
+        width: 300px;
+    }
+</style>
+@endsection
+
+@include('layouts.nav')
+
+@section('content')
+<main>
+    <div class="container mt-5 pt-5">
         <h2>ご意見まとめ</h2>
         <table border="1">
             <tr>
@@ -35,8 +35,6 @@
                 <td>{{ $opinion->opinion }}</td>
             </tr>
             @endforeach
-        </table>
-        
+        </table>  
     </div>
-</body>
-</html>
+</main>

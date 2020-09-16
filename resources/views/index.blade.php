@@ -1,7 +1,13 @@
 @extends('layouts.common')
+
+@section('title')
+<title>リハビリメニューの作成！：Reha Menu</title>
+@endsection
+
 @section('pageCss')
 <link href="{{ asset('css/index.css') }}" rel="stylesheet">
 @endsection
+
 @section('content')
     <header class="navbar navbar-dark fixed-top flex-nowrap p-0 shadow navbar-expand-lg">
         <div class="header-container px-3 w-100">

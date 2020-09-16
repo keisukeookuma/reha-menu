@@ -1,4 +1,14 @@
 @extends('layouts.common')
+
+@section('title')
+<title>Reha Menu:リハビリメニューの作成＆共有サイト</title>
+@endsection
+
+@section('description')
+<meta name="description" content="運動指導者向けのトレーニング用紙の作成＆共有サイト。素敵なイラストを使ったトレーニング用紙の無料作成や自分の考えたトレーニングメニューの共有ができます！">
+<!-- <meta name="description" content="運動指導者向けのトレーニング用紙の作成＆共有サイト。素敵なイラストを使ったトレーニング用紙の無料作成や自分の考えたトレーニングメニューの共有ができます！"/> -->
+@endsection
+
 @section('pageCss')
 <link href="{{ asset('css/top.css') }}" rel="stylesheet">
 @endsection

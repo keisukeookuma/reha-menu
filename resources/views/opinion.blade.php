@@ -1,4 +1,9 @@
 @extends('layouts.common')
+
+@section('title')
+<title>ご意見箱：Reha Menu</title>
+@endsection
+
 @section('pageCss')
 <link href="{{ asset('css/top.css') }}" rel="stylesheet">
 @endsection

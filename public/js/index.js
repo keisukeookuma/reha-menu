@@ -109,7 +109,7 @@ $(function(){
         $.each(data,function(index,value){
           var sampleTemplateList = $('<li class="nav-item template">');
           var templateLink = $("<a class='nav-link template-sample d-flex flex-wrap "+index+"' href='#'></a>")
-          templateLink.append("<p class='col-12 mb-1 '>"+index+"</p>");
+          templateLink.append("<p class='col-12 mb-1 '>"+value[0].template_name+"</p>");
           $.each(value, function(index,val){ 
             var sampleList = navSampleTemplateList(val.item_name, val.img, val.caption, templateLink);
             templateLink.append(sampleList);

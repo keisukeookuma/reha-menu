@@ -180,20 +180,22 @@
                             <th>テンプレート名</th>
                             <th>自主トレ内容</th>
                             <th>種類</th>
-                            @if($admin === 'admin')
                             <th>ステータス</th>
-                            @endif
                             <th>操作</th>
                         </tr>
                     </thead>
                     @foreach($templates as $key => $template)
                     <tr>
                         <td>
-                            {{$key}}
+                            @if($admin === 'admin')
+                                ユーザーID: {{ $template[0]->user_id }}<br>
+                            @endif
+
+                            {{ $template[0]->template_name }}
                         </td>
                         <td>
                             @foreach($template as $val)
-                            {{ $val -> item_name }}<br>
+                                {{ $val -> item_name }}<br>
                             @endforeach
                         </td>
                         <td>
@@ -205,7 +207,6 @@
                             <p>介護予防</p>
                             @endif
                         </td>
-                        @if($admin === 'admin')
                         <td>
                             @if($template[0]->templates_status===0)
                             <p>公開</p>
@@ -213,14 +214,11 @@
                             <p>非公開</p>
                             @endif
                         </td>
-                        @endif
                         <td>
                             <form action="deleteTemplate" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <input type="submit" value="削除" class="btn btn-danger delete">
-                                @foreach($template as $val)
-                                <input type="hidden" name="templates_id[]" value="{{ $val->templates_id }}">
-                                @endforeach
+                                <input type="hidden" name="templates_id" value="{{ $template[0]->templates_id }}">
                             </form>
                         </td>
                     </tr>
@@ -237,15 +235,11 @@
                             <div class="form-group">
                                 <label for="template">テンプレート名</label>
                                 <input class="form-control w-50" type="text" name="template_name" id="template">
-                                @if($admin === 'admin')
                                 <label for="template_status">テンプレートの公開設定</label>
                                 <select class="form-control w-100px" name="template_status" id="template_status">
                                     <option value="0">公開</option>
                                     <option value="1">非公開</option>
                                 </select>
-                                @else
-                                <input type="hidden" name="template_status" value="1">
-                                @endif
                                 <label for="template_kind">テンプレート種類</label>
                                 <div class="form-group">
                                     <input type="radio" name="template_kind" value="care_prevention">介護予防
@@ -254,7 +248,7 @@
                                 </div>
                                 <label for="item-choice">自主トレ選択　※3つまで選択可能</label>
                                 <div class="form-group" id="item-choice">
-                                    @foreach($make_template_items as $item)
+                                    @foreach($item_list_for_template as $item)
                                     <input type="checkbox" name="template_items[]" value="{{ $item->id }}">{{ $item->item_name }}
                                     @endforeach
                                 </div>

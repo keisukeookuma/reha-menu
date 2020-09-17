@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Rules\SpaceCheck;
+use App\Rules\CountContents;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateTemplate extends FormRequest
@@ -17,7 +18,7 @@ class CreateTemplate extends FormRequest
         return [
             'template_name' => ['required','max:20', new SpaceCheck],
             'template_status' => 'required|integer|between:0,1',
-            'template_items' => 'required',
+            'template_items' => ['required', new CountContents],
             'template_kind' => 'required',
         ];
     }

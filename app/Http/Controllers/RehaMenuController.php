@@ -130,7 +130,7 @@ class RehaMenuController extends Controller
                         ->get();
 
             $templates = DB::table('template_items')
-                        ->select('template_items.id', 'items.item_name', 'items.creator', 'templates.template_name', 'items.status as items_status', 'templates.id as templates_id','templates.status as templates_status', 'templates.kind', 'templates.user_id', 'templates.creator')
+                        ->select('template_items.id', 'items.item_name', 'templates.template_name', 'items.status as items_status', 'templates.id as templates_id','templates.status as templates_status', 'templates.kind', 'templates.user_id', 'templates.creator')
                         ->join('templates', 'template_items.template_id', '=', 'templates.id')
                         ->join('items', 'template_items.item_id', '=', 'items.id')
                         ->get();
@@ -154,7 +154,7 @@ class RehaMenuController extends Controller
 
 
             $templates = DB::table('template_items')
-                        ->select('template_items.id', 'items.item_name', 'items.creator', 'templates.template_name', 'items.status as items_status', 'templates.id as templates_id','templates.status as templates_status', 'templates.kind')
+                        ->select('template_items.id', 'items.item_name', 'templates.template_name', 'items.status as items_status', 'templates.id as templates_id','templates.status as templates_status', 'templates.kind', 'templates.creator')
                         ->join('templates', 'template_items.template_id', '=', 'templates.id')
                         ->join('items', 'template_items.item_id', '=', 'items.id')
                         ->where('templates.user_id',$user_id)

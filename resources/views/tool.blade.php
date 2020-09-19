@@ -112,7 +112,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="creator">作者名:</label>
-                                <input class="form-control w-50" type="text" name="creator" id="creator">
+                                <input class="form-control w-50" type="text" name="creator" id="creator" value="{{ Auth::user()->name }}">
                             </div>
                             <div class="form-group">
                                 <label for="caption">説明文:　※改行ごとに番号が付きます。</label>
@@ -178,6 +178,7 @@
                     <thead class="thead-light">
                         <tr>
                             <th>テンプレート名</th>
+                            <th>作者名</th>
                             <th>自主トレ内容</th>
                             <th>種類</th>
                             <th>ステータス</th>
@@ -192,6 +193,9 @@
                             @endif
 
                             {{ $template[0]->template_name }}
+                        </td>
+                        <td>
+                            {{ $template[0]->creator}}
                         </td>
                         <td>
                             @foreach($template as $val)
@@ -235,6 +239,8 @@
                             <div class="form-group">
                                 <label for="template">テンプレート名</label>
                                 <input class="form-control w-50" type="text" name="template_name" id="template">
+                                <label for="template_creator">作者名</label>
+                                <input class="form-control w-50" type="text" name="template_creator" value="{{ Auth::user()->name }}">
                                 <label for="template_status">テンプレートの公開設定</label>
                                 <select class="form-control w-100px" name="template_status" id="template_status">
                                     <option value="0">公開</option>

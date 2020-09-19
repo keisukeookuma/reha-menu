@@ -5,7 +5,7 @@ function navSampleList(data_item_name, data_img, data_caption){
     previewName.append(data_item_name);
     navSampleName.append(previewName);
     var navSampleImg = $("<div class='nav_sample_img text-center'>");
-    navSampleImg.append("<img src=/storage/img/" + data_img +">");
+    navSampleImg.append("<img src=/storage/img/" + data_img +" alt='リハビリイラスト' oncontextmenu='return false;'>");
     var navSampleCaption = $("<div class='item_caption d-none'>");
     var previewCaption = $("<pre contentEditable='true' class='preview-caption mt-1 mb-0'>");
     var text = '';
@@ -85,7 +85,7 @@ function navSampleTemplateList(data_item_name, data_img, data_caption, templateN
     previewName.append(data_item_name);
     navSampleName.append(previewName);
     var navSampleImg = $("<div class='nav_template_img col-4 p-1'>");
-    navSampleImg.append("<img src=/storage/img/" + data_img +">");
+    navSampleImg.append("<img src=/storage/img/" + data_img +" alt='リハビリイラスト' oncontextmenu='return false;'>");
     var navSampleCaption = $("<div class='item_caption d-none'>");
     var previewCaption = $("<pre contentEditable='true' class='preview-caption mt-1 mb-0'>");
     var text = '';

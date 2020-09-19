@@ -130,16 +130,11 @@ class RehaMenuController extends Controller
                         ->get();
 
             $templates = DB::table('template_items')
-                        ->select('template_items.id', 'items.item_name', 'items.creator', 'templates.template_name', 'items.status as items_status', 'templates.id as templates_id','templates.status as templates_status', 'templates.kind', 'templates.user_id')
+                        ->select('template_items.id', 'items.item_name', 'items.creator', 'templates.template_name', 'items.status as items_status', 'templates.id as templates_id','templates.status as templates_status', 'templates.kind', 'templates.user_id', 'templates.creator')
                         ->join('templates', 'template_items.template_id', '=', 'templates.id')
                         ->join('items', 'template_items.item_id', '=', 'items.id')
                         ->get();
             $templates = $templates -> groupBy('templates_id');
-            // $templates = DB::table('items')
-            //             ->select('items.id','item_name', 'creator', 'template_name', 'items.status as items_status', 'templates.id as templates_id','templates.status as templates_status', 'templates.kind')
-            //             ->join('templates', 'items.id', '=', 'templates.item_id')
-            //             ->get();
-            // $templates = $templates -> groupBy('template_name');
         }else{
             $items = DB::table('items')
                         ->select('items.id','item_name', 'items.user_id','creator', 'caption', DB::raw('GROUP_CONCAT(search_word) as search_word'), 'img', 'items.status as items_status')
@@ -165,12 +160,6 @@ class RehaMenuController extends Controller
                         ->where('templates.user_id',$user_id)
                         ->get();
             $templates = $templates -> groupBy('templates_id');
-            // $templates = DB::table('items')
-            //             ->select('items.id', 'templates.user_id', 'item_name', 'creator', 'template_name', 'items.status as items_status', 'templates.id as templates_id','templates.status as templates_status', 'templates.kind')
-            //             ->join('templates', 'items.id', '=', 'templates.item_id')
-            //             ->where('templates.user_id',$user_id)
-            //             ->get();
-            // $templates = $templates -> groupBy('template_name');
         }
         return view('tool',['items' => $items, 'templates' => $templates, 'item_list_for_template' => $item_list_for_template,'admin' => $admin]);
     }
@@ -297,8 +286,8 @@ class RehaMenuController extends Controller
             $template_id = DB::table('templates')->insertGetId(
                 [
                     'user_id' => $user_id,
-                    // 'item_id' => $item,
                     'template_name' => $request->template_name,
+                    'creator' => $request->template_creator,
                     'status' => $request->template_status,
                     'kind' => $request->template_kind,
                     'created_at' => $now,

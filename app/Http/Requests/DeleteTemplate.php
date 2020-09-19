@@ -26,7 +26,6 @@ class DeleteTemplate extends FormRequest
     {
         return [
             'templates_id' => ['required','max:20', new TemplateCheckUserId],
-            // 'templates_id' => ['required','max:20'],
         ];
     }
 }

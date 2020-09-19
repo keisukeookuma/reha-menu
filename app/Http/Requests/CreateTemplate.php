@@ -17,6 +17,7 @@ class CreateTemplate extends FormRequest
     {
         return [
             'template_name' => ['required','max:20', new SpaceCheck],
+            'template_creator' => 'required|max:20',
             'template_status' => 'required|integer|between:0,1',
             'template_items' => ['required', new CountContents],
             'template_kind' => 'required',
@@ -27,6 +28,7 @@ class CreateTemplate extends FormRequest
     {
         return [
             'template_name' => 'テンプレート名',
+            'template_creator' => '作者名',
             'template_status' => 'ステータス',
             'template_items' => '自主トレ',
             'template_kind' => 'テンプレート種類',

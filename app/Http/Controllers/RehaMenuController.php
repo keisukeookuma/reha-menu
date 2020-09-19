@@ -37,15 +37,8 @@ class RehaMenuController extends Controller
         if($request->type === 'template'){
             
             $template_word = $request->template_word;
-            // $items = DB::table('items')
-            //             ->join('templates', 'items.id', '=', 'templates.item_id')
-            //             ->whereIn('templates.user_id',[$admin_id, $user_id])
-            //             ->where('kind', 'LIKE','%'.$template_word.'%')
-            //             ->orderBy('template_name')
-            //             ->get();
-            // $items = $items -> groupBy('template_name');
             $items = DB::table('template_items')
-                        ->select('template_items.id', 'items.item_name', 'items.creator', 'templates.template_name', 'items.status as items_status', 'templates.id as templates_id','templates.status as templates_status', 'templates.kind', 'items.caption as caption', 'img')
+                        ->select('template_items.id', 'items.item_name', 'templates.creator as template_creator', 'templates.template_name', 'items.status as items_status', 'templates.id as templates_id','templates.status as templates_status', 'templates.kind', 'templates.user_id','items.caption as caption', 'img')
                         ->join('templates', 'template_items.template_id', '=', 'templates.id')
                         ->join('items', 'template_items.item_id', '=', 'items.id')
                         ->whereIn('templates.user_id',[$admin_id, $user_id])
@@ -53,6 +46,7 @@ class RehaMenuController extends Controller
                         ->orderBy('templates_id')
                         ->get();
             $items = $items -> groupBy('templates_id');
+            $items = self::template_creator_name_if_admin_delete($items);
             $items = self::templates_caption_add_number($items);
         }else{
             $search_word = $request->search_word;
@@ -70,6 +64,7 @@ class RehaMenuController extends Controller
                         ->limit(10)
                         ->offset($offset)
                         ->get();
+            $items = self::creator_name_if_admin_delete($items);
             $items = self::caption_add_number($items);
         }
         $json = $items;
@@ -91,6 +86,19 @@ class RehaMenuController extends Controller
         return $productList;
     }
 
+    private function creator_name_if_admin_delete($sample)
+    {
+        $admin_id = Common::admin_id();
+        foreach($sample as $array){
+            
+            if($array->user_id === $admin_id){
+                $array->creator = '';
+            }
+            $productList[] = $array;
+        }
+        return $productList;
+    }
+
     private function templates_caption_add_number($samples)
     {
         foreach($samples as $val => $sample){
@@ -102,6 +110,22 @@ class RehaMenuController extends Controller
                     $result[] = $value;
                 }
                 $array->caption = $result;
+            }
+            $sample[$key] = $array;
+            $productList[$val] = $sample;
+        }
+        return $productList;
+    }
+
+    private function template_creator_name_if_admin_delete($samples)
+    {
+        $admin_id = Common::admin_id();
+
+        foreach($samples as $val => $sample){
+            foreach($sample as $key => $array){
+                if($array->user_id === $admin_id){
+                    $array->template_creator = '';
+                }
             }
             $sample[$key] = $array;
             $productList[$val] = $sample;

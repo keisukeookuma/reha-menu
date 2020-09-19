@@ -1,9 +1,11 @@
-function navSampleList(data_item_name, data_img, data_caption){
+function navSampleList(data_item_name, data_img, data_caption, data_creator){
     var li=$("<li class= 'item-sample col-sm-3 col-md-12 col-xl-5 p-2'>");
     var navSampleName = $("<div class='item_name text-center'>");
     var previewName = $("<p class='preview-name mb-0' contentEditable='true'>");
     previewName.append(data_item_name);
     navSampleName.append(previewName);
+    var navSampleCreator = $("<div class='text-center'>");
+    navSampleCreator.append("<p class='creator-font-12px mb-0'>"+data_creator+"</p>")
     var navSampleImg = $("<div class='nav_sample_img text-center'>");
     navSampleImg.append("<img src=/storage/img/" + data_img +" alt='リハビリイラスト' oncontextmenu='return false;'>");
     var navSampleCaption = $("<div class='item_caption d-none'>");
@@ -12,7 +14,7 @@ function navSampleList(data_item_name, data_img, data_caption){
     $.each(data_caption,function( index, value ) {text += '<li>' + value + '</li>'});
     previewCaption.append("<ol class='mb-0'>" + text + "</ol>")
     navSampleCaption.append(previewCaption);
-    return li.append(navSampleName).append(navSampleImg).append(navSampleCaption);
+    return li.append(navSampleName).append(navSampleCreator).append(navSampleImg).append(navSampleCaption);
 }
 
 function makeItemName(itemSample){

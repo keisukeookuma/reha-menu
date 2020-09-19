@@ -61,8 +61,9 @@ $(function(){
       type:'POST',
       datatype:'json',
       success: function(data){
+        console.log(data);
         for(var i=0 ;i<data.length;i++){
-          var sampleList = navSampleList(data[i].item_name, data[i].img, data[i].caption);
+          var sampleList = navSampleList(data[i].item_name, data[i].img, data[i].caption, data[i].creator);
           $('#all_show_result').append(sampleList);
         }
 
@@ -110,6 +111,7 @@ $(function(){
           var sampleTemplateList = $('<li class="nav-item template">');
           var templateLink = $("<a class='nav-link template-sample d-flex flex-wrap "+index+"' href='#'></a>")
           templateLink.append("<p class='col-12 mb-1 '>"+value[0].template_name+"</p>");
+          templateLink.append("<p class='col-12 mb-0 creator-font-12px'>"+value[0].template_creator+"</p>")
           $.each(value, function(index,val){ 
             var sampleList = navSampleTemplateList(val.item_name, val.img, val.caption, templateLink);
             templateLink.append(sampleList);

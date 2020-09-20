@@ -59,7 +59,7 @@ header.masthead {
   overflow: hidden;
   padding-top: calc(7rem + 72px);
   padding-bottom: 7rem;
-  background-image: url(/images/9c8c1774ea85ef4bae4fbd6c4af968e1_s.jpg?b018bd242b6e8ea14ec215ec97481310);
+  background-image: url(/images/top.jpg?b018bd242b6e8ea14ec215ec97481310);
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: scroll;
@@ -77,7 +77,7 @@ header.masthead .masthead-content .masthead-heading {
 }
 
 header.masthead .masthead-content .masthead-subheading {
-  font-size: 3rem;
+  font-size: 1.5rem;
   -webkit-text-stroke: 1px black;
 }
 
@@ -107,6 +107,12 @@ header.masthead .bg-circle-4 {
   width: 30rem;
   top: -5rem;
   right: 35%;
+}
+
+.section-img-size {
+  max-height: 400px;
+  max-width: 500px;
+  box-shadow: 0 0 8px grey;
 }
 
 @media (min-width: 992px) {

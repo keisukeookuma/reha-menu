@@ -36,13 +36,21 @@ $(function(){
 
   // template表示
   $('.template_all').one('click', function(){
-    getTemplateData('');
+    offset = 0;
+    getTemplateData('', offset);
   });
 
   $('.template_search').change(function(){
     $('#template_list').children().remove();
+    offset = $(".nav_template_img").length;
     var templateWord = $('option:selected').val();
-    getTemplateData(templateWord)
+    getTemplateData(templateWord, offset)
+  });
+
+  $('.template_view_more').click(function(){
+    offset = $(".nav_template_img").length;
+    var templateWord = $('option:selected').val();
+    getTemplateData(templateWord, offset)
   });
   
   
@@ -94,11 +102,14 @@ $(function(){
     });
   }
 
-  function getTemplateData(template_word){
+  function getTemplateData(template_word, offset){
+    console.log(offset);
+    console.log(template_word)
     $.ajax({
       url:"/ajax/",
       data:{template_word : template_word,
-            type : 'template'
+            type : 'template',
+            offset : offset
       },
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

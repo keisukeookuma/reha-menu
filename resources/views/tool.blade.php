@@ -68,7 +68,6 @@
                                 <p>説明文<br>
                                     <textarea type="text" form="item{{ $item->id }}" name="caption">{{ $item->caption }}</textarea>
                                 </p>
-                                @if($admin === 'admin')
                                 <p>ステータス<br>
                                     <select form="item{{ $item->id }}" name="status">
                                         @if($item->items_status===0)
@@ -80,9 +79,6 @@
                                         @endif
                                     </select>
                                 </p>
-                                @else
-                                <input form="item{{ $item->id }}"　type="hidden" value="1" name="status">
-                                @endif
                             </td>
                             <td class="search_word">{{ $item->search_word }}</td>
                             <td>

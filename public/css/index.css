@@ -23,6 +23,7 @@
 body {
   font-size: 0.875rem;
   -webkit-print-color-adjust: exact;
+  overflow: hidden;
 }
 
 header {
@@ -100,7 +101,8 @@ nav .creator-font-12px {
   font-size: 12px;
 }
 
-nav .view_more {
+nav .view_more,
+nav .template_view_more {
   margin-bottom: 50px;
 }
 
@@ -142,7 +144,7 @@ main .item-delete-btn {
 
 main .preview-scroll-size {
   width: 100%;
-  height: 91.5vh;
+  height: 92vh;
 }
 
 main #preview {
@@ -461,6 +463,12 @@ main #preview .contents1 .position-top-right {
     background: none;
   }
 
+  nav .view_more,
+  nav .template_view_more {
+    margin-bottom: 400px;
+    color: #fff;
+  }
+
   .form-control-dark,
   .form-bg {
     background-color: #fff;
@@ -470,11 +478,6 @@ main #preview .contents1 .position-top-right {
 
   .search-item-height {
     height: 50vh;
-  }
-
-  .view_more {
-    margin-bottom: 400px;
-    color: #fff;
   }
 }
 

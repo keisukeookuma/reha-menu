@@ -26,6 +26,7 @@ $sp: 768px;
 body {
   font-size: .875rem;
   -webkit-print-color-adjust: exact;
+  overflow: hidden;
 }
 
 header {
@@ -107,7 +108,7 @@ nav {
     font-size: 12px;
   }
 
-  .view_more {
+  .view_more, .template_view_more {
     margin-bottom: 50px;
   }
 
@@ -152,7 +153,8 @@ main {
 
   .preview-scroll-size {
     width:100%; 
-    height: 91.5vh;
+    height: 92vh;
+    // height: 100%;
   }
 
   #preview {
@@ -473,8 +475,14 @@ main {
     .item-sample p, .btn, .template a{
       color: #fff;
     }
+
     .nav-side {
       background: none;
+    }
+
+    .view_more, .template_view_more {
+      margin-bottom: 400px;
+      color: #fff;
     }
   }
 
@@ -485,11 +493,6 @@ main {
 /* スクロールの調整 */
   .search-item-height {
     height: 50vh; 
-  }
-
-  .view_more {
-    margin-bottom: 400px;
-    color: #fff;
   }
 
 }

@@ -6,7 +6,6 @@
 
 @section('description')
 <meta name="description" content="運動指導者向けのトレーニング用紙の作成＆共有サイト。素敵なイラストを使ったトレーニング用紙の無料作成や自分の考えたトレーニングメニューの共有ができます！">
-<!-- <meta name="description" content="運動指導者向けのトレーニング用紙の作成＆共有サイト。素敵なイラストを使ったトレーニング用紙の無料作成や自分の考えたトレーニングメニューの共有ができます！"/> -->
 @endsection
 
 @section('pageCss')
@@ -21,18 +20,24 @@
       <div class="masthead-content">
         <div class="container">
           <h1 class="masthead-heading mb-0">Reha Menu</h1>
-          <h2 class="masthead-subheading mb-0">一人一人にオリジナルの自主トレ用紙を作ろう！</h2>
+          <h2 class="masthead-subheading mb-0">リハビリメニューの作成＆共有サイト！</h2>
           <a href="{{ url('/index') }}" class="btn btn-primary btn-xl rounded-pill mt-5">作成開始</a>
         </div>
       </div>
     </header>
 
+    <section class="bg-gradient text-white space-lg">
+      <div class="container">
+
+      </div>
+    </section>
+
     <section>
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-6 order-lg-2">
-            <div class="p-5">
-              <img class="img-fluid" src="./img/topimg2.png" alt="">
+            <div class="p-5 text-center">
+              <img class="img-fluid section-img-size" src="./img/topimg3.png" alt="簡単作成画像">
             </div>
           </div>
           <div class="col-lg-6 order-lg-1">
@@ -50,7 +55,7 @@
         <div class="row align-items-center">
           <div class="col-lg-6">
             <div class="p-5">
-              <img class="img-fluid" src="./img/f712ffe571c5992cbee78bf8192715dd6b6ce924.png" alt="">
+              <img class="img-fluid" src="./img/topimg5.png" alt="">
             </div>
           </div>
           <div class="col-lg-6">
@@ -83,7 +88,7 @@
 
     <footer class="py-5 bg-black">
       <div class="container">
-        <p class="m-0 text-center text-white small">Copyright © Your Website 2019</p>
+        <p class="m-0 text-center text-white small">Copyright © Reha Menu 2020</p>
       </div>
     </footer>
   </main>

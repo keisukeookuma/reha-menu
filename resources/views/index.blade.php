@@ -132,7 +132,8 @@
                                 </select>
                             </div>
                             <div class="overflow-auto search-item-height mb-1">
-                                <ul id="template_list" class="px-1 pt-3"></ul>
+                                <ul id="template_list" class="px-1 pt-3 text-center"></ul>
+                                <div class="template_view_more text-center"><button class='btn'>もっと見る</button></div>
                             </div>
                         </div>
                     </div>

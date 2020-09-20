@@ -103,9 +103,16 @@ header.masthead{
     }
 }
 
+// .section-img-size {
+//     max-height: 400px;
+//     max-width: 280px;
+//     box-shadow: 0 0 8px grey;
+// }
+
 .section-img-size {
+    height: auto;
     max-height: 400px;
-    max-width: 500px;
+    max-width: 100%;
     box-shadow: 0 0 8px grey;
 }
 
@@ -127,6 +134,12 @@ header.masthead{
         }
     }
 
+    .section-img-size {
+        height: auto;
+        max-width: 100%;
+        box-shadow: 0 0 8px grey;
+    }
+    
     .font-20 p{
         font-size: 20px;
     }
@@ -135,6 +148,12 @@ header.masthead{
         font-size: 2.5rem;
         font-weight: 300;
     }
+
+    // .section-img-size {
+    //     max-height: 400px;
+    //     max-width: 100%;
+    //     box-shadow: 0 0 8px grey;
+    // }
     
 }
 

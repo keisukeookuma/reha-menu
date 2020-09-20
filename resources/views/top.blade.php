@@ -43,7 +43,7 @@
           <div class="col-lg-6 order-lg-1">
             <div class="p-5 font-20">
               <h2 class="lead">クリックで簡単作成</h2>
-              <p>必要なトレーニングをクリックするだけで簡単にオリジナルの自主トレ用紙を作成できます。<br>直感的な操作で簡単に作成できるため、日々の業務時間を短縮することができます！</p>
+              <p>必要なトレーニングをクリックするだけで簡単にオリジナルの自主トレ用紙を作成できます。<br>部位別・病名別など様々なテンプレートもあります。<br>直感的な操作で簡単に作成できるため、日々の業務時間を短縮することができます！</p>
             </div>
           </div>
         </div>
@@ -55,13 +55,13 @@
         <div class="row align-items-center">
           <div class="col-lg-6">
             <div class="p-5">
-              <img class="img-fluid" src="./img/topimg5.png" alt="">
+              <img class="img-fluid" src="./img/topimg5.png" alt="イラスト参考画像">
             </div>
           </div>
           <div class="col-lg-6">
             <div class="p-5 font-20">
               <h2 class="lead">素敵なイラスト</h2>
-              <p>自主トレの処方箋のために書かれた素敵なイラストを使って、利用者に伝わる自主トレ用紙を作成することが出来ます。</p>
+              <p>Reha Menuのために書かれた素敵なイラストを使って、利用者に伝わる自主トレ用紙を作成することが出来ます。</p>
             </div>
           </div>
         </div>
@@ -73,13 +73,13 @@
         <div class="row align-items-center">
           <div class="col-lg-6 order-lg-2">
             <div class="p-5">
-              <img class="img-fluid rounded-circle" src="./img/9c8c1774ea85ef4bae4fbd6c4af968e1_s.jpg" alt="">
+              <img class="img-fluid section-img-size" src="./img/topimg2.png" alt="管理画面参考画像">
             </div>
           </div>
           <div class="col-lg-6 order-lg-1">
             <div class="p-5 font-20">
-              <h2 class="lead">便利なテンプレート作成</h2>
-              <p>病名・部位ごとはもちろん、通所リハビリなどでも使えるテンプレートを多数用意しています。<br>テンプレートを利用者に合わせて編集することも可能です！</p>
+              <h2 class="lead">オリジナルメニューの追加＆共有可能！</h2>
+              <p>普段使っている自主トレをかんたんにアップロード可能！<br>あなたの考えた自主トレをみんなと共有しよう！</p>
             </div>
           </div>
         </div>

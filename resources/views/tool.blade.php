@@ -1,7 +1,7 @@
 @extends('layouts.common')
 
 @section('title')
-<title>自主トレ作成ページ：Reha Menu</title>
+<title>トレーニング作成ページ：Reha Menu</title>
 @endsection
 
 @section('pageCss')
@@ -13,7 +13,7 @@
 @section('content')
 <main>
     <div class="container tool-width my-5 py-5">
-        <h1>{{ Auth::user()->name }}様の自主トレ管理ページ</h1>
+        <h1>{{ Auth::user()->name }}様のトレーニング管理ページ</h1>
         @if($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -25,10 +25,10 @@
         @endif
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <a class="nav-item nav-link text-dark active" id="nav-item-catalog-tab" data-toggle="tab" href="#nav-item-catalog" role="tab" aria-controls="nav-item-catalog" aria-selected="true">自主トレ一覧</a>
-                <a class="nav-item nav-link text-dark" id="nav-make-item-tab" data-toggle="tab" href="#nav-make-item" role="tab" aria-controls="nav-make-item" aria-selected="false">自主トレ作成</a>
-                <a class="nav-item nav-link text-dark" id="nav-template-catalog-tab" data-toggle="tab" href="#nav-template-catalog" role="tab" aria-controls="nav-template-catalog" aria-selected="false">テンプレート一覧</a>
-                <a class="nav-item nav-link text-dark" id="nav-make-template-tab" data-toggle="tab" href="#nav-make-template" role="tab" aria-controls="nav-make-template" aria-selected="false">テンプレート作成</a>
+                <a class="nav-item nav-link text-dark font-14px active" id="nav-item-catalog-tab" data-toggle="tab" href="#nav-item-catalog" role="tab" aria-controls="nav-item-catalog" aria-selected="true">トレーニング一覧</a>
+                <a class="nav-item nav-link text-dark font-14px" id="nav-make-item-tab" data-toggle="tab" href="#nav-make-item" role="tab" aria-controls="nav-make-item" aria-selected="false">トレーニング作成</a>
+                <a class="nav-item nav-link text-dark font-14px" id="nav-template-catalog-tab" data-toggle="tab" href="#nav-template-catalog" role="tab" aria-controls="nav-template-catalog" aria-selected="false">テンプレート一覧</a>
+                <a class="nav-item nav-link text-dark font-14px" id="nav-make-template-tab" data-toggle="tab" href="#nav-make-template" role="tab" aria-controls="nav-make-template" aria-selected="false">テンプレート作成</a>
                 @if($admin === 'admin')
                 <a class="nav-item nav-link text-dark" href="{{ url('opinionShow') }}">ご意見一覧へ</a>
                 @endif
@@ -41,7 +41,7 @@
                 <table class="table table-bordered text-center">
                     <thead class="thead-light">
                         <tr>
-                            <th>自主トレ画像</th>
+                            <th>トレーニング画像</th>
                             <th>基本情報</th>
                             <th>検索ワード</th>
                             <th>操作</th>
@@ -59,7 +59,7 @@
                                 <input form="item{{ $item->id }}" type="hidden" name="img" value="{{ $item->img }}">
                             </td>
                             <td>
-                                <p>自主トレ名<br>
+                                <p>トレーニング名<br>
                                     <input form="item{{ $item->id }}" type="text" name="item_name" value="{{ $item->item_name }}">
                                 </p>
                                 <p>作者名<br>
@@ -103,7 +103,7 @@
                         <form action="createItem" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="name">自主トレ名:</label>
+                                <label for="name">トレーニング名:</label>
                                 <input class="form-control w-50" type="text" name="item_name" id="name">    
                             </div>
                             <div class="form-group">
@@ -175,7 +175,7 @@
                         <tr>
                             <th>テンプレート名</th>
                             <th>作者名</th>
-                            <th>自主トレ内容</th>
+                            <th>トレーニング内容</th>
                             <th>種類</th>
                             <th>ステータス</th>
                             <th>操作</th>
@@ -248,7 +248,7 @@
                                     <input type="radio" name="template_kind" value="disease_name">病名
                                     <input type="radio" name="template_kind" value="body_parts">部位別
                                 </div>
-                                <label for="item-choice">自主トレ選択　※3つまで選択可能</label>
+                                <label for="item-choice">トレーニング選択　※3つまで選択可能</label>
                                 <div class="form-group" id="item-choice">
                                     @foreach($item_list_for_template as $item)
                                     <input type="checkbox" name="template_items[]" value="{{ $item->id }}">{{ $item->item_name }}

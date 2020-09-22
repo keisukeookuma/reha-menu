@@ -153,7 +153,7 @@
         </div>
         <div class="hamburger-menu d-md-none">
             <div class="menu-trigger" href="#">
-            <p>自主トレ選択</p>
+            <p>トレーニング選択</p>
             </div>
         </div>
     </div>

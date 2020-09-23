@@ -129,6 +129,10 @@ nav {
   #template_list .nav_template_img img{
     width: 100%;
   }
+
+  .info-text {
+    color: rgba(42, 42, 42, 0.7);
+  }
   
 }
 
@@ -483,6 +487,10 @@ main {
     .view_more, .template_view_more {
       margin-bottom: 400px;
       color: #fff;
+    }
+
+    .info-text {
+      color: #f8f9fa!important;
     }
   }
 

@@ -123,6 +123,10 @@ nav #template_list .nav_template_img img {
   width: 100%;
 }
 
+nav .info-text {
+  color: rgba(42, 42, 42, 0.7);
+}
+
 main {
   background-color: #f6f7f9;
 }
@@ -467,6 +471,10 @@ main #preview .contents1 .position-top-right {
   nav .template_view_more {
     margin-bottom: 400px;
     color: #fff;
+  }
+
+  nav .info-text {
+    color: #f8f9fa !important;
   }
 
   .form-control-dark,

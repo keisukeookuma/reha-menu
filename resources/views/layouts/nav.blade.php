@@ -7,6 +7,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-center" href="{{ url('/opinion') }}">使い方ガイド</a>
+                </li>
             @guest
                 <li class="nav-item">
                     <a class="nav-link text-center" href="{{ route('login') }}">ログイン</a>

@@ -42,15 +42,17 @@ class RehaMenuController extends Controller
                         ->select('template_items.id', 'items.item_name', 'templates.creator as template_creator', 'templates.template_name', 'items.status as items_status', 'templates.id as templates_id','templates.status as templates_status', 'templates.kind', 'templates.user_id','items.caption as caption', 'img')
                         ->join('templates', 'template_items.template_id', '=', 'templates.id')
                         ->join('items', 'template_items.item_id', '=', 'items.id')
-                        ->whereIn('templates.user_id',[$admin_id, $user_id])
+                        ->where(function ($query) use ($admin_id, $user_id){
+                            $query->whereIn('templates.user_id',[$admin_id, $user_id])
+                                  ->orWhere('templates.status', 0);
+                        })
                         ->where('templates.kind', 'LIKE','%'.$template_word.'%')
-                        ->orWhere('templates.status', 0)
                         ->orderBy('templates_id', 'ASC')
                         ->limit(30)
                         ->offset($offset)
                         ->get();
             $items = $items -> groupBy('templates_id');
-            $items = $items -> take(3);
+            $items = $items -> take(10);
             $items = self::template_creator_name_if_admin_delete($items);
             $items = self::templates_caption_add_number($items);
         }else{
@@ -58,13 +60,16 @@ class RehaMenuController extends Controller
             $offset = $request->offset;
             $items = DB::table('items')
                         ->join('search_words', 'items.id', '=', 'search_words.item_id')
-                        ->whereIn('items.user_id',[$admin_id, $user_id])
+                        ->where(function ($query) use ($admin_id, $user_id){
+                            $query->whereIn('items.user_id',[$admin_id, $user_id])
+                                  ->orWhere('status', 0);
+                        })
                         ->where(function ($query) use ($search_word){
                             $query  ->where('item_name', 'LIKE' ,'%'.$search_word.'%')
                                     ->orWhere('caption', 'LIKE', '%'.$search_word.'%')
+                                    ->orWhere('creator', 'LIKE', '%'.$search_word.'%')
                                     ->orWhere('search_word', 'LIKE', '%'.$search_word.'%');
                         })
-                        ->orWhere('status', 0)
                         ->groupBy('items.id')
                         ->orderBy('items.id', 'DESC')
                         ->limit(10)

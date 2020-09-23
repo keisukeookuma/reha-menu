@@ -146,7 +146,6 @@
                                     <input class="form-control w-50" type="text" name="search_word[]">
                                 </div>
                             </div>
-                            @if($admin === 'admin')
                             <div class="form-group">
                                 <label for="status">自主トレ公開設定:</label>
                                 <select class="form-control w-100px" name="status" id="status">
@@ -154,9 +153,6 @@
                                     <option value="1">非公開</option>
                                 </select>
                             </div>
-                            @else
-                            <input type="hidden" name="status" value="1">
-                            @endif
                             <div class="form-group">
                                 <label for="file">画像:</label>
                                 <input class="form-control-file" type="file" name="file" id="file">

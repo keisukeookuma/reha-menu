@@ -136,6 +136,7 @@
                                     <option value="disease_name">病名</option>
                                     <option value="body_parts">部位</option>
                                     <option value="care_prevention">介護予防</option>
+                                    <option value="etc">その他</option>
                                 </select>
                             </div>
                             <div class="overflow-auto search-item-height mb-1">

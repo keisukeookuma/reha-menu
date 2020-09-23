@@ -161,7 +161,7 @@ class RehaMenuController extends Controller
                         ->select('items.id', 'item_name', 'items.user_id','creator', 'caption', DB::raw('GROUP_CONCAT(search_word) as search_word'), 'img', 'items.status as items_status')
                         ->join('search_words', 'items.id', '=', 'search_words.item_id')
                         ->where('items.user_id', $admin_id)
-                        ->groupBy('items.id')
+                        ->orderBy('item_id', 'DESC')
                         ->get();
 
             $templates = DB::table('template_items')
@@ -187,7 +187,6 @@ class RehaMenuController extends Controller
                         ->groupBy('items.id')
                         ->get();
 
-
             $templates = DB::table('template_items')
                         ->select('template_items.id', 'items.item_name', 'templates.template_name', 'items.status as items_status', 'templates.id as templates_id','templates.status as templates_status', 'templates.kind', 'templates.creator')
                         ->join('templates', 'template_items.template_id', '=', 'templates.id')
@@ -196,7 +195,8 @@ class RehaMenuController extends Controller
                         ->get();
             $templates = $templates -> groupBy('templates_id');
         }
-        return view('tool',['items' => $items, 'templates' => $templates, 'item_list_for_template' => $item_list_for_template,'admin' => $admin]);
+        // dd($item_list_for_template);
+        return view('tool',['items' => $items, 'templates' => $templates, 'item_list_for_template' => $item_list_for_template,'admin' => $admin, 'admin_id' => $admin_id]);
     }
 
     public function createItem(CreateItem $request)

@@ -184,3 +184,12 @@ td textarea {
   font-size: 14px;
 }
 
+.template_choice_item {
+  width: 100%;
+}
+
+.template_choice_item img {
+  width: 100px;
+  height: auto;
+}
+

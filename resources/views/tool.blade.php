@@ -118,28 +118,44 @@
                                 <p class="mb-1">検索ワード:　※入力後の変更はできません。</p>
                                 <div class="mx-3 my-2">
                                     部位<br>
-                                    <input type="checkbox" name="search_word[]" value="頸部">頸部
-                                    <input type="checkbox" name="search_word[]" value="肩関節">肩関節
-                                    <input type="checkbox" name="search_word[]" value="腰部">腰部
-                                    <input type="checkbox" name="search_word[]" value="股関節">股関節
-                                    <input type="checkbox" name="search_word[]" value="膝関節">膝関節
-                                    <input type="checkbox" name="search_word[]" value="足部">足部
+                                    <input type="checkbox" name="search_word[]" id="neck" value="頸部">
+                                    <label for="neck">頸部</label>
+                                    <input type="checkbox" name="search_word[]" id="shoulder" value="肩関節">
+                                    <label for="shoulder">肩関節</label>
+                                    <input type="checkbox" name="search_word[]" id="waist" value="腰部">
+                                    <label for="waist">腰部</label>
+                                    <input type="checkbox" name="search_word[]" id="hip" value="股関節">
+                                    <label for="hip">股関節</label>
+                                    <input type="checkbox" name="search_word[]" id="knee" value="膝関節">
+                                    <label for="knee">膝関節</label>
+                                    <input type="checkbox" name="search_word[]" id="ankle" value="足部">
+                                    <label for="ankle">足部</label>
                                 </div>
                                 <div class="mx-3 my-2">
                                     病名<br>
-                                    <input type="checkbox" name="search_word[]" value="肩関節周囲炎">肩関節周囲炎
-                                    <input type="checkbox" name="search_word[]" value="腰部脊柱管狭窄症">腰部脊柱管狭窄症
-                                    <input type="checkbox" name="search_word[]" value="腰椎椎間板ヘルニア">腰椎椎間板ヘルニア
-                                    <input type="checkbox" name="search_word[]" value="変形性股関節症">変形性股関節症
-                                    <input type="checkbox" name="search_word[]" value="変形性膝関節症">変形性膝関節症
+                                    <input type="checkbox" name="search_word[]" id="periarthritisOfTheShoulder" value="肩関節周囲炎">
+                                    <label for="periarthritisOfTheShoulder">肩関節周囲炎</label>
+                                    <input type="checkbox" name="search_word[]" id="spinalCanalStenosis" value="腰部脊柱管狭窄症">
+                                    <label for="spinalCanalStenosis">腰部脊柱管狭窄症</label>
+                                    <input type="checkbox" name="search_word[]" id="lumbarDiscHerniation" value="腰椎椎間板ヘルニア">
+                                    <label for="lumbarDiscHerniation">腰椎椎間板ヘルニア</label>
+                                    <input type="checkbox" name="search_word[]" id="osteoarthritisOfTheHip" value="変形性股関節症">
+                                    <label for="osteoarthritisOfTheHip">変形性股関節症</label>
+                                    <input type="checkbox" name="search_word[]" id="osteoarthritisOfTheKnee" value="変形性膝関節症">
+                                    <label for="osteoarthritisOfTheKnee">変形性膝関節症</label>
                                 </div>
                                 <div class="mx-3 my-2">
                                     介護部門<br>
-                                    <input type="checkbox" name="search_word[]" value="立位での体操">立位での体操
-                                    <input type="checkbox" name="search_word[]" value="座位での体操">座位での体操
-                                    <input type="checkbox" name="search_word[]" value="ベッドでの体操">ベッドでの体操
-                                    <input type="checkbox" name="search_word[]" value="セラバンド体操">セラバンド体操
-                                    <input type="checkbox" name="search_word[]" value="棒体操">棒体操
+                                    <input type="checkbox" name="search_word[]" id="standing" value="立位での体操">
+                                    <label for="standing">立位での体操</label>
+                                    <input type="checkbox" name="search_word[]" id="sitting" value="座位での体操">
+                                    <label for="sitting">座位での体操</label>
+                                    <input type="checkbox" name="search_word[]" id="bed" value="ベッドでの体操">
+                                    <label for="bed">ベッドでの体操</label>
+                                    <input type="checkbox" name="search_word[]" id="ceraBand" value="セラバンド体操">
+                                    <label for="ceraBand">セラバンド体操</label>
+                                    <input type="checkbox" name="search_word[]" id="stick" value="棒体操">
+                                    <label for="stick">棒体操</label>
                                 </div>
                                 <div class="mx-3 my-2">
                                     フリーワード欄　※複数記載する場合は「、」で区切ってください。<br>
@@ -229,25 +245,51 @@
                         <form action="createTemplate" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="template">テンプレート名</label>
+                                <label class="mb-0" for="template">テンプレート名</label>
                                 <input class="form-control w-50" type="text" name="template_name" id="template">
-                                <label for="template_creator">作者名</label>
+                                <label class="mb-0 mt-3" for="template_creator">作者名</label>
                                 <input class="form-control w-50" type="text" name="template_creator" value="{{ Auth::user()->name }}">
-                                <label for="template_status">テンプレートの公開設定</label>
+                                <label class="mb-0 mt-3" for="template_status">テンプレートの公開設定</label>
                                 <select class="form-control w-100px" name="template_status" id="template_status">
                                     <option value="0">公開</option>
                                     <option value="1">非公開</option>
                                 </select>
-                                <label for="template_kind">テンプレート種類</label>
+                                <label class="mb-0 mt-3" for="template_kind">テンプレート種類</label>
                                 <div class="form-group">
-                                    <input type="radio" name="template_kind" value="care_prevention">介護予防
-                                    <input type="radio" name="template_kind" value="disease_name">病名
-                                    <input type="radio" name="template_kind" value="body_parts">部位別
+                                    <input type="radio" name="template_kind" value="care_prevention" id="care_prevention">
+                                    <label for="care_prevention">介護予防</label>
+                                    <input type="radio" name="template_kind" value="disease_name" id="disease_name">
+                                    <label for="disease_name">病名</label>
+                                    <input type="radio" name="template_kind" value="body_parts" id="body_parts">
+                                    <label for="body_parts">部位別</label>
+                                    <input type="radio" name="template_kind" value="etc" id="etc">
+                                    <label for="etc">その他</label>
                                 </div>
-                                <label for="item-choice">トレーニング選択　※3つまで選択可能</label>
-                                <div class="form-group" id="item-choice">
+                                <label class="mb-0 mt-3" for="item-choice">トレーニング選択　※3つまで選択可能</label>
+                                <div class="form-group d-flex row" id="item-choice">
+                                    <p class="col-12 mb-0">オリジナルトレーニング</p>
                                     @foreach($item_list_for_template as $item)
-                                    <input type="checkbox" name="template_items[]" value="{{ $item->id }}">{{ $item->item_name }}
+                                        @if($item->user_id !== $admin_id)
+                                            <div class="col-2 col-lg-2">
+                                                <input type="checkbox" name="template_items[]" id="{{ $item->id }}{{ $item->item_name }}" value="{{ $item->id }}">
+                                                <label class="template_choice_item" for="{{ $item->id }}{{ $item->item_name }}">
+                                                    {{ $item->item_name }}
+                                                    <img width="100px" height="auto" src="/storage/img/{{ $item->img}}" alt="{{ $item->item_name }}"> 
+                                                </label>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                    <p class="col-12 mb-0">共通トレーニング</p>
+                                    @foreach($item_list_for_template as $item)
+                                        @if($item->user_id === $admin_id)
+                                            <div class="col-2 col-lg-2">
+                                                <input type="checkbox" name="template_items[]" id="{{ $item->id }}{{ $item->item_name }}" value="{{ $item->id }}">
+                                                <label class="template_choice_item" for="{{ $item->id }}{{ $item->item_name }}">
+                                                    {{ $item->item_name }}
+                                                    <img width="100px" height="auto" src="/storage/img/{{ $item->img}}" alt="{{ $item->item_name }}"> 
+                                                </label>
+                                            </div>
+                                        @endif
                                     @endforeach
                                 </div>
                                 <p><input class="btn btn-primary"type="submit" value="テンプレート作成"></p>

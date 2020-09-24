@@ -66,12 +66,11 @@ class RehaMenuController extends Controller
                         })
                         ->where(function ($query) use ($search_word){
                             $query  ->where('item_name', 'LIKE' ,'%'.$search_word.'%')
-                                    // ->orWhere('caption', 'LIKE', '%'.$search_word.'%')
                                     ->orWhere('creator', 'LIKE', '%'.$search_word.'%')
                                     ->orWhere('search_word', 'LIKE', '%'.$search_word.'%');
                         })
                         ->groupBy('items.id')
-                        // ->orderBy('items.id', 'DESC')
+                        ->orderBy('items.id', 'DESC')
                         ->limit(10)
                         ->offset($offset)
                         ->get();
@@ -161,7 +160,7 @@ class RehaMenuController extends Controller
                         ->select('items.id', 'item_name', 'items.user_id','creator', 'caption', DB::raw('GROUP_CONCAT(search_word) as search_word'), 'img', 'items.status as items_status')
                         ->join('search_words', 'items.id', '=', 'search_words.item_id')
                         ->where('items.user_id', $admin_id)
-                        ->orderBy('item_id', 'DESC')
+                        ->groupBy('items.id')
                         ->get();
 
             $templates = DB::table('template_items')

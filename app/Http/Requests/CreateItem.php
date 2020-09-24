@@ -28,7 +28,7 @@ class CreateItem extends FormRequest
             'item_name' => ['required','max:20', new SpaceCheck],
             'creator' => ['required','max:20', new SpaceCheck],
             'caption' => ['required','max:80', new SpaceCheck],
-            'search_word' => 'required|max:25',
+            'search_word' => 'required|max:20',
             'file' => 'required|file|image|mimes:jpeg,png,jpg,gif|max:2048',
             'item_name' => ['required', new SpaceCheck]
         ];

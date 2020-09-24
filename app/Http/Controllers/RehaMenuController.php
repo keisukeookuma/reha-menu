@@ -66,12 +66,12 @@ class RehaMenuController extends Controller
                         })
                         ->where(function ($query) use ($search_word){
                             $query  ->where('item_name', 'LIKE' ,'%'.$search_word.'%')
-                                    ->orWhere('caption', 'LIKE', '%'.$search_word.'%')
+                                    // ->orWhere('caption', 'LIKE', '%'.$search_word.'%')
                                     ->orWhere('creator', 'LIKE', '%'.$search_word.'%')
                                     ->orWhere('search_word', 'LIKE', '%'.$search_word.'%');
                         })
                         ->groupBy('items.id')
-                        ->orderBy('items.id', 'DESC')
+                        // ->orderBy('items.id', 'DESC')
                         ->limit(10)
                         ->offset($offset)
                         ->get();
@@ -195,7 +195,6 @@ class RehaMenuController extends Controller
                         ->get();
             $templates = $templates -> groupBy('templates_id');
         }
-        // dd($item_list_for_template);
         return view('tool',['items' => $items, 'templates' => $templates, 'item_list_for_template' => $item_list_for_template,'admin' => $admin, 'admin_id' => $admin_id]);
     }
 
@@ -268,15 +267,23 @@ class RehaMenuController extends Controller
     public function changeItem(ChangeItem $request)
     {
         $now = Carbon::now();
-        DB::table('items')
-            ->where('id', $request->id)
-            ->update([
-                'item_name' => $request->item_name,
-                'creator' => $request->creator,
-                'caption' => $request->caption,
-                'status' => $request->status,
-                'updated_at' => $now
-        ]);
+        DB::transaction(function () use($request,$now) {
+            DB::table('items')
+                ->where('id', $request->id)
+                ->update([
+                    'item_name' => $request->item_name,
+                    'creator' => $request->creator,
+                    'caption' => $request->caption,
+                    'status' => $request->status,
+                    'updated_at' => $now
+            ]);
+            DB::table('search_words')
+                ->where('item_id', $request->id)
+                ->update([
+                    'search_word' => $request->search_word,
+                    'updated_at' => $now
+            ]);
+        });
         return redirect('/tool');
     }
 

@@ -29,6 +29,7 @@ class ChangeItem extends FormRequest
             'creator' => ['required','max:20', new SpaceCheck],
             'caption' => ['required','max:80', new SpaceCheck],
             'status' => 'required|integer|between:0,1',
+            'search_word' => 'required|max:45',
         ];
     }
 
@@ -39,6 +40,7 @@ class ChangeItem extends FormRequest
             'creator' => '作者名',
             'caption' => '説明文',
             'status' => 'ステータス',
+            'search_word' => '検索ワード',
         ];
     }
 }

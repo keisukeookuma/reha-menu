@@ -80,7 +80,10 @@
                                     </select>
                                 </p>
                             </td>
-                            <td class="search_word">{{ $item->search_word }}</td>
+                            <td>
+                                <textarea type="text" form="item{{ $item->id }}" name="search_word">{{ $item->search_word }}</textarea>
+                                <!-- <td class="search_word">{{ $item->search_word }}</td> -->
+                            </td>
                             <td>
                                 <input form="item{{ $item->id }}" type="submit" value="内容変更" class="btn btn-secondary mb-3">
                                 <input form="item{{ $item->id }}" type="hidden" name="sqltype" value="detail_change">
@@ -103,15 +106,15 @@
                         <form action="createItem" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="name">トレーニング名:</label>
+                                <label for="name">トレーニング名(20文字以内)</label>
                                 <input class="form-control w-50" type="text" name="item_name" id="name">    
                             </div>
                             <div class="form-group">
-                                <label for="creator">作者名:</label>
+                                <label for="creator">作者名(20文字以内)</label>
                                 <input class="form-control w-50" type="text" name="creator" id="creator" value="{{ Auth::user()->name }}">
                             </div>
                             <div class="form-group">
-                                <label for="caption">説明文:　※改行ごとに番号が付きます。</label>
+                                <label for="caption">説明文(80文字以内)　※改行ごとに1.2.と番号が付きます。</label>
                                 <textarea class="form-control w-50 h-150px" type="text" name="caption" id="caption"></textarea>
                             </div>
                             <div class="my-3">
@@ -122,16 +125,24 @@
                                     <label for="neck">頸部</label>
                                     <input type="checkbox" name="search_word[]" id="shoulder" value="肩関節">
                                     <label for="shoulder">肩関節</label>
-                                    <input type="checkbox" name="search_word[]" id="waist" value="腰部">
-                                    <label for="waist">腰部</label>
+                                    <input type="checkbox" name="search_word[]" id="elbow" value="肘関節">
+                                    <label for="elbow">肘関節</label>
+                                    <input type="checkbox" name="search_word[]" id="hand" value="手関節">
+                                    <label for="hand">手関節</label>
+                                    <input type="checkbox" name="search_word[]" id="finger" value="手指">
+                                    <label for="finger">手指</label>
+                                    <input type="checkbox" name="search_word[]" id="trunk" value="体幹">
+                                    <label for="trunk">体幹</label>
                                     <input type="checkbox" name="search_word[]" id="hip" value="股関節">
                                     <label for="hip">股関節</label>
                                     <input type="checkbox" name="search_word[]" id="knee" value="膝関節">
                                     <label for="knee">膝関節</label>
                                     <input type="checkbox" name="search_word[]" id="ankle" value="足部">
-                                    <label for="ankle">足部</label>
+                                    <label for="ankle">足関節</label>
+                                    <input type="checkbox" name="search_word[]" id="toes" value="足趾">
+                                    <label for="toes">足趾</label>
                                 </div>
-                                <div class="mx-3 my-2">
+                                <!-- <div class="mx-3 my-2">
                                     病名<br>
                                     <input type="checkbox" name="search_word[]" id="periarthritisOfTheShoulder" value="肩関節周囲炎">
                                     <label for="periarthritisOfTheShoulder">肩関節周囲炎</label>
@@ -143,34 +154,38 @@
                                     <label for="osteoarthritisOfTheHip">変形性股関節症</label>
                                     <input type="checkbox" name="search_word[]" id="osteoarthritisOfTheKnee" value="変形性膝関節症">
                                     <label for="osteoarthritisOfTheKnee">変形性膝関節症</label>
-                                </div>
+                                </div> -->
                                 <div class="mx-3 my-2">
-                                    介護部門<br>
-                                    <input type="checkbox" name="search_word[]" id="standing" value="立位での体操">
-                                    <label for="standing">立位での体操</label>
-                                    <input type="checkbox" name="search_word[]" id="sitting" value="座位での体操">
-                                    <label for="sitting">座位での体操</label>
-                                    <input type="checkbox" name="search_word[]" id="bed" value="ベッドでの体操">
-                                    <label for="bed">ベッドでの体操</label>
-                                    <input type="checkbox" name="search_word[]" id="ceraBand" value="セラバンド体操">
+                                    実施姿勢<br>
+                                    <input type="radio" name="search_word[]" id="standing" value="立位">
+                                    <label for="standing">立位</label>
+                                    <input type="radio" name="search_word[]" id="sitting" value="座位">
+                                    <label for="sitting">座位</label>
+                                    <input type="radio" name="search_word[]" id="supine" value="背臥位">
+                                    <label for="supine">背臥位</label>
+                                    <input type="radio" name="search_word[]" id="lateral" value="側臥位">
+                                    <label for="lateral">側臥位</label>
+                                    <input type="radio" name="search_word[]" id="prone" value="腹臥位">
+                                    <label for="prone">腹臥位</label>
+                                    <!-- <input type="checkbox" name="search_word[]" id="ceraBand" value="セラバンド体操">
                                     <label for="ceraBand">セラバンド体操</label>
                                     <input type="checkbox" name="search_word[]" id="stick" value="棒体操">
-                                    <label for="stick">棒体操</label>
+                                    <label for="stick">棒体操</label> -->
                                 </div>
                                 <div class="mx-3 my-2">
-                                    フリーワード欄　※複数記載する場合は「、」で区切ってください。<br>
+                                    フリーワード欄(20文字以内)　※複数記載する場合は「、」で区切ってください。<br>
                                     <input class="form-control w-50" type="text" name="search_word[]">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="status">自主トレ公開設定:</label>
+                                <label for="status">自主トレ公開設定</label>
                                 <select class="form-control w-100px" name="status" id="status">
                                     <option value="0">公開</option>
                                     <option value="1">非公開</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="file">画像:</label>
+                                <label for="file">画像</label>
                                 <input class="form-control-file" type="file" name="file" id="file">
                             </div>
                             <p><input class="btn btn-primary"type="submit" value="自主トレ作成"></p>

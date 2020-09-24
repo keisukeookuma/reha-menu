@@ -248,7 +248,7 @@ class RehaMenuController extends Controller
         $item_id = $request->item_id;
         $deleteFile = $request->deletefiles;
         DB::transaction(function () use ($item_id, $deleteFile){
-            DB::table('templates')
+            DB::table('template_items')
                 ->WHERE('item_id', $item_id)
                 ->DELETE();
             

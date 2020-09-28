@@ -133,6 +133,9 @@
                             <div class="template_search mx-auto mb-1">
                                 <select class="custom-select" id="validationTooltip04" required>
                                     <option selected value="">すべて表示</option>
+                                    @auth
+                                    <option value="{{ Auth::user()->id }}">オリジナル</option>
+                                    @endauth
                                     <option value="locomotor_disorders">運動器疾患</option>
                                     <option value="cerebrovascular_disease">脳血管疾患</option>
                                     <option value="body_parts">部位別</option>

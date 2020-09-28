@@ -133,8 +133,9 @@
                             <div class="template_search mx-auto mb-1">
                                 <select class="custom-select" id="validationTooltip04" required>
                                     <option selected value="">すべて表示</option>
-                                    <option value="disease_name">病名</option>
-                                    <option value="body_parts">部位</option>
+                                    <option value="locomotor_disorders">運動器疾患</option>
+                                    <option value="cerebrovascular_disease">脳血管疾患</option>
+                                    <option value="body_parts">部位別</option>
                                     <option value="care_prevention">介護予防</option>
                                     <option value="etc">その他</option>
                                 </select>

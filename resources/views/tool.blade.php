@@ -273,8 +273,10 @@
                                 <div class="form-group">
                                     <input type="radio" name="template_kind" value="care_prevention" id="care_prevention">
                                     <label for="care_prevention">介護予防</label>
-                                    <input type="radio" name="template_kind" value="disease_name" id="disease_name">
-                                    <label for="disease_name">病名</label>
+                                    <input type="radio" name="template_kind" value="locomotor_disorders" id="locomotor_disorders">
+                                    <label for="locomotor_disorders">運動器疾患</label>
+                                    <input type="radio" name="template_kind" value="cerebrovascular_disease" id="cerebrovascular_disease">
+                                    <label for="cerebrovascular_disease">脳血管疾患</label>
                                     <input type="radio" name="template_kind" value="body_parts" id="body_parts">
                                     <label for="body_parts">部位別</label>
                                     <input type="radio" name="template_kind" value="etc" id="etc">

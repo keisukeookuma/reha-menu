@@ -25,8 +25,8 @@ class GiveOpinion extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|spaceCheck',
-            'opinion' => 'required|spaceCheck|max:500',
+            'name' =>  ['required','max:20', new SpaceCheck],
+            'opinion' => ['required','max:150', new SpaceCheck],
         ];
     }
 

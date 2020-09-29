@@ -13,23 +13,23 @@
 Auth::routes();
 
 
-Route::get('/', 'RehaMenuController@top');
-Route::get('/index', 'RehaMenuController@index');
-Route::post('/ajax', 'RehaMenuController@getData');
+Route::get('/', 'TopController@top');
+Route::get('/index', 'IndexController@index');
+Route::post('/ajax', 'IndexController@getData');
 
 Route::group(['middleware' => 'auth'],function(){
-    Route::get('/tool', 'RehaMenuController@tool');
-    Route::post('/createItem', 'RehaMenuController@createItem');
-    Route::post('/deleteItem', 'RehaMenuController@deleteItem');
-    Route::post('/changeItem', 'RehaMenuController@changeItem');
-    Route::post('/createTemplate', 'RehaMenuController@createTemplate');
-    Route::post('/deleteTemplate', 'RehaMenuController@deleteTemplate');
-    Route::get('/opinionShow', 'RehaMenuController@opinionShow');
+    Route::get('/tool', 'ToolController@tool');
+    Route::post('/createItem', 'ToolController@createItem');
+    Route::post('/deleteItem', 'ToolController@deleteItem');
+    Route::post('/changeItem', 'ToolController@changeItem');
+    Route::post('/createTemplate', 'ToolController@createTemplate');
+    Route::post('/deleteTemplate', 'ToolController@deleteTemplate');
+    Route::get('/opinionShow', 'OpinionController@opinionShow');
 });
 
-Route::get('/manual', 'RehaMenuController@manual');
-Route::get('/opinion', 'RehaMenuController@opinion');
-Route::post('/giveOpinion', 'RehaMenuController@giveOpinion');
+Route::get('/manual', 'ManualController@manual');
+Route::get('/opinion', 'OpinionController@opinion');
+Route::post('/giveOpinion', 'OpinionController@giveOpinion');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

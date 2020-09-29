@@ -6,13 +6,14 @@
 
 @section('pageCss')
 <link href="{{ asset('css/top.css') }}" rel="stylesheet">
+<link href="{{ asset('css/tool.css') }}" rel="stylesheet">
 @endsection
 
 @include('layouts.nav')
 
 @section('content')
 <main>
-    <div class="container tool-width my-5 py-5">
+    <div class="container tool-width tool-height my-5 py-5">
         <h1>{{ Auth::user()->name }}様のトレーニング管理ページ</h1>
         @if($errors->any())
         <div class="alert alert-danger">
@@ -142,19 +143,6 @@
                                     <input type="checkbox" name="search_word[]" id="toes" value="足趾">
                                     <label for="toes">足趾</label>
                                 </div>
-                                <!-- <div class="mx-3 my-2">
-                                    病名<br>
-                                    <input type="checkbox" name="search_word[]" id="periarthritisOfTheShoulder" value="肩関節周囲炎">
-                                    <label for="periarthritisOfTheShoulder">肩関節周囲炎</label>
-                                    <input type="checkbox" name="search_word[]" id="spinalCanalStenosis" value="腰部脊柱管狭窄症">
-                                    <label for="spinalCanalStenosis">腰部脊柱管狭窄症</label>
-                                    <input type="checkbox" name="search_word[]" id="lumbarDiscHerniation" value="腰椎椎間板ヘルニア">
-                                    <label for="lumbarDiscHerniation">腰椎椎間板ヘルニア</label>
-                                    <input type="checkbox" name="search_word[]" id="osteoarthritisOfTheHip" value="変形性股関節症">
-                                    <label for="osteoarthritisOfTheHip">変形性股関節症</label>
-                                    <input type="checkbox" name="search_word[]" id="osteoarthritisOfTheKnee" value="変形性膝関節症">
-                                    <label for="osteoarthritisOfTheKnee">変形性膝関節症</label>
-                                </div> -->
                                 <div class="mx-3 my-2">
                                     実施姿勢<br>
                                     <input type="radio" name="search_word[]" id="standing" value="立位">
@@ -167,10 +155,6 @@
                                     <label for="lateral">側臥位</label>
                                     <input type="radio" name="search_word[]" id="prone" value="腹臥位">
                                     <label for="prone">腹臥位</label>
-                                    <!-- <input type="checkbox" name="search_word[]" id="ceraBand" value="セラバンド体操">
-                                    <label for="ceraBand">セラバンド体操</label>
-                                    <input type="checkbox" name="search_word[]" id="stick" value="棒体操">
-                                    <label for="stick">棒体操</label> -->
                                 </div>
                                 <div class="mx-3 my-2">
                                     フリーワード欄(20文字以内)　※複数記載する場合は「、」で区切ってください。<br>

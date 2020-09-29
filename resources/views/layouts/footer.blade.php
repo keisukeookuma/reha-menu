@@ -1,5 +1,5 @@
 @section('footer')
-<footer class="py-5 bg-black">
+<footer class="py-5 bg-black tool-width">
     <div class="container text-center">
         <a class="mx-0 nav-link text-white small d-inline-block" href="{{ url('/contact') }}">お問い合わせ</a>
         <a class="mx-0 nav-link text-white small d-inline-block" href="{{ url('/terms') }}">利用規約</a>

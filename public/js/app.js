@@ -49892,6 +49892,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/sass/tool.scss":
+/*!**********************************!*\
+  !*** ./resources/sass/tool.scss ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/sass/top.scss":
 /*!*********************************!*\
   !*** ./resources/sass/top.scss ***!
@@ -49904,16 +49915,17 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 0:
-/*!*******************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/index.scss ./resources/sass/top.scss ***!
-  \*******************************************************************************************************************/
+/*!**********************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/index.scss ./resources/sass/top.scss ./resources/sass/tool.scss ***!
+  \**********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! C:\Users\Owner\MyDocker\reha_menu\www\resources\js\app.js */"./resources/js/app.js");
 __webpack_require__(/*! C:\Users\Owner\MyDocker\reha_menu\www\resources\sass\app.scss */"./resources/sass/app.scss");
 __webpack_require__(/*! C:\Users\Owner\MyDocker\reha_menu\www\resources\sass\index.scss */"./resources/sass/index.scss");
-module.exports = __webpack_require__(/*! C:\Users\Owner\MyDocker\reha_menu\www\resources\sass\top.scss */"./resources/sass/top.scss");
+__webpack_require__(/*! C:\Users\Owner\MyDocker\reha_menu\www\resources\sass\top.scss */"./resources/sass/top.scss");
+module.exports = __webpack_require__(/*! C:\Users\Owner\MyDocker\reha_menu\www\resources\sass\tool.scss */"./resources/sass/tool.scss");
 
 
 /***/ })

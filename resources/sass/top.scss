@@ -148,13 +148,6 @@ header.masthead{
         font-size: 2.5rem;
         font-weight: 300;
     }
-
-    // .section-img-size {
-    //     max-height: 400px;
-    //     max-width: 100%;
-    //     box-shadow: 0 0 8px grey;
-    // }
-    
 }
 
 .lead {
@@ -164,3 +157,5 @@ header.masthead{
 
 // tool
 @import 'tool';
+
+@import '_register';

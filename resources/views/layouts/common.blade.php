@@ -27,8 +27,9 @@
 </head>
 <body>
     <!-- <div id="app"> -->
-        @yield('nav')
-        @yield('content')
+    @yield('nav')
+    @yield('content')
     <!-- </div> -->
+    @yield('footer')
 </body>
 </html>

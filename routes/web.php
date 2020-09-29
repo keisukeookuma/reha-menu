@@ -31,6 +31,9 @@ Route::get('/manual', 'ManualController@manual');
 Route::get('/opinion', 'OpinionController@opinion');
 Route::post('/giveOpinion', 'OpinionController@giveOpinion');
 
+Route::get('/terms', 'TermsController@terms');
+Route::get('/contact', 'ContactController@contact');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 

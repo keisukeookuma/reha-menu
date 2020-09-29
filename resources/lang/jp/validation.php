@@ -153,5 +153,6 @@ return [
         'password' => 'パスワード',
         'email' => 'メールアドレス',
         'templates_id' => 'テンプレート',
+        'agreement' => '利用規約の同意'
     ],
 ];

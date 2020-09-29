@@ -319,3 +319,5 @@
     </div>
 </main>
 @endsection
+
+@include('layouts.footer')

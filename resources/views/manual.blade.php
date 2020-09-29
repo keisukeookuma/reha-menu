@@ -111,7 +111,7 @@
             <div class="card">
                     <div class="card-body">
                         <h2 class="h3 text-center">オリジナルトレーニング作成</h2>
-                        <p class="text-center">会員登録をするとオリジナルトレーニング&テンプレートの作成ができます！</p>
+                        <p class="text-center">会員登録をするとオリジナルトレーニング&テンプレートの作成や他のユーザーとの共有ができます！公開されたトレーニングはログインしているユーザーが使用可能になります。</p>
                         <div class="mb-4">
                             <h3 class="h4">ステップ1：会員登録をする。</h3>
                             <div class="d-flex row pl-4">
@@ -151,7 +151,9 @@
                 </div>
             </div>
         </div>
-        <a type="button" class="btn btn-secondary w-100 my-2 text-light" href="{{ url('/index') }}">元のページに戻る</a>
+        <a type="button" class="btn btn-secondary w-100 mt-2 mb-4 text-light" href="{{ $return_url }}">元のページに戻る</a>
     </div>
 </main>
 @endsection
+
+@include('layouts.footer')

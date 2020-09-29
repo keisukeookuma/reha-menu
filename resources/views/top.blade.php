@@ -79,17 +79,15 @@
           <div class="col-lg-6 order-lg-1">
             <div class="p-5 font-20">
               <h2 class="lead">オリジナルメニューの追加＆共有可能！</h2>
-              <p>普段使っている自主トレをかんたんにアップロード可能！<br>あなたの考えた自主トレをみんなと共有しよう！</p>
+              <p>会員登録をすることでトレーニングの作成や公開ができます。また、他のユーザーが作ったトレーニングを使うことも可能です。<br>
+              あなたの考えた自主トレをみんなと共有しよう！</p>
+              <p>もちろん、会員登録なしでもリハビリメニューの作成は可能です！</p>
             </div>
           </div>
         </div>
       </div>
     </section>
-
-    <footer class="py-5 bg-black">
-      <div class="container">
-        <p class="m-0 text-center text-white small">Copyright © Reha Menu 2020</p>
-      </div>
-    </footer>
   </main>
 @endsection
+
+@include('layouts.footer')

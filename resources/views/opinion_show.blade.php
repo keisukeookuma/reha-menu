@@ -43,3 +43,5 @@
         </table>  
     </div>
 </main>
+
+@include('layouts.footer')

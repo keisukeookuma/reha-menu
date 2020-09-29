@@ -12,7 +12,7 @@
     <header class="navbar navbar-dark fixed-top flex-nowrap p-0 shadow navbar-expand-lg">
         <div class="header-container px-3 w-100">
             <div class="navbar-brand ml-2">
-                <a class="mr-0 " href="{{ url('/') }}">Reha Menu</a>
+                <a class="mr-0 nav-link p-0" href="{{ url('/') }}">Reha Menu</a>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

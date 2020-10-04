@@ -172,8 +172,7 @@
                                 <label for="file">画像</label>
                                 <input class="form-control-file" type="file" name="file" id="file">
                             </div>
-                            <p><input class="btn btn-primary"type="submit" value="自主トレ作成"></p>
-                            <input type="hidden" name="sqltype" value="new_product">
+                            <p><input class="btn btn-primary" type="submit" value="自主トレ作成"></p>
                         </form>
                     </div>
                 </div>
@@ -210,12 +209,16 @@
                             @endforeach
                         </td>
                         <td>
-                            @if($template[0]->kind === 'body_parts')
-                            <p>部位</p>
-                            @elseif($template[0]->kind === 'disease_name')
-                            <p>病名</p>
+                            @if($template[0]->kind === 'locomotor_disorders')
+                            <p>運動器疾患</p>
+                            @elseif($template[0]->kind === 'cerebrovascular_disease')
+                            <p>脳血管疾患</p>
+                            @elseif($template[0]->kind === 'body_parts')
+                            <p>部位別</p>
                             @elseif($template[0]->kind === 'care_prevention')
                             <p>介護予防</p>
+                            @elseif($template[0]->kind === 'etc')
+                            <p>その他</p>
                             @endif
                         </td>
                         <td>

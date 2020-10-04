@@ -5,12 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\TemplateItem;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\library\Common;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
 class IndexController extends Controller

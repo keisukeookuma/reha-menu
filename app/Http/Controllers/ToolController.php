@@ -30,7 +30,7 @@ class ToolController extends Controller
                         ->groupBy('items.id')
                         ->orderBy('items.id', 'DESC')
                         ->get();
-            // テンプレート作成時にitemの項目を出す            
+            // テンプレート作成時にitemの項目を出す
             $item_list_for_template = DB::table('items')
                         ->select('items.id', 'item_name', 'items.user_id','creator', 'caption', DB::raw('GROUP_CONCAT(search_word) as search_word'), 'img', 'items.status as items_status')
                         ->join('search_words', 'items.id', '=', 'search_words.item_id')

@@ -21,4 +21,4 @@
 * Docker
 * Visual Studio Code
 * conoha VPS
-* GitHub(デプロイに使用)
+* GitHub

@@ -13,13 +13,11 @@
 ## URL
 <https://reha-menu.com>
 
-## 使用言語
+## 使用言語・開発環境
 * PHP(Laravel)
 * Javascript
 * jQuery
 * MySQL
-
-## 開発環境
 * Docker
 * Visual Studio Code
 * conoha VPS

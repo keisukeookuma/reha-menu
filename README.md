@@ -1,5 +1,6 @@
 ## Reha Menuについて
-![2020-10-11](https://user-images.githubusercontent.com/30212367/95675938-c8483300-0bf5-11eb-9f11-81a1b3124af9.png)
+|![2020-10-11](https://user-images.githubusercontent.com/30212367/95675938-c8483300-0bf5-11eb-9f11-81a1b3124af9.png)|
+|:-:|
 「Reha Menu：リハビリメニューの作成&共有サイト」は運動指導者向けの運動指導用紙の作成ツールです。
 
 ## 機能一覧

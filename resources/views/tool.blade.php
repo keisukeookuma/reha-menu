@@ -32,6 +32,7 @@
                 <a class="nav-item nav-link text-dark font-14px" id="nav-make-template-tab" data-toggle="tab" href="#nav-make-template" role="tab" aria-controls="nav-make-template" aria-selected="false">テンプレート作成</a>
                 @if($admin === 'admin')
                 <a class="nav-item nav-link text-dark" href="{{ url('opinionShow') }}">ご意見一覧へ</a>
+                <a class="nav-item nav-link text-dark" href="{{ url('userList') }}">ユーザー一覧</a>
                 @endif
                 <a class="nav-item nav-link text-dark" href="{{ url('index') }}">管理ページ退出</a>
             </div>

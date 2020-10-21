@@ -25,6 +25,7 @@ Route::group(['middleware' => 'auth'],function(){
     Route::post('/createTemplate', 'ToolController@createTemplate');
     Route::post('/deleteTemplate', 'ToolController@deleteTemplate');
     Route::get('/opinionShow', 'OpinionController@opinionShow');
+    Route::get('/userList', 'UserListController@userListShow');
 });
 
 Route::get('/manual', 'ManualController@manual');

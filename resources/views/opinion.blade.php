@@ -12,7 +12,7 @@
 
 @section('content')
 <main>
-    <div class="container pt-5 mt-5">
+    <div class="container pt-5 my-5">
         <div class="card col-md-8 m-auto">
             <div class="card-body">
                 @if($errors->any())

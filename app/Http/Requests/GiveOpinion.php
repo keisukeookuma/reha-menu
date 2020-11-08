@@ -26,6 +26,7 @@ class GiveOpinion extends FormRequest
     {
         return [
             'name' =>  ['required','max:20', new SpaceCheck],
+            'email' => ['max:100'],
             'opinion' => ['required','max:150', new SpaceCheck],
         ];
     }

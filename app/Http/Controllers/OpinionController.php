@@ -12,15 +12,16 @@ class OpinionController extends Controller
 {
     public function opinion()
     {
-        return view('opinion');
+        $return_url = url()->previous();
+        return view('opinion',['return_url' => $return_url]);
     }
 
     public function giveOpinion(GiveOpinion $request)
     {
         $opinion = new Opinion();
         $opinion->insertOpinion($request);
-
-        return redirect('/opinion')->with('message','ご意見ありがとうございました！');
+        $return_url = $request->return_url;
+        return redirect('/opinion')->with(['message'=>'ご意見ありがとうございました！', 'return_url'=>$return_url]);
     }
 
     public function opinionShow()

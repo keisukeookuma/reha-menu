@@ -15,6 +15,7 @@ class Opinion extends Model
         DB::table('opinions')->INSERT(
             [
                 'name' => $request->name,
+                'email' => $request->email,
                 'opinion' => $request->opinion,
                 'created_at' => $now,
                 'updated_at' => $now,

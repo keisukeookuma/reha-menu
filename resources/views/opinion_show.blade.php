@@ -26,18 +26,22 @@
 @section('content')
 <main>
     <div class="container my-5 py-5">
-        <h2>ご意見まとめ</h2>
+        <h2>お問い合わせ＆ご意見まとめ</h2>
         <table border="1">
             <tr>
                 <th class="width-30">id</th>
                 <th class="width-100">name</th>
+                <th class="width-100">email</th>
                 <th class="width-300">opinion</th>
+                <th class="width-100">created_at</th>
             </tr>
             @foreach($opinions as $opinion)
             <tr>
                 <td>{{ $opinion->id }}</td>
                 <td>{{ $opinion->name }}</td>
+                <td>{{ $opinion->email}}</td>
                 <td>{{ $opinion->opinion }}</td>
+                <td>{{ $opinion->created_at }}</td>
             </tr>
             @endforeach
         </table>  

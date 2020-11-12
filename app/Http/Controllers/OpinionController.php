@@ -24,7 +24,7 @@ class OpinionController extends Controller
         $opinion = new Opinion();
         $opinion->insertOpinion($request);
         $return_url = $request->return_url;
-        Mail::to('kbkumagki@gmail.com')->send(new \App\Mail\OpinionSendmail($opinion));
+        Mail::to('kbkumagki@gmail.com')->send(new \App\Mail\OpinionSendmail($request));
         // Mail::to('kbkumagki@gmail.com')->send(new OpinionSendmail($opinion));
         return redirect('/opinion')->with(['message'=>'ご意見ありがとうございました！', 'return_url'=>$return_url]);
     }

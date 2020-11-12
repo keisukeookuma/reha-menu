@@ -33,7 +33,7 @@ class OpinionSendmail extends Mailable
         return $this
             ->from('rehamenu.official@gmail.com')
             ->subject('自動送信メール')
-            ->view('emails.opinion')
+            ->view('emails.opinion_email')
             ->with([
                 'opinion' => $this->opinion
             ]);

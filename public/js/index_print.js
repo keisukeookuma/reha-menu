@@ -25,7 +25,7 @@ function IePrint(){
 
 
 $(".downloadBtn").click(function(){
-    if(userAgent.indexOf('edge')== -1 && userAgent.indexOf('chrome')== -1 && userAgent.indexOf('safari')== -1){
+    if(userAgent.indexOf('Line')!= -1 || userAgent.indexOf('FBAV')!= -1 || userAgent.indexOf('msie')!= -1 || userAgent.indexOf('trident')!= -1){
         alert('ダウンロード機能はMicrosoft Edge、Google Chrome、Safariでの使用を推奨します。');
     }
     
@@ -44,7 +44,7 @@ $(".downloadBtn").click(function(){
 });
 
 $("#print").click(function(print){
-    if(userAgent.indexOf('edge')== -1 && userAgent.indexOf('chrome')== -1 && userAgent.indexOf('safari')== -1){
+    if(userAgent.indexOf('Line')!= -1 || userAgent.indexOf('FBAV')!= -1 || userAgent.indexOf('msie')!= -1 || userAgent.indexOf('trident')!= -1){
         alert('印刷機能はMicrosoft Edge、Google Chrome、Safariでの使用を推奨します。');
     }
 

@@ -21,31 +21,34 @@ function IePrint(){
         $('div.item').addClass('contents1');
         hide_elm.removeClass('print');
     }
-    // $('.print-preview').children().remove();
 };
 
 
 $(".downloadBtn").click(function(){
-    if(userAgent.match(/(msie|MSIE)/) || userAgent.match(/(T|t)rident/)){
-        alert('Internet Explorerではダウンロードは行なえません')
-    }else{
-        scrollToTop();
-        $('.preview-scroll').scrollTop();
-        $('.item-delete-btn').addClass('d-none');
-        html2canvas(document.querySelector("#preview"),{scale:4}).then(function(canvas){
-            $('.preview-print').append(canvas);
-                let downloadEle = document.createElement("a");
-                downloadEle.href = canvas.toDataURL("image/png");
-                downloadEle.download = "reha-menu.png";
-                downloadEle.click();
-        });
-        $('canvas').remove();
-        $('.item-delete-btn').removeClass('d-none')
+    if(userAgent.indexOf('edge')== -1 && userAgent.indexOf('chrome')== -1 && userAgent.indexOf('safari')== -1){
+        alert('ダウンロード機能はMicrosoft Edge、Google Chrome、Safariでの使用を推奨します。');
     }
+    
+    scrollToTop();
+    $('.preview-scroll').scrollTop();
+    $('.item-delete-btn').addClass('d-none');
+    html2canvas(document.querySelector("#preview"),{scale:4}).then(function(canvas){
+        $('.preview-print').append(canvas);
+            let downloadEle = document.createElement("a");
+            downloadEle.href = canvas.toDataURL("image/png");
+            downloadEle.download = "reha-menu.png";
+            downloadEle.click();
+    });
+    $('canvas').remove();
+    $('.item-delete-btn').removeClass('d-none')
 });
 
 $("#print").click(function(print){
-    if(userAgent.match(/(msie|MSIE)/) || userAgent.match(/(T|t)rident/)){
+    if(userAgent.indexOf('edge')== -1 && userAgent.indexOf('chrome')== -1 && userAgent.indexOf('safari')== -1){
+        alert('印刷機能はMicrosoft Edge、Google Chrome、Safariでの使用を推奨します。');
+    }
+
+    if(userAgent.indexOf('msie')!= -1 || userAgent.indexOf('trident')!= -1){
         IePrint()
     }else{
         $(function() {

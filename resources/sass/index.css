@@ -1,0 +1,550 @@
+@charset "UTF-8";
+.form-control-dark {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.form-control-dark:focus {
+  border-color: transparent;
+  -webkit-box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+          box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+  background-color: #354053;
+}
+
+.form-bg {
+  background-color: #354053;
+}
+
+.nav-pills .nav-link.active {
+  background-color: #354053;
+}
+
+body {
+  font-size: .875rem;
+  -webkit-print-color-adjust: exact;
+  overflow: hidden;
+}
+
+header {
+  background-color: #346cb0;
+  min-height: 50px;
+}
+
+header .header-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+header .navbar-brand {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: 1rem;
+}
+
+header .navbar-brand a {
+  color: #fff;
+}
+
+nav .nav-side {
+  background: #354053;
+}
+
+nav .nav-side a {
+  color: #8391a2;
+}
+
+nav .nav-side p {
+  font-size: 12px;
+}
+
+nav .nav-a-size {
+  height: 75px;
+  width: 80px;
+  display: block;
+}
+
+nav .item-sample p {
+  color: black;
+}
+
+nav .item-sample a {
+  text-decoration: none;
+}
+
+nav .item-sample:hover {
+  -webkit-box-shadow: 0 0 4px gray;
+          box-shadow: 0 0 4px gray;
+}
+
+nav .search {
+  width: 90%;
+}
+
+nav .search-item-height {
+  width: 100%;
+  height: 86vh;
+}
+
+nav #all_show_result {
+  list-style: none;
+  padding-left: 5px;
+}
+
+nav .nav_sample_img img {
+  width: 120px;
+  height: 90px;
+}
+
+nav .creator-font-12px {
+  font-size: 12px;
+}
+
+nav .view_more, nav .template_view_more {
+  margin-bottom: 50px;
+}
+
+nav .template {
+  list-style: none;
+}
+
+nav .template a {
+  color: black;
+  text-decoration: none;
+}
+
+nav .template:hover {
+  -webkit-box-shadow: 0 0 4px gray;
+          box-shadow: 0 0 4px gray;
+}
+
+nav #template_list .nav_template_img img {
+  width: 100%;
+}
+
+nav .info-text {
+  color: rgba(42, 42, 42, 0.7);
+}
+
+main {
+  background-color: #f6f7f9;
+}
+
+main .item {
+  margin-top: 10px;
+  padding-top: 5px;
+  position: relative;
+}
+
+main .item-delete-btn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: transparent;
+  border: none;
+  color: gray;
+}
+
+main .preview-scroll-size {
+  width: 100%;
+  height: 92vh;
+}
+
+main #preview {
+  background-size: contain;
+  background-color: white;
+  height: 830px;
+  width: 550px;
+  min-width: 550px;
+  color: black;
+  -webkit-box-shadow: 0 0 8px gray;
+          box-shadow: 0 0 8px gray;
+  font-size: 20px;
+  padding: 1.5rem 1.2rem 1.5rem 0.7rem;
+}
+
+main #preview .position-top-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 12px;
+  margin-top: 12px;
+  text-decoration: underline;
+}
+
+main #preview h1 {
+  font-size: 35px;
+}
+
+main #preview pre {
+  white-space: pre-wrap;
+  border: none;
+}
+
+main #preview .contents1-h1 {
+  font-size: 45px;
+}
+
+main #preview .contents3 .preview-name {
+  margin-left: 71px;
+  margin-right: 71px;
+  font-size: 18px;
+}
+
+main #preview .contents3 ol {
+  font-size: 14px;
+}
+
+main #preview .contents3 img {
+  max-width: 256px;
+  max-height: 200px;
+}
+
+main #preview .contents2 img {
+  max-width: 310px;
+  max-height: 240px;
+}
+
+main #preview .contents2 p {
+  font-size: 22px;
+}
+
+main #preview .contents2 ol {
+  font-size: 17px;
+  padding-left: 50px;
+}
+
+main #preview .contents2 .position-top-right {
+  top: 22px;
+  font-size: 16px;
+}
+
+main #preview .contents1 {
+  padding-top: 48px;
+}
+
+main #preview .contents1 img {
+  max-width: 450px;
+  max-height: 340px;
+}
+
+main #preview .contents1 p {
+  font-size: 25px;
+}
+
+main #preview .contents1 ol {
+  font-size: 22px;
+}
+
+main #preview .contents1 .position-top-right {
+  top: 75px;
+  font-size: 17px;
+}
+
+.print-preview {
+  display: none;
+  color: black;
+}
+
+@media (max-width: 992px) {
+  main {
+    /* 　previewの調整 */
+  }
+  main .responsive-mb {
+    margin-bottom: 60px;
+  }
+  main .item {
+    padding-top: 5px;
+  }
+  main #preview {
+    height: 545px;
+    width: 352px;
+    min-width: 352px;
+    padding: 0.25rem;
+  }
+  main #preview h1 {
+    font-size: 25px;
+    margin-top: 10px;
+  }
+  main #preview .contents3-d-flex {
+    padding: 12px 0px 0px;
+  }
+  main #preview .contents1-h1 {
+    font-size: 30px;
+    margin-top: 10px;
+  }
+  main #preview .contents3 img {
+    max-width: 140px;
+    max-height: 106px;
+  }
+  main #preview .contents3 .preview-name {
+    font-size: 15px;
+    margin: 0px;
+  }
+  main #preview .contents3 ol {
+    font-size: 10px;
+    padding: 0 0 0 20px;
+  }
+  main #preview .contents3 .position-top-right {
+    top: 10px;
+    right: 5px;
+    font-size: 12px;
+  }
+  main #preview .contents3 .item-delete-btn {
+    top: -18px;
+  }
+  main #preview .contents2 img {
+    max-width: 195px;
+    max-height: 150px;
+  }
+  main #preview .contents2 p {
+    font-size: 16px;
+  }
+  main #preview .contents2 ol {
+    font-size: 12px;
+    padding-left: 40px;
+  }
+  main #preview .contents2 .position-top-right {
+    font-size: 12px;
+  }
+  main #preview .contents2 .contents3-d-flex {
+    padding: 0px;
+  }
+  main #preview .contents2 .item-delete-btn {
+    top: -15px;
+  }
+  main #preview .contents2 .item {
+    margin-top: 0px;
+  }
+  main #preview .contents1 {
+    padding-top: 20px;
+  }
+  main #preview .contents1 img {
+    max-width: 270px;
+    max-height: 210px;
+  }
+  main #preview .contents1 p {
+    font-size: 22px;
+  }
+  main #preview .contents1 ol {
+    font-size: 16px;
+    padding-left: 30px;
+  }
+  main #preview .contents1 .position-top-right {
+    font-size: 14px;
+    top: 45px;
+  }
+  main #preview .contents1 .contents3-d-flex {
+    padding: 0px;
+  }
+  main #preview .contents1 .item-img {
+    margin-top: 8px !important;
+  }
+}
+
+/* スマホレイアウト */
+@media (max-width: 768px) {
+  header .navbar-brand {
+    background-color: transparent;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  .hamburger-nav {
+    width: 100%;
+    height: 80%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    padding-bottom: 60px;
+  }
+  .hamburger-menu {
+    width: 100%;
+    text-align: center;
+    height: 60px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    background-color: rgba(42, 42, 42, 0.7);
+  }
+  .menu-trigger {
+    width: 100%;
+    padding-top: 14px;
+    display: inline-block;
+    position: relative;
+    height: 28px;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+  .menu-trigger p {
+    color: #fff;
+    font-size: 20px;
+  }
+  .menu-trigger span {
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #000;
+    -webkit-transition: all .5s .2s;
+    transition: all .5s .2s;
+  }
+  .menu-trigger .active span {
+    background-color: #fff;
+  }
+  .menu-trigger span:nth-of-type(1) {
+    top: 0;
+  }
+  .menu-trigger .active span:nth-of-type(1) {
+    -webkit-transform: translateY(12px) rotate(-45deg);
+            transform: translateY(12px) rotate(-45deg);
+  }
+  .menu-trigger span:nth-of-type(2) {
+    top: 12px;
+  }
+  .menu-trigger .active span:nth-of-type(2) {
+    opacity: 0;
+  }
+  .menu-trigger span:nth-of-type(3) {
+    bottom: 0;
+  }
+  .menu-trigger .active span:nth-of-type(3) {
+    -webkit-transform: translateY(-12px) rotate(45deg);
+            transform: translateY(-12px) rotate(45deg);
+  }
+  /* navの色調整 */
+  nav .item-sample p, nav .btn, nav .template a {
+    color: #fff;
+  }
+  nav .nav-side {
+    background: none;
+  }
+  nav .view_more, nav .template_view_more {
+    margin-bottom: 400px;
+    color: #fff;
+  }
+  nav .info-text {
+    color: #f8f9fa !important;
+  }
+  .form-control-dark, .form-bg {
+    background-color: #fff;
+  }
+  /* スクロールの調整 */
+  .search-item-height {
+    height: 50vh;
+  }
+}
+
+@media print {
+  .noprint {
+    display: none;
+  }
+  .print-preview {
+    display: block;
+    background-size: cover;
+    width: 290mm !important;
+    height: 415mm !important;
+    padding: 0mm 10mm !important;
+  }
+  .print-preview h1 {
+    font-size: 80px;
+    padding: 10px;
+  }
+  .print-preview pre {
+    border: none;
+  }
+  .print-preview _:-ms-lang(x) p, .print-preview .contents3 p {
+    font-size: 42px !important;
+    padding-top: 10px !important;
+    padding-bottom: 0px;
+    position: relative;
+  }
+  .print-preview _:-ms-lang(x) ol, .print-preview .contents3 ol {
+    font-size: 32px !important;
+    padding-left: 70px !important;
+    margin-top: 15px !important;
+  }
+  .print-preview _:-ms-lang(x) img, .print-preview .contents3 img {
+    max-width: 520px !important;
+    max-height: 390px !important;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .print-preview _:-ms-lang(x) .position-top-right, .print-preview .contents3 .position-top-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 35px !important;
+    margin: 20px 0;
+    text-decoration: underline;
+  }
+  .print-preview .contents2 p {
+    font-size: 50px !important;
+    padding-top: 10px !important;
+    padding-bottom: 0px;
+  }
+  .print-preview .contents2 img {
+    margin: 0;
+    max-width: 634px !important;
+    max-height: 475px !important;
+  }
+  .print-preview .contents2 p {
+    font-size: 60px;
+    padding-top: 20px;
+    padding-bottom: 0px;
+  }
+  .print-preview .contents2 ol {
+    font-size: 34px !important;
+    padding-left: 70px !important;
+    margin-top: 15px !important;
+  }
+  .print-preview .contents2 .position-top-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 35px !important;
+    margin: 35px 0;
+    text-decoration: underline;
+  }
+  .print-preview .contents1 img {
+    margin-top: 45px;
+    max-width: 1000px;
+    max-height: 750px;
+  }
+  .print-preview .contents1 p {
+    font-size: 70px;
+    padding-top: 80px;
+    padding-bottom: 0px;
+  }
+  .print-preview .contents1 ol {
+    font-size: 45px !important;
+  }
+  .print-preview .contents1 .position-top-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 46px !important;
+    margin: 85px 0;
+    text-decoration: underline;
+  }
+}
+/*# sourceMappingURL=index.css.map */

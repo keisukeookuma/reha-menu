@@ -47,5 +47,7 @@
         </table>  
     </div>
 </main>
-
+<script>
+    alert('テスト');
+</script>
 @include('layouts.footer')

@@ -44,7 +44,7 @@ $(".downloadBtn").click(function(){
 });
 
 $("#print").click(function(print){
-    if(userAgent.indexOf('line')!= -1 || userAgent.indexOf('fbav')!= -1 || userAgent.indexOf('msie')!= -1 || userAgent.indexOf('trident')!= -1){
+    if(userAgent.indexOf('line')!= -1 || userAgent.indexOf('fban')!= -1 || userAgent.indexOf('msie')!= -1 || userAgent.indexOf('trident')!= -1){
         alert('印刷機能はMicrosoft Edge、Google Chrome、Safariでの使用を推奨します。');
     }
 

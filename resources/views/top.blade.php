@@ -21,7 +21,7 @@
         <div class="container">
           <h1 class="masthead-heading mb-0">Reha Menu</h1>
           <h2 class="masthead-subheading mb-0">リハビリメニューの作成＆共有サイト！</h2>
-          <a href="{{ url('/index') }}" class="btn btn-primary btn-xl rounded-pill mt-5">作成開始</a>
+          <a href="{{ url('/index') }}" class="btn btn-primary btn-xl rounded-pill mt-5">作成ページへ</a>
         </div>
       </div>
     </header>
